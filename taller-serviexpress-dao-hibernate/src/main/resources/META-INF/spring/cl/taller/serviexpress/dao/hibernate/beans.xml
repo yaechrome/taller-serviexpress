@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource">
+		<property name="mappingResources">
+			<list>
+				<value>Auditoria.hbm.xml</value>
+				<value>FamiliaProducto.hbm.xml</value>
+				<value>TipoProducto.hbm.xml</value>
+				<value>Producto.hbm.xml</value>
+				<value>Perfil.hbm.xml</value>
+				<value>Servicio.hbm.xml</value>
+				<value>Credenciales.hbm.xml</value>
+				<value>DatosEmpleados.hbm.xml</value>
+				<value>Factura.hbm.xml</value>
+				<value>OrdenCompra.hbm.xml</value>
+				<value>Recepcion.hbm.xml</value>
+				<value>Usuario.hbm.xml</value>
+				<value>Reserva.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.connection.release_mode">auto</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory" />
+
+	<bean id="queryBuilderFactory"
+		class="cl.taisachile.antaios.dao.hibernate.support.QueryBuilderFactoryImpl" />
+
+	<bean id="abstractDao" abstract="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="queryBuilderFactory" ref="queryBuilderFactory" />
+	</bean>
+
+	<bean id="userDao" parent="abstractDao" class="cl.taller.serviexpress.dao.hibernate.UserDaoHibernate" />
+	
+</beans>

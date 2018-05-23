@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cl.taller.serviexpress</groupId>
+    <artifactId>taller-serviexpress</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>taller-serviexpress-dao-hibernate</artifactId>
+	<dependencies>
+  		<dependency>
+			<groupId>cl.taller.serviexpress</groupId>
+			<artifactId>taller-serviexpress-dao</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cl.taller.serviexpress</groupId>
+			<artifactId>taller-serviexpress-domain</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>cl.taisachile.antaios</groupId>
+			<artifactId>antaios-dao-hibernate</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+  	</dependencies>
+</project>

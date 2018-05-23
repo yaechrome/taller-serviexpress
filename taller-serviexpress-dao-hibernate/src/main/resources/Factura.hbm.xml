@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cl.taller.serviexpress.domain.Factura" table="FACTURA">
+		<id name="id" column="ID" type="long">
+			<generator class="native">
+				<param name="sequence">FacturaSequence</param>
+			</generator>
+		</id>
+		<many-to-one name="usuario" class="cl.taller.serviexpress.domain.Usuario" unique="true"/>
+		<property name="rutCliente"/>
+		<property name="valorNeto"/>
+		<property name="patenteVehiculo"/>
+		<property name="iva"/>
+		<property name="totalFactura"/>
+		<property name="estadoFactura"/>
+		<property name="estadoPago"/>
+		<set name="FacturaServicio" table="FACTURA_SERVICIO">
+			<key column="ID"/>
+			<composite-element class="cl.taller.serviexpress.domain.FacturaServicio">
+				<property name="idMecanico"/>
+				<many-to-one name="servicio" class="cl.taller.serviexpress.domain.Servicio"/>
+			</composite-element>
+		</set>
+		<set name="FacturaProducto" table="FACTURA_PRODUCTO">
+			<key column="ID"/>
+			<composite-element class="cl.taller.serviexpress.domain.FacturaProducto">
+				<property name="cantidad"/>
+				<many-to-one name="producto" class="cl.taller.serviexpress.domain.Producto"/>
+			</composite-element>
+		</set>     				     
+	</class>
+</hibernate-mapping>

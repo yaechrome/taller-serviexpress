@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="description" content="Portal Tarjeta Corona Mi Solucion"></meta>
+<meta name="author" content="Taisa"></meta>
+<meta name="msapplication-TileColor" content="#ffffff"></meta>
+<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png"></meta>
+<meta name="theme-color" content="#ffffff"></meta>
+
+<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png" th:href="@{/img/favicon/apple-icon-57x57.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png" th:href="@{/img/favicon/apple-icon-60x60.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png" th:href="@{/img/favicon/apple-icon-72x72.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png" th:href="@{/img/favicon/apple-icon-76x76.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png" th:href="@{/img/favicon/apple-icon-114x114.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png" th:href="@{/img/favicon/apple-icon-120x120.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png" th:href="@{/img/favicon/apple-icon-144x144.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png" th:href="@{/img/favicon/apple-icon-152x152.png(${T(Math).random()})}"/>
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png" th:href="@{/img/favicon/apple-icon-180x180.png(${T(Math).random()})}"/>
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon/android-icon-192x192.png" th:href="@{/img/favicon/android-icon-192x192.png(${T(Math).random()})}"/>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" th:href="@{/img/favicon/favicon-32x32.png(${T(Math).random()})}"/>
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png" th:href="@{/img/favicon/favicon-96x96.png(${T(Math).random()})}"/>
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" th:href="@{/img/favicon/favicon-16x16.png(${T(Math).random()})}"/>
+<link rel="manifest" href="img/favicon/manifest.json" th:href="@{/img/favicon/manifest.json(${T(Math).random()})}"/>
+<link rel="stylesheet" href="css/main.min.css" th:href="@{/css/main.min.css(${T(Math).random()})}"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:400,600,700}"/>
+
+<script src="js/libs/bundle.js" th:src="@{/js/libs/bundle.js(${T(Math).random()})}"></script>
+<script src="js/libs/materialize.min.js" th:src="@{/js/libs/materialize.min.js(${T(Math).random()})}"></script>
+<script src="js/main.min.js" th:src="@{/js/main.min.js(${T(Math).random()})}"></script>
+
+<title>Junji</title>
+
+
+<!-- link href="../../../static/css/non-responsive.css" th:href="@{/css/non-responsive.css(${T(Math).random()})}" rel="stylesheet"></link-->
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" th:href="@{/webjars/html5shiv/3.7.2/html5shiv.js}"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" th:href="@{/webjars/respond.js/1.4.2/respond.min.js}"></script>
+<![endif]-->
+
+</head>
+<body>
+	<th:block layout:fragment="header" th:include="master/fragments/header"></th:block>
+	<th:block layout:fragment="nav" th:include="master/fragments/nav"></th:block>
+	<main role="main">
+		<section class="container">
+			<div class="row mt50 mb0">
+				<th:block layout:fragment="content">
+					<p>layout:fragment="content"</p>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+							<div class="thumbnail">
+								<a href="#"><img src="http://placehold.it/614x253" alt="" /></a>
+							</div>
+						</div>
+					</div>
+				</th:block>
+			</div>			
+		</section>
+	</main>
+	<th:block layout:fragment="footer" th:include="master/fragments/footer"></th:block> 
+</body>
+</html>

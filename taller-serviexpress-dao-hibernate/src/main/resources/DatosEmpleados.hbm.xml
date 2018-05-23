@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cl.taller.serviexpress.domain.DatosEmpleados" table="DATOS_EMPLEADOS">		
+		<id name="id" type="long">
+			<generator class="foreign">
+				<param name="property">idUsuario</param>
+			</generator>
+		</id>
+		<many-to-one name="usuario" class="cl.taller.serviexpress.domain.Usuario" unique="true"/>
+		<property name="fechaContratacion"/>
+		<property name="sueldo"/>
+		<property name="cargo"/>
+		<property name="obsAdministrativas"/>
+	</class>
+</hibernate-mapping>

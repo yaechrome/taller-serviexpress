@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<body>
+		<header class="header pb20">
+	      <section class="container">
+	        <div class="row mb0">
+	          <div class="col s8 l6"><a class="header-brand" href="#"><img src="img/brand.svg" th:src="@{/img/brand.svg}" alt="Logotipo junta nacional de jardines"/></a></div>
+	          <div class="col s4 l6 text_right"><a class="header-toggle" href="#!" state="0"><i class="small material-icons blue-text text-darken-3">menu</i></a>
+	            <div class="session">
+	              <div class="vertical_center"><strong class="session-user">Nombre de usuario</strong><span class="session-profile"> Perfil Usuario</span></div>
+	              <div class="vertical_center"><a class="session-actions dropdown-trigger" href="#!" data-target="profile"><i class="small material-icons">more_vert</i></a></div>
+	              <ul class="dropdown-content" id="profile">
+	                <li><a href="#!">Mi perfil</a></li>
+	                <li class="divider"></li>
+	                <li><a class="red-text text-darken-1" href="login.html">Cerrar sesión</a></li>
+	              </ul>
+	            </div>
+	          </div>
+	        </div>
+	      </section>
+	    </header>
+	</body>
+</html>

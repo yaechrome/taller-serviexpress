@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cl.taller.serviexpress</groupId>
+  <artifactId>taller-serviexpress</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.6.RELEASE</version>
+<!-- 		<version>1.2.7.RELEASE</version> -->
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<antaios.version>5.2-RC</antaios.version>
+		<kleuche-serialization.version>13.0</kleuche-serialization.version>
+		<springfox-version>2.5.0</springfox-version>
+		<jwt.version>0.7.0</jwt.version>
+    </properties>
+    
+    
+    <dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- Model Mapper -->
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>1.1.0</version>
+			</dependency>
+			<!-- JWT -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+			<dependency>
+		    	<groupId>org.hibernate</groupId>
+		        <artifactId>hibernate-core</artifactId>
+		        <version>4.3.11.Final</version>
+		    </dependency>
+			<dependency>
+				<groupId>cl.taisachile.antaios</groupId>
+				<artifactId>antaios-dao</artifactId>
+				<version>${antaios.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taisachile.antaios</groupId>
+				<artifactId>antaios-dao-hibernate</artifactId>
+				<version>${antaios.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taisachile.antaios</groupId>
+				<artifactId>antaios-security-domain</artifactId>
+				<version>${antaios.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taller.serviexpress</groupId>
+				<artifactId>taller-serviexpress-dao-hibernate</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taller.serviexpress</groupId>
+				<artifactId>taller-serviexpress-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taller.serviexpress</groupId>
+				<artifactId>taller-serviexpress-services</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taller.serviexpress</groupId>
+				<artifactId>taller-serviexpress-services-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taller.serviexpress</groupId>
+				<artifactId>taller-serviexpress-ws</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cl.taller.serviexpress</groupId>
+				<artifactId>taller-serviexpress-dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<modules>
+		<module>taller-serviexpress-dao</module>
+		<module>taller-serviexpress-dao-hibernate</module>
+		<module>taller-serviexpress-domain</module>
+		<module>taller-serviexpress-services</module>
+		<module>taller-serviexpress-services-impl</module>
+		<module>taller-serviexpress-web-frontend</module>
+		<module>taller-serviexpress-ws</module>
+	</modules>
+</project>
