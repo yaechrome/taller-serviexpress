@@ -9176,3 +9176,414 @@ Caused by: org.hibernate.PropertyNotFoundException: Could not find a getter for 
 2018-05-21 20:34:47.189  INFO 12300 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
 2018-05-21 20:34:47.190  INFO 12300 --- [RMI TCP Connection(2)-127.0.0.1] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@55a561cf: startup date [Mon May 21 20:34:09 CLT 2018]; root of context hierarchy
 2018-05-21 20:34:47.191  INFO 12300 --- [RMI TCP Connection(2)-127.0.0.1] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-05-25 22:24:32.161  INFO 6344 --- [main] c.t.serviexpress.web.frontend.Frontend   : Starting Frontend on DESKTOP-RFQ00T8 with PID 6344 (C:\Users\nippo\Documents\GitHub\Taller\taller-serviexpress\taller-serviexpress-web-frontend\target\classes started by nippo in C:\Users\nippo\Documents\GitHub\Taller\taller-serviexpress\taller-serviexpress-web-frontend)
+2018-05-25 22:24:32.179  INFO 6344 --- [main] c.t.serviexpress.web.frontend.Frontend   : No active profile set, falling back to default profiles: default
+2018-05-25 22:24:32.724  INFO 6344 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d36e4cd: startup date [Fri May 25 22:24:32 CLT 2018]; root of context hierarchy
+2018-05-25 22:24:33.626  INFO 6344 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-web-frontend/target/classes/META-INF/spring/cl/taller/serviexpress/web/frontend/beans.xml]
+2018-05-25 22:24:33.961  INFO 6344 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-services-impl/target/classes/META-INF/spring/cl/taller/serviexpress/services/impl/beans.xml]
+2018-05-25 22:24:34.021  INFO 6344 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-dao-hibernate/target/classes/META-INF/spring/cl/taller/serviexpress/dao/hibernate/beans.xml]
+2018-05-25 22:24:34.223  INFO 6344 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [org.springframework.web.accept.ContentNegotiationManagerFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-05-25 22:24:34.224  INFO 6344 --- [main] a.ConfigurationClassBeanDefinitionReader : Skipping bean definition for [BeanMethod:name=mvcUriComponentsContributor,declaringClass=org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport]: a definition for bean 'mvcUriComponentsContributor' already exists. This top-level bean definition is considered as an override.
+2018-05-25 22:24:34.325  INFO 6344 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'org.springframework.transaction.config.internalTransactionAdvisor' with a different definition: replacing [Root bean: class [org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration; factoryMethodName=transactionAdvisor; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/transaction/annotation/ProxyTransactionManagementConfiguration.class]]
+2018-05-25 22:24:34.326  INFO 6344 --- [main] a.ConfigurationClassBeanDefinitionReader : Skipping bean definition for [BeanMethod:name=transactionalEventListenerFactory,declaringClass=org.springframework.transaction.annotation.AbstractTransactionManagementConfiguration]: a definition for bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory' already exists. This top-level bean definition is considered as an override.
+2018-05-25 22:24:34.885  INFO 6344 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'conversionService' of type [org.springframework.format.support.FormattingConversionServiceFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-25 22:24:34.886  INFO 6344 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'conversionService' of type [org.springframework.format.support.DefaultFormattingConversionService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-25 22:24:35.897  INFO 6344 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8001 (http)
+2018-05-25 22:24:35.934  INFO 6344 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-05-25 22:24:35.936  INFO 6344 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.16
+2018-05-25 22:24:36.138  INFO 6344 --- [localhost-startStop-1] o.a.c.c.C.[.[localhost].[/serviexpress]  : Initializing Spring embedded WebApplicationContext
+2018-05-25 22:24:36.140  INFO 6344 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3419 ms
+2018-05-25 22:24:36.420  INFO 6344 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-25 22:24:36.422  INFO 6344 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-25 22:24:36.423  INFO 6344 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-25 22:24:36.427  INFO 6344 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-25 22:24:36.429  INFO 6344 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-05-25 22:24:36.430  INFO 6344 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-25 22:24:36.889  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2018-05-25 22:24:36.889  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/css/**'], []
+2018-05-25 22:24:36.889  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/img/**'], []
+2018-05-25 22:24:36.889  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/js/**'], []
+2018-05-25 22:24:36.890  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/info/**'], []
+2018-05-25 22:24:36.890  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/ajax/**'], []
+2018-05-25 22:24:36.891  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/user/**'], []
+2018-05-25 22:24:36.891  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**'], []
+2018-05-25 22:24:37.050  INFO 6344 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5177e388, org.springframework.security.web.context.SecurityContextPersistenceFilter@6818d900, org.springframework.security.web.header.HeaderWriterFilter@6d4c273c, org.springframework.security.web.authentication.logout.LogoutFilter@5ce4369b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ba33e2c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@629ae7e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37b72ea, org.springframework.security.web.session.SessionManagementFilter@253b380a, org.springframework.security.web.access.ExceptionTranslationFilter@540dbda9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7772054c]
+2018-05-25 22:24:41.735 ERROR 6344 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+java.sql.SQLException: ORA-01017: invalid username/password; logon denied
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:447) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:389) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:382) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.processError(T4CTTIfun.java:675) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.processError(T4CTTIoauthenticate.java:448) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:513) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:227) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:383) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:776) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:432) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.PhysicalConnection.<init>(PhysicalConnection.java:553) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.<init>(T4CConnection.java:254) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:32) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:528) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.16.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:139) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcServicesImpl.java:279) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:124) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:111) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:234) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:206) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1887) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1845) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:742) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at cl.taller.serviexpress.web.frontend.Frontend.main(Frontend.java:22) [classes/:na]
+
+2018-05-25 22:24:42.464 ERROR 6344 --- [main] o.a.tomcat.jdbc.pool.ConnectionPool      : Unable to create initial connections of pool.
+
+java.sql.SQLException: ORA-01017: invalid username/password; logon denied
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:447) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:389) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:382) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.processError(T4CTTIfun.java:675) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.processError(T4CTTIoauthenticate.java:448) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:513) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:227) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:383) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:776) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:432) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.PhysicalConnection.<init>(PhysicalConnection.java:553) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.<init>(T4CConnection.java:254) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:32) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:528) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) [tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) [tomcat-jdbc-8.5.16.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:139) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SuppliedConnectionProviderConnectionHelper.prepare(SuppliedConnectionProviderConnectionHelper.java:51) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:219) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:203) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:522) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) [hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:742) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at cl.taller.serviexpress.web.frontend.Frontend.main(Frontend.java:22) [classes/:na]
+
+2018-05-25 22:24:42.467 ERROR 6344 --- [main] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000319: Could not get database metadata
+
+java.sql.SQLException: ORA-01017: invalid username/password; logon denied
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:447) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:389) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:382) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.processError(T4CTTIfun.java:675) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.processError(T4CTTIoauthenticate.java:448) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:513) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:227) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:383) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:776) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:432) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.PhysicalConnection.<init>(PhysicalConnection.java:553) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.<init>(T4CConnection.java:254) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:32) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:528) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:139) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SuppliedConnectionProviderConnectionHelper.prepare(SuppliedConnectionProviderConnectionHelper.java:51) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:219) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:203) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:522) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:742) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at cl.taller.serviexpress.web.frontend.Frontend.main(Frontend.java:22) [classes/:na]
+
+2018-05-25 22:24:42.471 ERROR 6344 --- [main] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000299: Could not complete schema update
+
+java.sql.SQLException: ORA-01017: invalid username/password; logon denied
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:447) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:389) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:382) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.processError(T4CTTIfun.java:675) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.processError(T4CTTIoauthenticate.java:448) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:513) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:227) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:383) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOAUTH(T4CTTIoauthenticate.java:776) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:432) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.PhysicalConnection.<init>(PhysicalConnection.java:553) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CConnection.<init>(T4CConnection.java:254) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:32) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:528) ~[ojdbc6-11.2.0.4.jar:11.2.0.4.0]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:735) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:667) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:482) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131) ~[tomcat-jdbc-8.5.16.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:139) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SuppliedConnectionProviderConnectionHelper.prepare(SuppliedConnectionProviderConnectionHelper.java:51) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:219) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.tool.hbm2ddl.SchemaUpdate.execute(SchemaUpdate.java:203) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:522) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1859) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1930) ~[hibernate-core-4.3.11.Final.jar:4.3.11.Final]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBuilder.buildSessionFactory(LocalSessionFactoryBuilder.java:372) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:454) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.orm.hibernate4.LocalSessionFactoryBean.afterPropertiesSet(LocalSessionFactoryBean.java:439) [spring-orm-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:742) [spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at cl.taller.serviexpress.web.frontend.Frontend.main(Frontend.java:22) [classes/:na]
+
+2018-05-25 22:24:42.528  INFO 6344 --- [main] o.s.o.h.HibernateTransactionManager      : Using DataSource [org.apache.tomcat.jdbc.pool.DataSource@12c60152{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=oracle.jdbc.OracleDriver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=true; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=false; testOnConnect=false; password=********; url=jdbc:oracle:thin:@//127.0.0.1:1521/XE; username=TALLER_SERVIEXPRESS; validationQuery=SELECT 'Hello' from DUAL; validationQueryTimeout=-1; validatorClassName=null; validationInterval=3000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; useStatementFacade=true; }] of Hibernate SessionFactory for HibernateTransactionManager
+2018-05-25 22:24:42.531  WARN 6344 --- [main] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userDao' defined in URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-dao-hibernate/target/classes/META-INF/spring/cl/taller/serviexpress/dao/hibernate/beans.xml]: Instantiation of bean failed; nested exception is java.lang.ExceptionInInitializerError
+2018-05-25 22:24:42.536  INFO 6344 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-05-25 22:24:42.610  INFO 6344 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-05-25 22:24:42.617 ERROR 6344 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userDao' defined in URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-dao-hibernate/target/classes/META-INF/spring/cl/taller/serviexpress/dao/hibernate/beans.xml]: Instantiation of bean failed; nested exception is java.lang.ExceptionInInitializerError
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) ~[spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) ~[spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.6.RELEASE.jar:1.5.6.RELEASE]
+	at cl.taller.serviexpress.web.frontend.Frontend.main(Frontend.java:22) [classes/:na]
+Caused by: java.lang.ExceptionInInitializerError: null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_111]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_111]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_111]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_111]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147) ~[spring-beans-4.3.10.RELEASE.jar:4.3.10.RELEASE]
+	... 17 common frames omitted
+Caused by: java.lang.RuntimeException: Uncompilable source code - cannot find symbol
+  symbol:   class UserDao
+  location: package cl.taller.serviexpress.dao
+	at cl.taller.serviexpress.dao.hibernate.UserDaoHibernate.<clinit>(UserDaoHibernate.java:10) ~[classes/:na]
+	... 24 common frames omitted
+
+2018-05-25 22:29:23.054  INFO 15328 --- [main] c.t.serviexpress.web.frontend.Frontend   : Starting Frontend on DESKTOP-RFQ00T8 with PID 15328 (C:\Users\nippo\Documents\GitHub\Taller\taller-serviexpress\taller-serviexpress-web-frontend\target\classes started by nippo in C:\Users\nippo\Documents\GitHub\Taller\taller-serviexpress\taller-serviexpress-web-frontend)
+2018-05-25 22:29:23.077  INFO 15328 --- [main] c.t.serviexpress.web.frontend.Frontend   : No active profile set, falling back to default profiles: default
+2018-05-25 22:29:23.546  INFO 15328 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d36e4cd: startup date [Fri May 25 22:29:23 CLT 2018]; root of context hierarchy
+2018-05-25 22:29:24.293  INFO 15328 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-web-frontend/target/classes/META-INF/spring/cl/taller/serviexpress/web/frontend/beans.xml]
+2018-05-25 22:29:24.491  INFO 15328 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-services-impl/target/classes/META-INF/spring/cl/taller/serviexpress/services/impl/beans.xml]
+2018-05-25 22:29:24.587  INFO 15328 --- [main] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from URL [file:/C:/Users/nippo/Documents/GitHub/Taller/taller-serviexpress/taller-serviexpress-dao-hibernate/target/classes/META-INF/spring/cl/taller/serviexpress/dao/hibernate/beans.xml]
+2018-05-25 22:29:24.766  INFO 15328 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [org.springframework.web.accept.ContentNegotiationManagerFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-05-25 22:29:24.767  INFO 15328 --- [main] a.ConfigurationClassBeanDefinitionReader : Skipping bean definition for [BeanMethod:name=mvcUriComponentsContributor,declaringClass=org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport]: a definition for bean 'mvcUriComponentsContributor' already exists. This top-level bean definition is considered as an override.
+2018-05-25 22:29:24.856  INFO 15328 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'org.springframework.transaction.config.internalTransactionAdvisor' with a different definition: replacing [Root bean: class [org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration; factoryMethodName=transactionAdvisor; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/transaction/annotation/ProxyTransactionManagementConfiguration.class]]
+2018-05-25 22:29:24.857  INFO 15328 --- [main] a.ConfigurationClassBeanDefinitionReader : Skipping bean definition for [BeanMethod:name=transactionalEventListenerFactory,declaringClass=org.springframework.transaction.annotation.AbstractTransactionManagementConfiguration]: a definition for bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory' already exists. This top-level bean definition is considered as an override.
+2018-05-25 22:29:25.320  INFO 15328 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'conversionService' of type [org.springframework.format.support.FormattingConversionServiceFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-25 22:29:25.320  INFO 15328 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'conversionService' of type [org.springframework.format.support.DefaultFormattingConversionService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-25 22:29:26.172  INFO 15328 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8001 (http)
+2018-05-25 22:29:26.191  INFO 15328 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-05-25 22:29:26.193  INFO 15328 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.16
+2018-05-25 22:29:26.423  INFO 15328 --- [localhost-startStop-1] o.a.c.c.C.[.[localhost].[/serviexpress]  : Initializing Spring embedded WebApplicationContext
+2018-05-25 22:29:26.424  INFO 15328 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2882 ms
+2018-05-25 22:29:26.714  INFO 15328 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-25 22:29:26.715  INFO 15328 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-25 22:29:26.716  INFO 15328 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-25 22:29:26.717  INFO 15328 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-25 22:29:26.719  INFO 15328 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2018-05-25 22:29:26.719  INFO 15328 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-25 22:29:27.217  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+2018-05-25 22:29:27.219  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/css/**'], []
+2018-05-25 22:29:27.220  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/img/**'], []
+2018-05-25 22:29:27.220  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/js/**'], []
+2018-05-25 22:29:27.221  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/info/**'], []
+2018-05-25 22:29:27.233  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/ajax/**'], []
+2018-05-25 22:29:27.233  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/user/**'], []
+2018-05-25 22:29:27.233  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**'], []
+2018-05-25 22:29:27.373  INFO 15328 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1dc2de84, org.springframework.security.web.context.SecurityContextPersistenceFilter@1be59f28, org.springframework.security.web.header.HeaderWriterFilter@59546cfe, org.springframework.security.web.authentication.logout.LogoutFilter@6dcd5639, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@153d4abb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64bfd6fd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a0659ac, org.springframework.security.web.session.SessionManagementFilter@377008df, org.springframework.security.web.access.ExceptionTranslationFilter@58294867, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ea9e141]
+2018-05-25 22:29:32.569  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: AUDITORIA
+2018-05-25 22:29:32.575  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: CREDENCIALES
+2018-05-25 22:29:32.580  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: DATOS_EMPLEADOS
+2018-05-25 22:29:32.586  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA
+2018-05-25 22:29:32.590  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA_PRODUCTO
+2018-05-25 22:29:32.594  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA_SERVICIO
+2018-05-25 22:29:32.597  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FAMILIAPRODUCTO
+2018-05-25 22:29:32.600  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ORDENCOMPRA
+2018-05-25 22:29:32.605  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ORDEN_PRODUCTO
+2018-05-25 22:29:32.608  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PERFIL
+2018-05-25 22:29:32.612  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PRODUCTO
+2018-05-25 22:29:32.615  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RECEPCION
+2018-05-25 22:29:32.619  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RECEPCION_PRODUCTO
+2018-05-25 22:29:32.623  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RESERVA
+2018-05-25 22:29:32.627  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: SERVICIO
+2018-05-25 22:29:32.630  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: TIPOPRODUCTO
+2018-05-25 22:29:32.634  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: USUARIOS
+2018-05-25 22:29:32.637  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: AUDITORIA
+2018-05-25 22:29:32.641  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: CREDENCIALES
+2018-05-25 22:29:32.644  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: DATOS_EMPLEADOS
+2018-05-25 22:29:32.648  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA
+2018-05-25 22:29:32.651  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA_PRODUCTO
+2018-05-25 22:29:32.654  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA_SERVICIO
+2018-05-25 22:29:32.658  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FAMILIAPRODUCTO
+2018-05-25 22:29:32.662  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ORDENCOMPRA
+2018-05-25 22:29:32.665  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ORDEN_PRODUCTO
+2018-05-25 22:29:32.668  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PERFIL
+2018-05-25 22:29:32.671  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PRODUCTO
+2018-05-25 22:29:32.675  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RECEPCION
+2018-05-25 22:29:32.678  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RECEPCION_PRODUCTO
+2018-05-25 22:29:32.681  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RESERVA
+2018-05-25 22:29:32.685  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: SERVICIO
+2018-05-25 22:29:32.689  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: TIPOPRODUCTO
+2018-05-25 22:29:32.692  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: USUARIOS
+2018-05-25 22:29:32.696  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: AUDITORIA
+2018-05-25 22:29:32.699  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: CREDENCIALES
+2018-05-25 22:29:32.702  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: DATOS_EMPLEADOS
+2018-05-25 22:29:32.706  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA
+2018-05-25 22:29:32.709  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA_PRODUCTO
+2018-05-25 22:29:32.712  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FACTURA_SERVICIO
+2018-05-25 22:29:32.715  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FAMILIAPRODUCTO
+2018-05-25 22:29:32.719  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ORDENCOMPRA
+2018-05-25 22:29:32.722  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ORDEN_PRODUCTO
+2018-05-25 22:29:32.725  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PERFIL
+2018-05-25 22:29:32.728  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PRODUCTO
+2018-05-25 22:29:32.732  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RECEPCION
+2018-05-25 22:29:32.735  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RECEPCION_PRODUCTO
+2018-05-25 22:29:32.739  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RESERVA
+2018-05-25 22:29:32.743  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: SERVICIO
+2018-05-25 22:29:32.748  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: TIPOPRODUCTO
+2018-05-25 22:29:32.753  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: USUARIOS
+2018-05-25 22:29:32.758  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: AuditoriaSequence
+2018-05-25 22:29:32.762  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FacturaSequence
+2018-05-25 22:29:32.765  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: FamiliaProductoSequence
+2018-05-25 22:29:32.768  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: OrdenCompraSequence
+2018-05-25 22:29:32.771  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: PerfilSequence
+2018-05-25 22:29:32.774  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ProductoSequence
+2018-05-25 22:29:32.778  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: RecepcionSequence
+2018-05-25 22:29:32.781  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ReservaSequence
+2018-05-25 22:29:32.785  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: ServicioSequence
+2018-05-25 22:29:32.789  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: TipoProductoSequence
+2018-05-25 22:29:32.795  INFO 15328 --- [main] java.sql.DatabaseMetaData                : HHH000262: Table not found: UsuarioSequence
+2018-05-25 22:29:35.173  INFO 15328 --- [main] o.s.o.h.HibernateTransactionManager      : Using DataSource [org.apache.tomcat.jdbc.pool.DataSource@42b28ff1{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=oracle.jdbc.OracleDriver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=true; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=false; testOnConnect=false; password=********; url=jdbc:oracle:thin:@//127.0.0.1:1521/XE; username=TALLER_SERVIEXPRESS; validationQuery=SELECT 'Hello' from DUAL; validationQueryTimeout=-1; validatorClassName=null; validationInterval=3000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; useStatementFacade=true; }] of Hibernate SessionFactory for HibernateTransactionManager
+2018-05-25 22:29:35.254  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-25 22:29:35.256  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-25 22:29:35.442  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d36e4cd: startup date [Fri May 25 22:29:23 CLT 2018]; root of context hierarchy
+2018-05-25 22:29:35.732  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d36e4cd: startup date [Fri May 25 22:29:23 CLT 2018]; root of context hierarchy
+2018-05-25 22:29:36.047  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d36e4cd: startup date [Fri May 25 22:29:23 CLT 2018]; root of context hierarchy
+2018-05-25 22:29:36.062  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-25 22:29:36.063  INFO 15328 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-25 22:29:36.103  INFO 15328 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-25 22:29:36.103  INFO 15328 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-25 22:29:36.153  INFO 15328 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-25 22:29:37.159  INFO 15328 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-05-25 22:29:37.303  INFO 15328 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8001 (http)
+2018-05-25 22:29:37.310  INFO 15328 --- [main] c.t.serviexpress.web.frontend.Frontend   : Started Frontend in 14.71 seconds (JVM running for 15.484)
+2018-05-25 22:29:59.228  INFO 15328 --- [http-nio-8001-exec-2] o.a.c.c.C.[.[localhost].[/serviexpress]  : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-05-25 22:29:59.229  INFO 15328 --- [http-nio-8001-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-05-25 22:29:59.282  INFO 15328 --- [http-nio-8001-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 53 ms
