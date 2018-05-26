@@ -5,15 +5,14 @@ package cl.taller.serviexpress.domain;
 
 import java.util.Set;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Factura extends DomainBaseImpl<Long,Long> {
+
+public class Factura{
 	
+	private Long id;
 	private Usuario usuario;
 	private String rutCliente;
 	private String patenteVehiculo;
@@ -155,6 +154,19 @@ public class Factura extends DomainBaseImpl<Long,Long> {
 	 */
 	public void setFacturaProducto(Set<FacturaProducto> facturaProducto) {
 		this.facturaProducto = facturaProducto;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

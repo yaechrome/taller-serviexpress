@@ -5,15 +5,14 @@ package cl.taller.serviexpress.domain;
 
 import java.util.Date;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Reserva extends DomainBaseImpl<Long,Long>{
+
+public class Reserva{
 	
+	private Long id;
 	private Usuario usuario;
 	private Date fechaReserva;
 	private String descripcionReserva;
@@ -56,6 +55,19 @@ public class Reserva extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setDescripcionReserva(String descripcionReserva) {
 		this.descripcionReserva = descripcionReserva;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

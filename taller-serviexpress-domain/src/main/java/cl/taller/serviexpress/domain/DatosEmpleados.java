@@ -4,16 +4,16 @@
 package cl.taller.serviexpress.domain;
 
 import java.util.Date;
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
 
 /**
  * @author ochandia
  *
  */
 
-@SuppressWarnings("serial")
-public class DatosEmpleados extends DomainBaseImpl<Long,Long>{
 
+public class DatosEmpleados {
+
+	private Long id;
 	private Usuario usuario;
 	private Date fechaContratacion;
 	private Long Sueldo;
@@ -83,6 +83,19 @@ public class DatosEmpleados extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setObsAdministrativas(String obsAdministrativas) {
 		this.obsAdministrativas = obsAdministrativas;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

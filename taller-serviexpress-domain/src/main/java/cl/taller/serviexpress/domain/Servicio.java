@@ -3,15 +3,14 @@
  */
 package cl.taller.serviexpress.domain;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Servicio extends DomainBaseImpl<Long,Long>{
 
+public class Servicio{
+
+	private Long id;
 	private String estadoServicio;
 	private Long valor;
 	private String descripcionServicio;
@@ -55,6 +54,19 @@ public class Servicio extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setDescripcionServicio(String descripcionServicio) {
 		this.descripcionServicio = descripcionServicio;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

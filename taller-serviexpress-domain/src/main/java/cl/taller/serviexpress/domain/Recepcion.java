@@ -7,14 +7,14 @@ package cl.taller.serviexpress.domain;
 import java.util.Date;
 import java.util.Set;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Recepcion extends DomainBaseImpl<Long,Long>{
+
+public class Recepcion{
 	
+	private Long id;
 	private OrdenCompra ordenCompra;
 	private String idUsuario;
 	private Date fechaRecepcion;
@@ -99,6 +99,19 @@ public class Recepcion extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setRecepcionProducto(Set<RecepcionProducto> recepcionProducto) {
 		this.recepcionProducto = recepcionProducto;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

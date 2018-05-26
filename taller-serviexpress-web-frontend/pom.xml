@@ -64,37 +64,7 @@
 			<groupId>cl.taller.serviexpress</groupId>
 			<artifactId>taller-serviexpress-domain</artifactId>
 		</dependency>
-		
-		<!-- Inicio antaios -->
-		<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-spring-mvc</artifactId>
-			<version>${antaios.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-spring-web-extensions</artifactId>
-			<version>${antaios.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-spring-extensions</artifactId>
-			<version>${antaios.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-security-springsecurity</artifactId>
-			<version>${antaios.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-security-services</artifactId>
-			<version>${antaios.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<!-- Inicio antaios -->
-		
+
 		<!-- inicio webjars -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -128,19 +98,19 @@
 		</dependency>
 		<!-- fin webjars -->
 		
-		<!-- Inicio oracle -->
+		<!-- Inicio oracle 
 		<dependency>
         	<groupId>com.oracle</groupId>
         	<artifactId>ojdbc6</artifactId>
-        	<version>1.0</version>
-        	<scope>system</scope>
-        	<systemPath>C:/Users/Cuenta 2/Desktop/ojdbc6.jar</systemPath>
+        	<version>11.2.0.4</version>
         </dependency> 
+        -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		
 		<!-- Fin oracle -->
 		
 		<!-- Inicio thymeleaf -->

@@ -3,15 +3,14 @@
  */
 package cl.taller.serviexpress.domain;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class FamiliaProducto extends DomainBaseImpl<Long,Long>{
+
+public class FamiliaProducto{
 	
+	private Long id;
 	private String descripcionFamilia;
 
 	/**
@@ -27,6 +26,21 @@ public class FamiliaProducto extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setDescripcionFamilia(String descripcionFamilia) {
 		this.descripcionFamilia = descripcionFamilia;
+	}
+
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

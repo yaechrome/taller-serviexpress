@@ -6,15 +6,14 @@ package cl.taller.serviexpress.domain;
 import java.util.Date;
 import java.util.Set;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class OrdenCompra extends DomainBaseImpl<Long,Long>{
 
+public class OrdenCompra{
+
+	private Long id;
 	private Usuario usuario;
 	private Long idProveedor;
 	private Date fechaEmision;
@@ -99,6 +98,19 @@ public class OrdenCompra extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setOrdenProducto(Set<OrdenProducto> ordenProducto) {
 		this.ordenProducto = ordenProducto;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

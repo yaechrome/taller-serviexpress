@@ -21,13 +21,13 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-dao-hibernate</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
 		</dependency>
   	</dependencies>
 </project>

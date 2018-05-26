@@ -2,10 +2,9 @@ package cl.taller.serviexpress.dao;
 
 import java.util.List;
 
-import cl.taisachile.antaios.dao.ng.DomainBaseCrudDataAccessObject;
 import cl.taller.serviexpress.domain.Usuario;
 
-public interface UserDao extends DomainBaseCrudDataAccessObject<Usuario, Long, Long> {
+public interface UserDao {
 
 	/**
 	 * Busca un usuario por medio de su nombre de usuario.

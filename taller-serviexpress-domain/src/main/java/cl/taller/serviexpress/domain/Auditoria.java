@@ -3,16 +3,13 @@
  */
 package cl.taller.serviexpress.domain;
 
-
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Auditoria extends DomainBaseImpl<Long,Long> {
-
+public class Auditoria{
+    
+	private Long id;
 	private String descripcionLog;
 
 	/**
@@ -29,7 +26,21 @@ public class Auditoria extends DomainBaseImpl<Long,Long> {
 	public void setDescripcionLog(String descripcionLog) {
 		this.descripcionLog = descripcionLog;
 	}
-	
-	
+
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	
 }

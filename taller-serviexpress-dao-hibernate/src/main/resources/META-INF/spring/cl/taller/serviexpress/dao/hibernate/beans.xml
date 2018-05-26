@@ -38,8 +38,8 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
 		p:sessionFactory-ref="sessionFactory" />
 
-	<bean id="queryBuilderFactory"
-		class="cl.taisachile.antaios.dao.hibernate.support.QueryBuilderFactoryImpl" />
+	<!-- <bean id="queryBuilderFactory" -->
+	<!-- class="cl.taisachile.antaios.dao.hibernate.support.QueryBuilderFactoryImpl" /> -->
 
 	<bean id="abstractDao" abstract="true">
 		<property name="sessionFactory" ref="sessionFactory" />

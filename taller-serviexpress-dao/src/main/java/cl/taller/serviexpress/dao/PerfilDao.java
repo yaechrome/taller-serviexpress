@@ -5,13 +5,12 @@ package cl.taller.serviexpress.dao;
 
 import java.util.List;
 
-import cl.taisachile.antaios.dao.ng.DomainBaseCrudDataAccessObject;
 import cl.taller.serviexpress.domain.Perfil;
 /**
  * @author ochandia
  *
  */
-public interface PerfilDao extends DomainBaseCrudDataAccessObject<Perfil,Long,Long> {
+public interface PerfilDao{
 
 	/**
 	 * Busca un perfil por medio de su identificador.

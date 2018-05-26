@@ -3,16 +3,16 @@
  */
 package cl.taller.serviexpress.domain;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
 import cl.taller.serviexpress.domain.TipoProducto;
 
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Producto extends DomainBaseImpl<Long,Long>{
 
+public class Producto{
+	
+	private Long id;
 	private TipoProducto tipoProducto;
 	private String nombreProducto;
 	private Long precioVenta;
@@ -82,6 +82,19 @@ public class Producto extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setStockCritico(Long stockCritico) {
 		this.stockCritico = stockCritico;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

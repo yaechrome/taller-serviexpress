@@ -3,15 +3,14 @@
  */
 package cl.taller.serviexpress.domain;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
-
 /**
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Credenciales extends DomainBaseImpl<Long,Long>{
 
+public class Credenciales{
+
+	private Long id;
 	private Usuario usuario;
 	private String username;
 	private String password;
@@ -55,6 +54,19 @@ public class Credenciales extends DomainBaseImpl<Long,Long>{
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

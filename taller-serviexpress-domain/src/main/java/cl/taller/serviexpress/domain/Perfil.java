@@ -1,10 +1,8 @@
 package cl.taller.serviexpress.domain;
 
-import cl.taisachile.antaios.domain.support.DomainBaseImpl;
+public class Perfil{
 
-@SuppressWarnings("serial")
-public class Perfil extends DomainBaseImpl<Long, Long> {
-
+	private Long id;
 	private String detallePerfil;
 
 	/**
@@ -20,6 +18,21 @@ public class Perfil extends DomainBaseImpl<Long, Long> {
 	 */
 	public void setDetallePerfil(String detallePerfil) {
 		this.detallePerfil = detallePerfil;
+	}
+
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

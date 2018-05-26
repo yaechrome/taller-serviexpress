@@ -12,9 +12,5 @@
 			<groupId>cl.taller.serviexpress</groupId>
 			<artifactId>taller-serviexpress-domain</artifactId>
 		</dependency>
-	  	<dependency>
-			<groupId>cl.taisachile.antaios</groupId>
-			<artifactId>antaios-dao</artifactId>
-		</dependency>
 	</dependencies>
 </project>

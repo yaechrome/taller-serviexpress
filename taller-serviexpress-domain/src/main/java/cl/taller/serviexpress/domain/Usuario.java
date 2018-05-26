@@ -1,16 +1,15 @@
 package cl.taller.serviexpress.domain;
 
-import cl.taisachile.antaios.security.domain.support.UserImpl;
-
 /**
  * Representa al usuario
  * 
  * @author ochandia
  *
  */
-@SuppressWarnings("serial")
-public class Usuario extends UserImpl<Long, Long> {
 
+public class Usuario {
+
+	private Long id;
 	private Perfil perfil;
 	private String nombre;
 	private String apellidoPaterno;
@@ -107,6 +106,22 @@ public class Usuario extends UserImpl<Long, Long> {
 		this.contactoTelefonico = contactoTelefonico;
 	}
 
+	/**
+	 * @return El id
+	 */
+	public Long getId() {
+		return id;
+	}
 
+	/**
+	 * @param id 
+	 *			El id a setear
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
+	
 	
 }

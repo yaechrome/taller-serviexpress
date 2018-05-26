@@ -2,19 +2,27 @@ package cl.taller.serviexpress.dao.hibernate;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
-import cl.taisachile.antaios.dao.hibernate.ng.HibernateDomainBaseCrudDataAccessObject;
 import cl.taller.serviexpress.dao.UserDao;
 import cl.taller.serviexpress.domain.Usuario;
 
-public class UserDaoHibernate extends HibernateDomainBaseCrudDataAccessObject<Usuario, Long, Long> implements UserDao {
+public class UserDaoHibernate implements UserDao {
 
-	public UserDaoHibernate() {
-		super(Usuario.class);
+	
+	private SessionFactory sessionFactory;
+	
+	protected Session getSession() {
+		try {
+			return this.sessionFactory.getCurrentSession();
+		} catch (HibernateException e) {
+			return this.sessionFactory.openSession();
+		}
 	}
 
-	@Override
 	public Usuario findByUsername(String userName) {
 		String sql = "from Usuario as u where u.nombreUsuario = :userName";
 
@@ -25,7 +33,6 @@ public class UserDaoHibernate extends HibernateDomainBaseCrudDataAccessObject<Us
 		return (Usuario) query.uniqueResult();
 	}
 
-	@Override
 	public Usuario findByUseNameAndPass(String userName, String password) {
 		String sql = "from Usuario as u where u.nombreUsuario = :userName and u.clave = :password";
 
@@ -39,7 +46,6 @@ public class UserDaoHibernate extends HibernateDomainBaseCrudDataAccessObject<Us
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Usuario> findAllActive() {
 
 		String sql = "from Usuario as u inner join fetch u.perfil where u.estado = 1";
