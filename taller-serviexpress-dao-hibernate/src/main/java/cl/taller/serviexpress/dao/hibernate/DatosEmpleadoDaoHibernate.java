@@ -10,22 +10,52 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.DatosEmpleados;
 import cl.taller.serviexpress.dao.DatosEmpleadoDao;
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 
-public class DatosEmpleadoDaoHibernate implements DatosEmpleadoDao{
+public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmpleadoDao{
 
     @Override
     public DatosEmpleados findByID(long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from DatosEmpleados as d where d.id_usuario = :idUsuario";
+
+		Query query = getSession().createQuery(sql);
+
+		query.setParameter("idUsuario", idUsuario);
+
+		return (DatosEmpleados) query.uniqueResult();
     }
 
     @Override
     public boolean createDatosEmpleados(DatosEmpleados empleado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSession().save(empleado);
+            getSession().getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
 
     @Override
     public boolean updateDatosEmpleados(DatosEmpleados empleado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+        String sql = "update  DatosEmpleados set fecha_contratacion = :fechaContratacion, sueldo = :sueldo, cargo = :cargo, obs_administrativas = :obsAdministrativas where d.id_usuario = :idUsuario";
+
+		Query query = getSession().createQuery(sql);
+
+		query.setParameter("idUsuario", empleado.getUsuario().getId());
+                query.setParameter("fechaContratacion",empleado.getFechaContratacion());
+                query.setParameter("sueldo", empleado.getSueldo());
+                query.setParameter("cargo", empleado.getCargo());
+                query.setParameter("obs_administrativas", empleado.getObsAdministrativas());
+                
+                int result = query.executeUpdate();
+                return true;
+        } catch (Exception e) {
+            
+        }
+	return false;	
     }
     
 }
