@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author ochandia
  */
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/CrearUsuario")
 public class UserController {
 
     
-    
+    private static final String USER_URL="CrearUsuario";
     private static final String INDEX_URL = "user/managementUsers";
     private static final String ASSING_PROFILE_URL = "user/assignProfile";
     private static final String CREATE_USER_URL = "user/createUser";
@@ -40,7 +40,7 @@ public class UserController {
 
 	model.addAttribute("users", users);
         
-        return INDEX_URL;
+        return USER_URL;
     }
     
 }
