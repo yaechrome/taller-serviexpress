@@ -35,10 +35,6 @@ public class UserController {
     
     @RequestMapping
     public String index(Model model) {
-	
-        List<Usuario> users = null;//userServices.findAll();
-
-	model.addAttribute("users", users);
         
         return USER_URL;
     }

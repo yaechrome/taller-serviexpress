@@ -9,11 +9,11 @@
       <section class="container">
         <div class="row mb0 center-align relative full">
           <div class="center">
-            <div class="col s12 m6 offset-m3 l4 offset-l4">
+            <div class="col s12 mb20">
               <form class="form" role="form" method="POST" action="/login/authenticate" th:action="@{/login/authenticate}" th:object="${loginViewModel}" accept-charset="UTF-8" autocomplete="off">
-              <div class="card">
-                <div class="card-content pb0 pt0">
-                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="Junta nacional de jardines infantiles" width="170"/></div>
+              <div class="card-panel pad0">
+                <div class="card-content pad24">
+                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR USUARIO" width="170"/></div>
                   <table class="responsive-table striped">
                     <tbody>
                         <tr>
@@ -22,31 +22,31 @@
                         </tr>
                         <tr>
                             <td>RUT</td>
-                            <td><input type="text" name="txtRut" value="" /></td>
+                            <td><input type="text" id="txtRut" /></td>
                         </tr>
                         <tr>
                             <td>NOMBRE</td>
-                            <td><input type="text" name="txtNombre" value="" /></td>
+                            <td><input type="text" id="txtNombre" /></td>
                         </tr>
                         <tr>
                             <td>DIRECCION</td>
-                            <td><input type="text" name="txtDireccion" value="" /></td>
+                            <td><input type="text" id="txtDireccion"/></td>
                         </tr>
                         <tr>
                             <td>TELEFONO</td>
-                            <td><input type="text" name="txtTelefono" value="" /></td>
+                            <td><input type="text" id="txtTelefono" /></td>
                         </tr>
                         <tr>
                             <td>NOMBRE DE USUARIO</td>
-                            <td><input type="text" name="txtUser" value="" /></td>
+                            <td><input type="text" id="txtUser"  /></td>
                         </tr>
                         <tr>
                             <td>PASSWORD</td>
-                            <td><input type="password" name="txtPassword" value="" /></td>
+                            <td><input type="password" id="txtPassword" /></td>
                         </tr>
                         <tr>
                             <td>CONFIRME PASSWORD</td>
-                            <td><input type="password" name="txtConfirmar" value="" /></td>
+                            <td><input type="password" id="txtConfirmar"/></td>
                         </tr>
                     </tbody>
                 </table>

@@ -100,10 +100,12 @@
 		
 		 
 		<dependency>
-                    <groupId>com.oracle</groupId>
-                     <artifactId>ojdbc6</artifactId>
-                     <version>11.2.0.4</version>
-                </dependency>
+        	<groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+        	<systemPath>C:\Users\ochandia\Desktop\ojdbc6.jar</systemPath>
+        </dependency>
       
 		<dependency>
 			<groupId>org.hibernate</groupId>
