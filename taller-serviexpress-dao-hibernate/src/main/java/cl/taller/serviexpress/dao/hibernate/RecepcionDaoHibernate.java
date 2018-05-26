@@ -18,7 +18,7 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
 
     @Override
     public Recepcion findByIdRecepcion(long idRecepcion) {
-        String sql = "from Recepcion where id_recepcion = :idRecepcion";
+        String sql = "from RECEPCION where ID = :idRecepcion";
 
 		Query query = getSession().createQuery(sql);
 
@@ -29,7 +29,7 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
 
     @Override
     public List<Recepcion> findAllActive() {
-        String sql = "from Recepcion";
+        String sql = "from RECEPCION";
 
 		Query query = getSession().createQuery(sql);
 
@@ -38,7 +38,7 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
 
     @Override
     public List<Recepcion> findByOrden(long idOrden) {
-        String sql = "from Recepcion where id_orden_compra = :idOrden";
+        String sql = "from RECEPCION where ORDENCOMPRA = :idOrden";
 
 		Query query = getSession().createQuery(sql);
 
@@ -62,7 +62,10 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
     @Override
     public boolean updateRecepcion(Recepcion recepcion) {
         try {
-            String sql = "update from Recepcion set id_orden_compra = :idOrden, id_usuario_empleado = :idUsuarioEmpleado, fecha_recepcion = :fechaRecepcion, valor_total = :valorTotal, estado_recepcion = :estadoRecepcion where id_recepcion = :id";
+            String sql = "update from RECEPCION set ORDENCOMPRA = :idOrden, "
+                    + "IDUSUARIO = :idUsuarioEmpleado, FECHARECEPCION = :fechaRecepcion,"
+                    + " VALORTOTAL = :valorTotal, ESTADORECEPCION = :estadoRecepcion "
+                    + "where ID = :id";
 	
             Query query = getSession().createQuery(sql);
 

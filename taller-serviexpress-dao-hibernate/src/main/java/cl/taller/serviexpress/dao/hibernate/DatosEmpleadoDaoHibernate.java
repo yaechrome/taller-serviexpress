@@ -16,7 +16,7 @@ public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmp
 
     @Override
     public DatosEmpleados findByID(long idUsuario) {
-        String sql = "from DatosEmpleados as d where d.id_usuario = :idUsuario";
+        String sql = "from DATOS_EMPLEADOS as d where d.USUARIO = :idUsuario";
 
 		Query query = getSession().createQuery(sql);
 
@@ -40,7 +40,9 @@ public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmp
     @Override
     public boolean updateDatosEmpleados(DatosEmpleados empleado) {
         try {
-        String sql = "update  DatosEmpleados set fecha_contratacion = :fechaContratacion, sueldo = :sueldo, cargo = :cargo, obs_administrativas = :obsAdministrativas where d.id_usuario = :idUsuario";
+        String sql = "update  DATOS_EMPLEADOS set FECHACONTRATACION = :fechaContratacion, "
+                + "SUELDO = :sueldo, CARGO = :cargo, OBSADMINISTRATIVAS = :obsAdministrativas"
+                + " where usuario = :idUsuario";
 
 		Query query = getSession().createQuery(sql);
 

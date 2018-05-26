@@ -16,7 +16,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
 
     @Override
     public OrdenCompra findByIdOrden(long idOrden) {
-        String sql = "from orden_compra as o where o.id_orden_compra = :idOrden";
+        String sql = "from ORDENCOMPRA as o where o.ID = :idOrden";
 
 		Query query = getSession().createQuery(sql);
 
@@ -27,7 +27,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
 
     @Override
     public List<OrdenCompra> findAll() {
-        String sql = "from orden_compra";
+        String sql = "from ORDENCOMPRA";
 
 		Query query = getSession().createQuery(sql);
 
@@ -36,7 +36,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
 
     @Override
     public List<OrdenCompra> findByProveedor(long idProveedor) {
-        String sql = "from orden_compra where id_proveedor = :idProveedor";
+        String sql = "from ORDENCOMPRA where IDPROVEEDOR = :idProveedor";
             
 
 		Query query = getSession().createQuery(sql);
@@ -60,7 +60,10 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
     @Override
     public boolean updateOrdenCompra(OrdenCompra ordenCompra) {
         try {
-            String sql = "update from orden_compra set id_usuario_empleado = :idUsuarioEmpleado, id_proveedor = :idProveedor, fecha_emision = :fechaEmision, estado_orden = :estadoOrden, observacion_orden = :observacionOrden where id_usuario = :id";
+            String sql = "update from ORDENCOMPRA set USUARIO = :idUsuarioEmpleado,"
+                    + " IDPROVEEDOR = :idProveedor, FECHAEMISION = :fechaEmision,"
+                    + " ESTADOORDEN = :estadoOrden, OBSERVACIONORDEN = :observacionOrden"
+                    + " where ID = :id";
 	
             Query query = getSession().createQuery(sql);
 

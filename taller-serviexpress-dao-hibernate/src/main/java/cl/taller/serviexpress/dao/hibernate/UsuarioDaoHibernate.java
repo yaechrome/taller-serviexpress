@@ -15,7 +15,7 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 
     @Override
     public Usuario findByIdUsuario(long idUsuario) {
-        String sql = "from Usuario where id_usuario = :idUsuario";
+        String sql = "from USUARIOS where ID = :idUsuario";
 
 		Query query = getSession().createQuery(sql);
 
@@ -26,7 +26,7 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 
     @Override
     public List<Usuario> findAllActive() {
-        String sql = "from Servicio";
+        String sql = "from USUARIOS";
 
 		Query query = getSession().createQuery(sql);
 
@@ -35,7 +35,7 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 
     @Override
     public List<Usuario> findByPerfil(long idPerfil) {
-        String sql = "from Usuario where id_perfil = :idPerfil";
+        String sql = "from USUARIOS where PERFIL = :idPerfil";
 
 		Query query = getSession().createQuery(sql);
 
@@ -59,7 +59,9 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     @Override
     public boolean updateCredenciales(Usuario usuario) {
         try {
-            String sql = "update from Usuario set id_perfil = :idPerfil, rut = :rut, nombre = :nombre, direccion = :direccion, contacto_telefono = :contactoTelefono where id_usuario = :id";
+            String sql = "update from USUARIOS set PERFIL = :idPerfil, "
+                    + "RUT = :rut, NOMBRE = :nombre, DIRECCION = :direccion,"
+                    + " CONTACTOTELEFONO = :contactoTelefono where ID = :id";
 	
             Query query = getSession().createQuery(sql);
 

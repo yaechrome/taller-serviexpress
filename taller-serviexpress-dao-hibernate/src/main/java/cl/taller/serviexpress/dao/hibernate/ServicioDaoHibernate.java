@@ -19,7 +19,7 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
 
     @Override
     public Servicio findByIdServicio(long idServicio) {
-        String sql = "from Servicio where id_servicio = :idServicio";
+        String sql = "from SERVICIO where ID = :idServicio";
 
 		Query query = getSession().createQuery(sql);
 
@@ -30,7 +30,7 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
 
     @Override
     public List<Servicio> findAllActive() {
-        String sql = "from Servicio";
+        String sql = "from SERVICIO";
 
 		Query query = getSession().createQuery(sql);
 
@@ -52,7 +52,9 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
     @Override
     public boolean updateCredenciales(Servicio servicio) {
         try {
-            String sql = "update from Servicio set estado_servicio = :estadoServicio, valor = :valor, descripcion_servicio = :descripcionServicio where id_servicio = :id";
+            String sql = "update from SERVICIO set ESTADOSERVICIO = :estadoServicio, "
+                    + "VALOR = :valor, DESCRIPCIONSERVICIO = :descripcionServicio "
+                    + "where ID = :id";
 	
             Query query = getSession().createQuery(sql);
 
