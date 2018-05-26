@@ -23,6 +23,7 @@ public class UserDaoHibernate implements UserDao {
 		}
 	}
 
+        @Override
 	public Usuario findByUsername(String userName) {
 		String sql = "from Usuario as u where u.nombreUsuario = :userName";
 
@@ -33,6 +34,7 @@ public class UserDaoHibernate implements UserDao {
 		return (Usuario) query.uniqueResult();
 	}
 
+        @Override
 	public Usuario findByUseNameAndPass(String userName, String password) {
 		String sql = "from Usuario as u where u.nombreUsuario = :userName and u.clave = :password";
 
@@ -46,6 +48,7 @@ public class UserDaoHibernate implements UserDao {
 	}
 
 	@SuppressWarnings("unchecked")
+        @Override
 	public List<Usuario> findAllActive() {
 
 		String sql = "from Usuario as u inner join fetch u.perfil where u.estado = 1";
