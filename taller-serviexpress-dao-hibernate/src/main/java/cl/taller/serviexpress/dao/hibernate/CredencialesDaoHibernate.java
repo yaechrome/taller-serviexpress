@@ -65,6 +65,7 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
 	// return usuario;
 	// }
 
+
     @Override
     public boolean createCredenciales(Credenciales credencial) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
