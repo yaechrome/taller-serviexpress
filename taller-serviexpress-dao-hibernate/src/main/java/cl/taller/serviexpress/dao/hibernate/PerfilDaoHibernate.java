@@ -14,16 +14,26 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.dao.PerfilDao;
-public class PerfilDaoHibernate implements PerfilDao{
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
+public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao{
 
     @Override
     public Perfil findByIdPerfil(Long idPerfil) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from PERFIL  where ID = :idPerfil";
+
+	Query query = getSession().createQuery(sql);
+        query.setParameter("idPerfil", idPerfil);
+        
+	return (Perfil)query.uniqueResult();
     }
 
     @Override
     public List<Perfil> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from PERFIL";
+
+	Query query = getSession().createQuery(sql);
+
+	return query.list();
     }
     
 }

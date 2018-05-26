@@ -14,16 +14,26 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.TipoProducto;
 import cl.taller.serviexpress.dao.TipoProductoDao;
-public class TipoProductoDaoHibernate implements TipoProductoDao{
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
+public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProductoDao{
 
     @Override
     public List<TipoProducto> findAllActive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from TIPOPRODUCTO";
+
+	Query query = getSession().createQuery(sql);
+
+	return query.list();
     }
 
     @Override
     public List<TipoProducto> findByFamilia(long idFamilia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from TIPOPRODUCTO  where FAMILIAPRODUCTO = :idFamilia";
+
+	Query query = getSession().createQuery(sql);
+        query.setParameter("idFamilia", idFamilia);
+        
+        return query.list();
     }
     
 }

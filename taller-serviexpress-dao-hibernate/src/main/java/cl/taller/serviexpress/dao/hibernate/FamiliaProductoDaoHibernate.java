@@ -9,12 +9,18 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.FamiliaProducto;
 import cl.taller.serviexpress.dao.FamiliaProductoDao;
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 
-public class FamiliaProductoDaoHibernate implements FamiliaProductoDao{
+public class FamiliaProductoDaoHibernate extends BaseHibernate implements FamiliaProductoDao{
 
     @Override
-    public List<FamiliaProducto> findAllActive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<FamiliaProducto> findAll() {
+        String sql = "from CREDENCIALES";
+
+	Query query = getSession().createQuery(sql);
+
+	return query.list();
+
     }
     
 }
