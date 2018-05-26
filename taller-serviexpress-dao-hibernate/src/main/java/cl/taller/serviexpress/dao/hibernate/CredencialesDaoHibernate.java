@@ -1,7 +1,6 @@
 package cl.taller.serviexpress.dao.hibernate;
 
 import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -68,12 +67,34 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
 
     @Override
     public boolean createCredenciales(Credenciales credencial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSession().save(credencial);
+            getSession().getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
 
     @Override
     public boolean updateCredenciales(Credenciales credencial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "update from Credenciales set username = :username, password = :password where id_usuario = :id";
+	
+            Query query = getSession().createQuery(sql);
+
+            query.setParameter("username", credencial.getUsername());
+            query.setParameter("password", credencial.getPassword());
+            query.setLong("id", credencial.getId());
+
+            int count = query.executeUpdate();
+
+            return true;   
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
 
 }
