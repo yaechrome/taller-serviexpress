@@ -11,8 +11,8 @@ public interface FamiliaProductoDao {
 	/**
 	 * Obtiene todas las familias de productos activos.
 	 * 
-	 * @return Una colección de familias de productos activos.
+	 * @return Una colección de familias de productos.
 	 */
-	List<FamiliaProducto> findAllActive();
+	List<FamiliaProducto> findAll();
         
 }

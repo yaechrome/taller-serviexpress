@@ -14,26 +14,56 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.RecepcionProducto;
 import cl.taller.serviexpress.dao.RecepcionProductoDao;
-public class RecepcionProductoDaoHibernate implements RecepcionProductoDao{
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
+import cl.taller.serviexpress.domain.Producto;
 
-    @Override
-    public RecepcionProducto findByIdRecepcionProducto(long idRecepcionProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class RecepcionProductoDaoHibernate extends BaseHibernate implements RecepcionProductoDao{
 
     @Override
     public List<RecepcionProducto> findByRecepcion(long idRecepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from RECEPCION_PRODUCTO where ID = :idRecepcion";
+
+	Query query = getSession().createQuery(sql);
+        query.setParameter("idRecepcion", idRecepcion);
+        
+        return query.list();
     }
 
     @Override
     public boolean createRecepcionProducto(RecepcionProducto recepcionProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSession().save(recepcionProducto);
+            getSession().getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
 
     @Override
     public boolean updateRecepcionProducto(RecepcionProducto recepcionProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            
+            String sql = "update from RECEPCION_PRODUCTO set CODIGOPRODUCTO = :codigo, "
+                    + "CANTIDAD = :cantidad, FECHAVENCIMIENTO = :fecha, "
+                    + "ID = :id_recepcion, PRODUCTO = :id_producto";
+	
+            Query query = getSession().createQuery(sql);
+
+            query.setParameter("codigo", recepcionProducto.getCodigoProducto());
+            query.setParameter("cantidad", recepcionProducto.getCantidad());
+            query.setDate("fecha", recepcionProducto.getFechaVencimiento());
+            query.setLong("id_recepcion", recepcionProducto.getRecepcion().getId());
+            query.setLong("id_producto", recepcionProducto.getProducto().getId());
+            
+            int count = query.executeUpdate();
+
+            return true;   
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
     
 }
