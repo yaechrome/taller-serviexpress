@@ -18,12 +18,12 @@ public class PerfilServicesImpl implements PerfilServices{
     @Autowired
     private PerfilServices perfilServices;
 
-	/**
-	 * @param perfilDao the perfilDao to set
-	 */
-	public void setPerfilDao(PerfilDao perfilDao) {
-		this.perfilDao = perfilDao;
-	}
+    /**
+     * @param perfilDao the perfilDao to set
+     */
+    public void setPerfilDao(PerfilDao perfilDao) {
+            this.perfilDao = perfilDao;
+    }
 
 	@Override
     public List<Perfil> listarPerfiles() {

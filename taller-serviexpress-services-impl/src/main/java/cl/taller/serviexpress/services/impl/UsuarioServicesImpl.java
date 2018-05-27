@@ -5,6 +5,7 @@ import cl.taller.serviexpress.domain.DatosEmpleados;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.dao.hibernate.UsuarioDaoHibernate;
 import cl.taller.serviexpress.dao.CredencialesDao;
+import cl.taller.serviexpress.dao.DatosEmpleadoDao;
 import cl.taller.serviexpress.dao.UsuarioDao;
 import cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.DatosEmpleadoDaoHibernate;
@@ -23,11 +24,13 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     private UsuarioDao userDao;
 
-	private CredencialesDao credencialesDao;
+    private CredencialesDao credencialesDao;
+    
+    private DatosEmpleadoDao datosEmpleadoDao;
+    
 
     @Autowired
     private UsuarioServices userServices;
-    
 
     /**
      * @param userDao the userDao to set
@@ -36,13 +39,20 @@ public class UsuarioServicesImpl implements UsuarioServices {
         this.userDao = userDao;
     }
 
-
-	/**
-	 * @param credencialesDao the credencialesDao to set
-	 */
-	public void setCredencialesDao(CredencialesDao credencialesDao) {
-		this.credencialesDao = credencialesDao;
-	}
+    /**
+     * @param credencialesDao the credencialesDao to set
+     */
+    public void setCredencialesDao(CredencialesDao credencialesDao) {
+            this.credencialesDao = credencialesDao;
+    }
+    
+    /**
+     * @param DatosEmpleadoDao the datosEmpleado to set
+     */
+    public void setDatosEmpleadoDao(DatosEmpleadoDao datosEmpleado) {
+            this.datosEmpleadoDao = datosEmpleado;
+    }
+    
 	
     @Override
     public boolean crearUsuario(Usuario usuario) {
@@ -56,8 +66,7 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public boolean modificarUsuario(Usuario usuario) {
-        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-        return udao.updateUsuario(usuario);
+        return userDao.updateUsuario(usuario);
     }
 
     @Override
@@ -67,20 +76,17 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public Usuario buscarPorID(long id) {
-        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-        return udao.findByIdUsuario(id);
+        return userDao.findByIdUsuario(id);
     }
 
     @Override
     public boolean crearDatosEmpleado(DatosEmpleados empleado) {
-        DatosEmpleadoDaoHibernate cdao = new DatosEmpleadoDaoHibernate();
-        return cdao.createDatosEmpleados(empleado);
+        return datosEmpleadoDao.createDatosEmpleados(empleado);
     }
 
     @Override
     public Usuario buscarPorRut(String rut) {
-        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-        return udao.findByRut(rut);
+        return  userDao.findByRut(rut);
     }
 
     @Override
@@ -90,22 +96,17 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public boolean crearCredenciales(Credenciales credenciales) {
-
-        CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
-
-        return cdao.createCredenciales(credenciales);
+        return credencialesDao.createCredenciales(credenciales);
     }
 
     @Override
     public boolean modificarCredenciales(Credenciales credenciales) {
-        CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
-        return cdao.updateCredenciales(credenciales);
+        return credencialesDao.updateCredenciales(credenciales);
     }
 
     @Override
     public List<Usuario> listarUsuariosPorPerfil(long idPerfil) {
-        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-        return udao.findByPerfil(idPerfil);
+        return userDao.findByPerfil(idPerfil);
     }
 
 }
