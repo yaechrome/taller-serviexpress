@@ -1,4 +1,3 @@
-
 package cl.taller.serviexpress.services.impl;
 
 import cl.taller.serviexpress.domain.Credenciales;
@@ -19,63 +18,53 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Lazy
-public class UsuarioServicesImpl implements UsuarioServices{
+public class UsuarioServicesImpl implements UsuarioServices {
 
-	private UsuarioDao userDao;
-	
-	@Autowired
-	private UsuarioServices userServices;
-	
+    private UsuarioDao userDao;
+
+    @Autowired
+    private UsuarioServices userServices;
+
     /**
-	 * @param userDao the userDao to set
-	 */
-	public void setUserDao(UsuarioDao userDao) {
-		this.userDao = userDao;
-	}
+     * @param userDao the userDao to set
+     */
+    public void setUserDao(UsuarioDao userDao) {
+        this.userDao = userDao;
+    }
 
-	@Override
+    @Override
     public boolean crearUsuario(Usuario usuario) {
-        try {
-            UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-            Usuario usuario2 = udao.createUsuario(usuario);
-            
-            if(usuario2!=null) return true;
-            
-        } catch (Exception e) {
-            
+        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
+        Usuario usuario2 = udao.createUsuario(usuario);
+
+        if (usuario2 != null) {
+            return true;
         }
+
         return false;
     }
 
     @Override
     public boolean modificarUsuario(Usuario usuario) {
-        
+
         UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-                   
-        return userDao.updateUsuario(usuario);    
+
+        return udao.updateUsuario(usuario);
     }
 
     @Override
     public List<Usuario> listarUsuarios() {
+        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
+        return udao.findAllActive();
 
-            List<Usuario> lista = userDao.findAllActive();
-            return lista;
     }
 
     @Override
     public Usuario buscarPorID(long id) {
-        try {
-            UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-            Usuario usuario = new Usuario();
 
-            usuario = udao.findByIdUsuario(id);
-            if(usuario!=null)
-                return usuario;
-            
-        } catch (Exception e) {
-            
-        }
-        return null;    
+        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
+        return udao.findByIdUsuario(id);
+
     }
 
     @Override
@@ -87,19 +76,8 @@ public class UsuarioServicesImpl implements UsuarioServices{
 
     @Override
     public Usuario buscarPorRut(String rut) {
-        try {
-            UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-            Usuario usuario = new Usuario();
-
-            usuario = udao.findByRut(rut);
-            if(usuario!=null)
-                return usuario;
-            
-        } catch (Exception e) {
-            
-        }
-        
-        return null;
+        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
+        return udao.findByRut(rut);
     }
 
     @Override
@@ -121,5 +99,5 @@ public class UsuarioServicesImpl implements UsuarioServices{
         CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
         return cdao.updateCredenciales(credenciales);
     }
-    
+
 }

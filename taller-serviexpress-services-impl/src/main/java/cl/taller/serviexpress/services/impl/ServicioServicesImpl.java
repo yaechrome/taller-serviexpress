@@ -37,18 +37,9 @@ public class ServicioServicesImpl implements ServicioServices{
 
     @Override
     public Servicio buscarPorId(long id) {
-        try {
-            ServicioDaoHibernate udao = new ServicioDaoHibernate();
-            Servicio servicio = new Servicio();
+        ServicioDaoHibernate udao = new ServicioDaoHibernate();
+        Servicio servicio = udao.findByIdServicio(id);
 
-            servicio = udao.findByIdServicio(id);
-            if(servicio!=null)
-                return servicio;
-            
-        } catch (Exception e) {
-            
-        }
-        return null; 
+        return servicio;
     }
-    
 }

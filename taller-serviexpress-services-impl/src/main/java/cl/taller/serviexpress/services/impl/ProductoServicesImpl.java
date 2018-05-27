@@ -29,18 +29,11 @@ public class ProductoServicesImpl implements ProductoServices{
 
     @Override
     public Producto buscarProductoPorId(long idProducto) {
-        try {
-            ProductoDaoHibernate dao = new ProductoDaoHibernate();
-            Producto producto = new Producto();
+ 
+        ProductoDaoHibernate dao = new ProductoDaoHibernate();
+        Producto producto = dao.findByIdProducto(idProducto);
 
-            producto = dao.findByIdProducto(idProducto);
-            if(producto!=null)
-                return producto;
-            
-        } catch (Exception e) {
-            
-        }
-        return null; 
+        return producto;
     }
 
     @Override
