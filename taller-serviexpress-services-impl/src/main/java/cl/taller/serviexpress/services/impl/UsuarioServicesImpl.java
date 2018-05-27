@@ -75,7 +75,8 @@ public class UsuarioServicesImpl implements UsuarioServices{
         } catch (Exception e) {
             
         }
-        return null;    }
+        return null;    
+    }
 
     @Override
     public boolean crearDatosEmpleado(DatosEmpleados empleado) {
@@ -113,6 +114,12 @@ public class UsuarioServicesImpl implements UsuarioServices{
 
         return cdao.createCredenciales(credenciales);
 
+    }
+
+    @Override
+    public boolean modificarCredenciales(Credenciales credenciales) {
+        CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
+        return cdao.updateCredenciales(credenciales);
     }
     
 }
