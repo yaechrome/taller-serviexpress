@@ -91,9 +91,7 @@ public class UsuarioServicesImpl implements UsuarioServices {
     @Override
     public boolean crearCredenciales(Credenciales credenciales) {
 
-        CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
-
-        return cdao.createCredenciales(credenciales);
+        return credencialesDao.createCredenciales(credenciales);
     }
 
     @Override

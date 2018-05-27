@@ -86,8 +86,11 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     	Session session = getSessionFactory().openSession();
         
         try {
-            session.persist(Usuario);
-           // usuario = findByRut(usuario.getRut());
+            session.beginTransaction();
+
+            session.save(Usuario);
+
+            session.getTransaction().commit();
             
         } catch (Exception e) {
             
