@@ -8,10 +8,14 @@ import cl.taller.serviexpress.dao.hibernate.UsuarioDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate;
 import cl.taller.serviexpress.services.UsuarioServices;
 import java.util.List;
+
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-
+@Service
+@Lazy
 public class UsuarioServicesImpl implements UsuarioServices{
 
     @Override

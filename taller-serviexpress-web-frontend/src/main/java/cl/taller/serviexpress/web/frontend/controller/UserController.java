@@ -7,6 +7,7 @@ package cl.taller.serviexpress.web.frontend.controller;
 
 import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.domain.Usuario;
+import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
 
 import java.util.List;
@@ -29,8 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/Usuario")
 public class UserController {
 
-	@Autowired
-	//UsuarioServicesImpl userServices;
+	UsuarioServicesImpl usuarioServicesImpl = new UsuarioServicesImpl();
 	
     private static final String INDEX_URL="Usuario";
     private static final String USER_URL="CrearUsuario";
@@ -41,10 +41,11 @@ public class UserController {
     @RequestMapping
     public String index(Model model) {
         
-		//List<Usuario> users = userServices.findAllActiveUsers();
+		List<Usuario> users = usuarioServicesImpl.listarUsuarios();
     	
-		//model.addAttribute("users", users);
+		model.addAttribute("users", users);
     	model.addAttribute("UserViewModel", new UserViewModel());
+    	
         return INDEX_URL;
     }
     
