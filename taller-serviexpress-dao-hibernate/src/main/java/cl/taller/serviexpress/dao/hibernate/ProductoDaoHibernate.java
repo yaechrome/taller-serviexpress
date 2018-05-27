@@ -11,58 +11,101 @@ import cl.taller.serviexpress.domain.Producto;
 import cl.taller.serviexpress.dao.ProductoDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 import cl.taller.serviexpress.domain.Perfil;
-public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao{
+
+public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public Producto findByIdProducto(long idProducto) {
-        String sql = "from PRODUCTO  where ID = :idProducto";
+        Session session = getSessionFactory().openSession();
+        Producto producto = null;
 
-	Query query = getSession().createQuery(sql);
-        query.setParameter("idProducto", idProducto);
-        
-	return (Producto)query.uniqueResult();
+        try {
+            String sql = "from Producto  where id = :idProducto";
+
+            Query query = session.createQuery(sql);
+            query.setParameter("idProducto", idProducto);
+
+            producto = (Producto) query.uniqueResult();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return producto;
     }
 
     @Override
     public List<Producto> findAll() {
-        String sql = "from PRODUCTO";
+        Session session = getSessionFactory().openSession();
+        List<Producto> lista = null;
+        try {
+            String sql = "from Producto";
 
-	Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-	return query.list();
+            lista = query.list();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return lista;
     }
 
     @Override
     public List<Producto> findByTipo(long idTipo) {
-        String sql = "from PRODUCTO  where TIPOPRODUCTO = :idTipo";
+        Session session = getSessionFactory().openSession();
+        List<Producto> lista = null;
+        try {
+            String sql = "from Producto  where tipoProducto = :idTipo";
 
-	Query query = getSession().createQuery(sql);
-        query.setParameter("idTipo", idTipo);
-        
-        return query.list();
+            Query query = session.createQuery(sql);
+            query.setParameter("idTipo", idTipo);
+
+            lista = query.list();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return lista;
     }
 
     @Override
     public boolean createProducto(Producto producto) {
+        Session session = getSessionFactory().openSession();
         try {
-            getSession().save(producto);
-            getSession().getTransaction().commit();
+            session.save(producto);
+            session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            
+
+        }finally {
+            session.close();
         }
         return false;
     }
 
     @Override
     public boolean updateProducto(Producto producto) {
+        Session session = getSessionFactory().openSession();
         try {
-            String sql = "update from PRODUCTO set TIPOPRODUCTO = :tipo, "
-                    + "NOMBREPRODUCTO = :nombre, PRECIOVENTA = :precio, "
-                    + "STOCK = :stock, STOCKCRITICO = :stock_critico"
-                    + "where ID = :id_producto";
-	
-            Query query = getSession().createQuery(sql);
+            String sql = "update from Producto set tipoProducto = :tipo, "
+                    + "nombreProducto = :nombre, precioVenta = :precio, "
+                    + "stock = :stock, stockCritico = :stock_critico"
+                    + "where id = :id_producto";
+
+            Query query = session.createQuery(sql);
 
             query.setParameter("tipo", producto.getTipoProducto().getId());
             query.setParameter("nombre", producto.getNombreProducto());
@@ -70,14 +113,16 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao{
             query.setLong("stock", producto.getStock());
             query.setLong("stock_critico", producto.getStockCritico());
             query.setLong("id_producto", producto.getId());
-            
+
             int count = query.executeUpdate();
 
-            return true;   
+            return true;
         } catch (Exception e) {
-            
+
+        }finally {
+            session.close();
         }
         return false;
     }
-    
+
 }

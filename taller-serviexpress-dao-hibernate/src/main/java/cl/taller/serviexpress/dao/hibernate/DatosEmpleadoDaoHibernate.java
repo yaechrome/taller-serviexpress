@@ -1,4 +1,3 @@
-
 package cl.taller.serviexpress.dao.hibernate;
 
 import java.util.List;
@@ -12,52 +11,77 @@ import cl.taller.serviexpress.domain.DatosEmpleados;
 import cl.taller.serviexpress.dao.DatosEmpleadoDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 
-public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmpleadoDao{
+public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmpleadoDao {
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public DatosEmpleados findByID(long idUsuario) {
-        String sql = "from DATOS_EMPLEADOS as d where d.USUARIO = :idUsuario";
+        Session session = getSessionFactory().openSession();
+        DatosEmpleados empleado = null;
+        try {
+            String sql = "from DatosEmpleados as d where d.usuario = :idUsuario";
 
-		Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-		query.setParameter("idUsuario", idUsuario);
+            query.setParameter("idUsuario", idUsuario);
 
-		return (DatosEmpleados) query.uniqueResult();
+            empleado = (DatosEmpleados) query.uniqueResult();
+        } catch (Exception e) {
+        } finally {
+            session.close();
+        }
+        return empleado;
     }
 
     @Override
     public boolean createDatosEmpleados(DatosEmpleados empleado) {
+        Session session = getSessionFactory().openSession();
+
         try {
-            getSession().save(empleado);
-            getSession().getTransaction().commit();
+            session.save(empleado);
+            session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            
+        } finally {
+            session.close();
         }
         return false;
+
     }
 
     @Override
     public boolean updateDatosEmpleados(DatosEmpleados empleado) {
+        Session session = getSessionFactory().openSession();
         try {
-        String sql = "update  DATOS_EMPLEADOS set FECHACONTRATACION = :fechaContratacion, "
-                + "SUELDO = :sueldo, CARGO = :cargo, OBSADMINISTRATIVAS = :obsAdministrativas"
-                + " where usuario = :idUsuario";
+            String sql = "update  DatosEmpleados set fechaContratacion = :fechaContratacion, "
+                    + "sueldo = :sueldo, cargo = :cargo, obsAdministrativas = :obsAdministrativas"
+                    + " where usuario = :idUsuario";
 
-		Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-		query.setParameter("idUsuario", empleado.getUsuario().getId());
-                query.setParameter("fechaContratacion",empleado.getFechaContratacion());
-                query.setParameter("sueldo", empleado.getSueldo());
-                query.setParameter("cargo", empleado.getCargo());
-                query.setParameter("obs_administrativas", empleado.getObsAdministrativas());
-                
-                int result = query.executeUpdate();
-                return true;
+            query.setParameter("idUsuario", empleado.getUsuario().getId());
+            query.setParameter("fechaContratacion", empleado.getFechaContratacion());
+            query.setParameter("sueldo", empleado.getSueldo());
+            query.setParameter("cargo", empleado.getCargo());
+            query.setParameter("obs_administrativas", empleado.getObsAdministrativas());
+
+            int result = query.executeUpdate();
+            return true;
         } catch (Exception e) {
-            
+
+        }finally{
+            session.close();
         }
-	return false;	
+        return false;
     }
-    
+
 }

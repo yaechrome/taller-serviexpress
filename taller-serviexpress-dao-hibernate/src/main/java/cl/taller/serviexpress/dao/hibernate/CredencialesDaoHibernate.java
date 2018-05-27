@@ -12,30 +12,60 @@ import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 
 public class CredencialesDaoHibernate extends BaseHibernate implements CredencialesDao {
 
-        @Override
-        public Credenciales findByUsername(String userName) {
-		String sql = "from Credenciales as u where u.username = :userName";
+    private SessionFactory sessionFactory;
 
-		Query query = getSession().createQuery(sql);
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 
-		query.setParameter("userName", userName);
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-		return (Credenciales) query.uniqueResult();
-	}
+    @Override
+    public Credenciales findByUsername(String userName) {
+        Session session = getSessionFactory().openSession();
+        Credenciales credenciales = null;
+        try {
+            String sql = "from Credenciales as u where u.username = :userName";
 
-        //Se compara con password encriptada
-        @Override
-	public Credenciales findByUseNameAndPass(String userName, String password) {
-		String sql = "from Credenciales as u where u.username = :userName and u.password = :password";
+            Query query = session.createQuery(sql);
 
-		Query query = getSession().createQuery(sql);
+            query.setParameter("userName", userName);
 
-		query.setParameter("userName", userName);
-		query.setParameter("password", password);
+            credenciales = (Credenciales) query.uniqueResult();
+        } catch (Exception e) {
 
-		return (Credenciales) query.uniqueResult();
+        } finally {
+            session.close();
+        }
+        return credenciales;
 
-	}
+    }
+
+    //Se compara con password encriptada
+    @Override
+    public Credenciales findByUseNameAndPass(String userName, String password) {
+
+        Session session = getSessionFactory().openSession();
+        Credenciales credenciales = null;
+        try {
+            String sql = "from Credenciales as u where u.username = :userName and u.password = :password";
+
+            Query query = session.createQuery(sql);
+
+            query.setParameter("userName", userName);
+            query.setParameter("password", password);
+
+            credenciales = (Credenciales) query.uniqueResult();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return credenciales;
+
+    }
 
 //	@SuppressWarnings("unchecked")
 //        @Override
@@ -47,42 +77,43 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
 //
 //		return query.list();
 //	}
-
-	// @SuppressWarnings("unchecked")
-	// @Override
-	// public Usuario update(Usuario usuario) {
-	//
-	// String sql = "update from Usuario set perfil = :perfil where id = :id";
-	//
-	// Query query = getSession().createQuery(sql);
-	//
-	// query.setParameter("perfil", usuario.getPerfil());
-	// query.setLong("id", usuario.getId());
-	//
-	// int count = query.executeUpdate();
-	//
-	// return usuario;
-	// }
-
-
+    // @SuppressWarnings("unchecked")
+    // @Override
+    // public Usuario update(Usuario usuario) {
+    //
+    // String sql = "update from Usuario set perfil = :perfil where id = :id";
+    //
+    // Query query = getSession().createQuery(sql);
+    //
+    // query.setParameter("perfil", usuario.getPerfil());
+    // query.setLong("id", usuario.getId());
+    //
+    // int count = query.executeUpdate();
+    //
+    // return usuario;
+    // }
     @Override
     public boolean createCredenciales(Credenciales credencial) {
+        Session session = getSessionFactory().openSession();
         try {
-            getSession().save(credencial);
-            getSession().getTransaction().commit();
+            session.save(credencial);
+            session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            
+
+        } finally {
+            session.close();
         }
         return false;
     }
 
     @Override
     public boolean updateCredenciales(Credenciales credencial) {
+        Session session = getSessionFactory().openSession();
         try {
-            String sql = "update from Credenciales set username = :username, password = :password where id_usuario = :id";
-	
-            Query query = getSession().createQuery(sql);
+            String sql = "update from Credenciales set username = :username, password = :password where id = :id";
+
+            Query query = session.createQuery(sql);
 
             query.setParameter("username", credencial.getUsername());
             query.setParameter("password", credencial.getPassword());
@@ -90,9 +121,11 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
 
             int count = query.executeUpdate();
 
-            return true;   
+            return true;
         } catch (Exception e) {
-            
+
+        } finally {
+            session.close();
         }
         return false;
     }

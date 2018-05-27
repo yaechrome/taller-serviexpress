@@ -15,25 +15,53 @@ import org.hibernate.SessionFactory;
 import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.dao.PerfilDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
-public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao{
+
+public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao {
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public Perfil findByIdPerfil(Long idPerfil) {
-        String sql = "from PERFIL  where ID = :idPerfil";
+        Session session = getSessionFactory().openSession();
+        Perfil perfil = null;
+        try {
+            String sql = "from Perfil  where id = :idPerfil";
 
-	Query query = getSession().createQuery(sql);
-        query.setParameter("idPerfil", idPerfil);
-        
-	return (Perfil)query.uniqueResult();
+            Query query = session.createQuery(sql);
+            query.setParameter("idPerfil", idPerfil);
+
+            perfil = (Perfil) query.uniqueResult();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return perfil;
     }
 
     @Override
     public List<Perfil> findAll() {
-        String sql = "from PERFIL";
+        Session session = getSessionFactory().openSession();
+        List<Perfil> lista = null;
+        try {
+            String sql = "from Peril";
 
-	Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-	return query.list();
+            lista = query.list();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return lista;
     }
-    
 }

@@ -12,15 +12,31 @@ import cl.taller.serviexpress.dao.FamiliaProductoDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 
 public class FamiliaProductoDaoHibernate extends BaseHibernate implements FamiliaProductoDao{
+    private SessionFactory sessionFactory;
 
+    public SessionFactory getSessionFactory() {
+            return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+            this.sessionFactory = sessionFactory;
+    }
+    
     @Override
     public List<FamiliaProducto> findAll() {
-        String sql = "from CREDENCIALES";
+        Session session = getSessionFactory().openSession();
+        List<FamiliaProducto> lista = null;
+        try {
+            String sql = "from FamiliaProducto";
 
-	Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-	return query.list();
-
+            lista=  query.list();
+        } catch (Exception e) {
+        }finally{
+            session.close();
+        }
+        return lista;
     }
     
 }
