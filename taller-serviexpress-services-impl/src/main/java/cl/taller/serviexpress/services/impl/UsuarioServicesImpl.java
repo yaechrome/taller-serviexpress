@@ -34,8 +34,7 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public boolean crearUsuario(Usuario usuario) {
-        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-        Usuario usuario2 = udao.createUsuario(usuario);
+        Usuario usuario2 = userDao.createUsuario(usuario);
 
         if (usuario2 != null) {
             return true;
@@ -54,9 +53,7 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public List<Usuario> listarUsuarios() {
-        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-        return udao.findAllActive();
-
+        return userDao.findAllActive();
     }
 
     @Override

@@ -10,6 +10,8 @@ import org.hibernate.SessionFactory;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.dao.UsuarioDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
+
+
 public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 
     private SessionFactory sessionFactory;
@@ -47,13 +49,18 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     @SuppressWarnings("unchecked")
 	@Override
     public List<Usuario> findAllActive() {
-        List<Usuario> lista = null;
+        //List<Usuario> lista = null;
         
     	Session session = getSessionFactory().openSession();
     	
-    	String sql = "from Usuario";
+    	String sql = "select b from Usuario b";
+    	
+    	Query query = session.createQuery(sql);
+    	
+    	return query.list();
+    	/*
         try {
-            Query query = session.createQuery(sql);
+            
         
             lista = query.list();
         } catch (Exception e) {
@@ -61,7 +68,7 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
         }finally{
             session.close();
         }
-        return lista;
+        return lista;*/
      
     }
 
