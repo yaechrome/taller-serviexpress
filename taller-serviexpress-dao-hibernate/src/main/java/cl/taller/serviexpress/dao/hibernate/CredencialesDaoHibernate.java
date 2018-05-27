@@ -96,13 +96,12 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
     public boolean createCredenciales(Credenciales credencial) {
         Session session = getSessionFactory().openSession();
         try {
+        	session.beginTransaction();
             session.save(credencial);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return false;
     }
