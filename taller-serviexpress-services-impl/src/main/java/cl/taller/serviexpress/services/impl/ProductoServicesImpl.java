@@ -1,6 +1,9 @@
 
 package cl.taller.serviexpress.services.impl;
 
+import cl.taller.serviexpress.dao.FamiliaProductoDao;
+import cl.taller.serviexpress.dao.ProductoDao;
+import cl.taller.serviexpress.dao.TipoProductoDao;
 import cl.taller.serviexpress.dao.hibernate.FamiliaProductoDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.ProductoDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.TipoProductoDaoHibernate;
@@ -9,66 +12,82 @@ import cl.taller.serviexpress.domain.Producto;
 import cl.taller.serviexpress.domain.TipoProducto;
 import cl.taller.serviexpress.services.ProductoServices;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class ProductoServicesImpl implements ProductoServices{
 
+    private ProductoDao productoDao;
+
+    @Autowired
+    private ProductoServices productoServices;
+
+    /**
+     * @param producto the productoDao to set
+     */
+    public void setProductoDao(ProductoDao producto) {
+        this.productoDao = producto;
+    }
+    
+    private TipoProductoDao tipoProductoDao;
+
+   
+    /**
+     * @param tipoProducto  the tipoProductoDao to set
+     */
+    public void setTipoProductoDao(TipoProductoDao tipoProducto) {
+        this.tipoProductoDao = tipoProducto;
+    }
+    
+    private FamiliaProductoDao familiaProductoDao;
+
+   
+    /**
+     * @param ordenDao the userDao to set
+     */
+    public void setFamiliaProductoDao(FamiliaProductoDao familiaProducto) {
+        this.familiaProductoDao = familiaProducto;
+    }
+    
     @Override
     public boolean crearProducto(Producto producto) {
-        ProductoDaoHibernate dao = new ProductoDaoHibernate();
-         
-        return dao.createProducto(producto);
+        return productoDao.createProducto(producto);
     }
 
     @Override
     public boolean modificarProducto(Producto producto) {
-        ProductoDaoHibernate dao = new ProductoDaoHibernate();
-         
-        return dao.updateProducto(producto);
+        return productoDao.updateProducto(producto);
     }
 
     @Override
     public Producto buscarProductoPorId(long idProducto) {
- 
-        ProductoDaoHibernate dao = new ProductoDaoHibernate();
-        Producto producto = dao.findByIdProducto(idProducto);
-
-        return producto;
+        return productoDao.findByIdProducto(idProducto);
     }
 
     @Override
     public List<Producto> listarProductos() {
-        ProductoDaoHibernate udao = new ProductoDaoHibernate();
-        List<Producto> lista = udao.findAll();
-        return lista;
+        return productoDao.findAll();
+
     }
 
     @Override
     public List<TipoProducto> listarTiposProductosPorFamilia(long idFamilia) {
-        TipoProductoDaoHibernate udao = new TipoProductoDaoHibernate();
-        List<TipoProducto> lista = udao.findByFamilia(idFamilia);
-        return lista;
+        return tipoProductoDao.findByFamilia(idFamilia);
     }
 
     @Override
     public List<Producto> listarProductosPorTipo(long idTipo) {
-        ProductoDaoHibernate udao = new ProductoDaoHibernate();
-        List<Producto> lista = udao.findByTipo(idTipo);
-        return lista;
+        return productoDao.findByTipo(idTipo);
     }
 
     @Override
     public List<TipoProducto> listarTiposProductos() {
-        TipoProductoDaoHibernate udao = new TipoProductoDaoHibernate();
-        List<TipoProducto> lista = udao.findAllActive();
-        return lista;
+        return tipoProductoDao.findAllActive();
     }
 
     @Override
     public List<FamiliaProducto> listarFamiliasProductos() {
-        FamiliaProductoDaoHibernate udao = new FamiliaProductoDaoHibernate();
-        List<FamiliaProducto> lista = udao.findAll();
-        return lista;
+        return familiaProductoDao.findAll();
     }
     
 }

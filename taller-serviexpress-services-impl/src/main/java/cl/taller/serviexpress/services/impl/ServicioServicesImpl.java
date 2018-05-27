@@ -5,41 +5,46 @@
  */
 package cl.taller.serviexpress.services.impl;
 
+import cl.taller.serviexpress.dao.ServicioDao;
 import cl.taller.serviexpress.domain.Servicio;
 import cl.taller.serviexpress.dao.hibernate.ServicioDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.UsuarioDaoHibernate;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.ServicioServices;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ServicioServicesImpl implements ServicioServices{
 
+    private ServicioDao servicioDao;
+
+    @Autowired
+    private ServicioServices servicioServices;
+
+    /**
+     * @param servicio the servicioDao to set
+     */
+    public void setServicioDao(ServicioDao servicio) {
+        this.servicioDao = servicio;
+    }
+    
     @Override
     public boolean crearServicio(Servicio servicio) {
-        ServicioDaoHibernate udao = new ServicioDaoHibernate();
-         
-        return udao.createServicio(servicio);
+        return servicioDao.createServicio(servicio);
     }
 
     @Override
     public List<Servicio> listarServicios() {
-        ServicioDaoHibernate udao = new ServicioDaoHibernate();
-        List<Servicio> lista = udao.findAllActive();
-        return lista;
+        return servicioDao.findAllActive();
     }
 
     @Override
     public boolean modificarServicio(Servicio servicio) {
-        ServicioDaoHibernate udao = new ServicioDaoHibernate();
-         
-        return udao.updateServicio(servicio);
+        return servicioDao.updateServicio(servicio);
     }
 
     @Override
     public Servicio buscarPorId(long id) {
-        ServicioDaoHibernate udao = new ServicioDaoHibernate();
-        Servicio servicio = udao.findByIdServicio(id);
-
-        return servicio;
+        return servicioDao.findByIdServicio(id);
     }
 }
