@@ -9,7 +9,7 @@ public interface OrdenCompraDao {
    
 	OrdenCompra findByIdOrden(long idOrden);
 	
-	List<OrdenCompra> findAllActive();
+	List<OrdenCompra> findAll();
         
         List<OrdenCompra> findByProveedor(long idProveedor);
         

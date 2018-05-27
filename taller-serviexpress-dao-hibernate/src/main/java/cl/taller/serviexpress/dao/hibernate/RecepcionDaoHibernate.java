@@ -13,31 +13,76 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.Recepcion;
 import cl.taller.serviexpress.dao.RecepcionDao;
-public class RecepcionDaoHibernate implements RecepcionDao{
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
+public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao{
 
     @Override
     public Recepcion findByIdRecepcion(long idRecepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from RECEPCION where ID = :idRecepcion";
+
+		Query query = getSession().createQuery(sql);
+
+		query.setParameter("idRecepcion", idRecepcion);
+
+		return (Recepcion) query.uniqueResult();
     }
 
     @Override
     public List<Recepcion> findAllActive() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from RECEPCION";
+
+		Query query = getSession().createQuery(sql);
+
+		return query.list();
     }
 
     @Override
     public List<Recepcion> findByOrden(long idOrden) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from RECEPCION where ORDENCOMPRA = :idOrden";
+
+		Query query = getSession().createQuery(sql);
+
+		query.setParameter("idOrden", idOrden);
+
+		return query.list();
     }
 
     @Override
     public boolean createRecepcion(Recepcion recepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSession().save(recepcion);
+            getSession().getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
 
     @Override
     public boolean updateRecepcion(Recepcion recepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "update from RECEPCION set ORDENCOMPRA = :idOrden, "
+                    + "IDUSUARIO = :idUsuarioEmpleado, FECHARECEPCION = :fechaRecepcion,"
+                    + " VALORTOTAL = :valorTotal, ESTADORECEPCION = :estadoRecepcion "
+                    + "where ID = :id";
+	
+            Query query = getSession().createQuery(sql);
+
+            query.setParameter("idOrden", recepcion.getOrdenCompra().getId());
+            query.setParameter("idUsuarioEmpleado", recepcion.getIdUsuario());
+            query.setParameter("fechaRecepcion", recepcion.getFechaRecepcion());
+            query.setParameter("valorTotal", recepcion.getValorTotal());
+            query.setParameter("estadoRecepcion", recepcion.getEstadoRecepcion());
+            query.setLong("id", recepcion.getId());
+
+            int count = query.executeUpdate();
+
+            return true;   
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.taller.serviexpress.dao.hibernate;
 
 import java.util.List;
@@ -14,31 +9,75 @@ import org.hibernate.SessionFactory;
 
 import cl.taller.serviexpress.domain.Producto;
 import cl.taller.serviexpress.dao.ProductoDao;
-public class ProductoDaoHibernate implements ProductoDao{
+import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
+import cl.taller.serviexpress.domain.Perfil;
+public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao{
 
     @Override
     public Producto findByIdProducto(long idProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from PRODUCTO  where ID = :idProducto";
+
+	Query query = getSession().createQuery(sql);
+        query.setParameter("idProducto", idProducto);
+        
+	return (Producto)query.uniqueResult();
     }
 
     @Override
     public List<Producto> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from PRODUCTO";
+
+	Query query = getSession().createQuery(sql);
+
+	return query.list();
     }
 
     @Override
     public List<Producto> findByTipo(long idTipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "from PRODUCTO  where TIPOPRODUCTO = :idTipo";
+
+	Query query = getSession().createQuery(sql);
+        query.setParameter("idTipo", idTipo);
+        
+        return query.list();
     }
 
     @Override
     public boolean createProducto(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSession().save(producto);
+            getSession().getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
 
     @Override
     public boolean updateProducto(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql = "update from PRODUCTO set TIPOPRODUCTO = :tipo, "
+                    + "NOMBREPRODUCTO = :nombre, PRECIOVENTA = :precio, "
+                    + "STOCK = :stock, STOCKCRITICO = :stock_critico"
+                    + "where ID = :id_producto";
+	
+            Query query = getSession().createQuery(sql);
+
+            query.setParameter("tipo", producto.getTipoProducto().getId());
+            query.setParameter("nombre", producto.getNombreProducto());
+            query.setLong("precio", producto.getPrecioVenta());
+            query.setLong("stock", producto.getStock());
+            query.setLong("stock_critico", producto.getStockCritico());
+            query.setLong("id_producto", producto.getId());
+            
+            int count = query.executeUpdate();
+
+            return true;   
+        } catch (Exception e) {
+            
+        }
+        return false;
     }
     
 }

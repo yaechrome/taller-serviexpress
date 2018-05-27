@@ -25,13 +25,6 @@ public interface CredencialesDao {
 	 * @return Retorna el usuario encontrado
 	 */
 	Credenciales findByUseNameAndPass(String userName, String password);
-
-	/**
-	 * Obtiene todos los usuario activos.
-	 * 
-	 * @return Una colección de usuario activos.
-	 */
-	List<Credenciales> findAllActive();
         
         boolean createCredenciales(Credenciales credencial);
         

@@ -24,7 +24,10 @@
 			<groupId>cl.taller.serviexpress</groupId>
 			<artifactId>taller-serviexpress-domain</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>cl.taller.serviexpress</groupId>
+			<artifactId>taller-serviexpress-dao-hibernate</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
