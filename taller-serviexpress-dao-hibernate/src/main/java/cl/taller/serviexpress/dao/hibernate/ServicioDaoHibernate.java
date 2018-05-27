@@ -38,8 +38,6 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
             servicio = (Servicio) query.uniqueResult();
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
         return servicio;
     }
@@ -55,8 +53,6 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
             lista = query.list();
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
         return lista;
         
@@ -69,13 +65,15 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
         boolean creado = false;
         Session session = getSessionFactory().openSession();
         try {
+            session.beginTransaction();
+
             session.save(servicio);
+
             session.getTransaction().commit();
+            
             creado = true;
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
         return creado;
     }
@@ -100,8 +98,6 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
             creado = true;
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
         return creado;
 

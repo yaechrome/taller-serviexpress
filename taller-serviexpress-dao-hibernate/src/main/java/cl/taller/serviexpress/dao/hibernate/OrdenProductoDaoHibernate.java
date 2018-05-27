@@ -41,8 +41,6 @@ public class OrdenProductoDaoHibernate extends BaseHibernate implements OrdenPro
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return lista;
     }
@@ -50,21 +48,22 @@ public class OrdenProductoDaoHibernate extends BaseHibernate implements OrdenPro
     @Override
     public boolean createOrdenProducto(OrdenProducto ordenProducto) {
         Session session = getSessionFactory().openSession();
+        boolean creado = false;
         try {
+            session.beginTransaction();
             session.save(ordenProducto);
             session.getTransaction().commit();
-            return true;
+            creado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
-        return false;
+        } 
+        return creado;
     }
 
     @Override
     public boolean updateOrdenProducto(OrdenProducto ordenProducto) {
         Session session = getSessionFactory().openSession();
+        boolean actualizado = false;
         try {
             String sql = "update from OrdenProducto set cantidad = :cantidad, "
                     + "precioCompra = :precio_compra where producto = :id_producto "
@@ -79,14 +78,12 @@ public class OrdenProductoDaoHibernate extends BaseHibernate implements OrdenPro
 
             int count = query.executeUpdate();
 
-            return true;
+            actualizado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
 
-        return false;
+        return actualizado;
     }
 
 }

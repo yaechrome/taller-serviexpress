@@ -42,8 +42,6 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
             recepcion = (Recepcion) query.uniqueResult();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return recepcion;
 
@@ -61,8 +59,6 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return lista;
 
@@ -82,8 +78,6 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
             return query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return lista;
 
@@ -94,13 +88,12 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
         boolean creado = false;
         Session session = getSessionFactory().openSession();
         try {
+            session.beginTransaction();
             session.save(recepcion);
             session.getTransaction().commit();
             creado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return creado;
 
@@ -129,8 +122,6 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
             actualizado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return actualizado;
 
