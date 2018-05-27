@@ -4,6 +4,7 @@ import cl.taller.serviexpress.domain.Credenciales;
 import cl.taller.serviexpress.domain.DatosEmpleados;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.dao.hibernate.UsuarioDaoHibernate;
+import cl.taller.serviexpress.dao.CredencialesDao;
 import cl.taller.serviexpress.dao.UsuarioDao;
 import cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.DatosEmpleadoDaoHibernate;
@@ -22,8 +23,11 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     private UsuarioDao userDao;
 
+	private CredencialesDao credencialesDao;
+
     @Autowired
     private UsuarioServices userServices;
+    
 
     /**
      * @param userDao the userDao to set
@@ -32,6 +36,14 @@ public class UsuarioServicesImpl implements UsuarioServices {
         this.userDao = userDao;
     }
 
+
+	/**
+	 * @param credencialesDao the credencialesDao to set
+	 */
+	public void setCredencialesDao(CredencialesDao credencialesDao) {
+		this.credencialesDao = credencialesDao;
+	}
+	
     @Override
     public boolean crearUsuario(Usuario usuario) {
         Usuario usuario2 = userDao.createUsuario(usuario);

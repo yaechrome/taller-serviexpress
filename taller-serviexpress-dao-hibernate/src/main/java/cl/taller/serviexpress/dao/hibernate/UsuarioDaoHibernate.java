@@ -82,21 +82,17 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     }
 
     @Override
-    public Usuario createUsuario(Usuario usuario) {
-        Usuario usuario2= null;
-        
+    public Usuario createUsuario(Usuario Usuario) { 
     	Session session = getSessionFactory().openSession();
         
         try {
-            session.save(usuario);
-            session.getTransaction().commit();
-            
-            usuario2 = findByRut(usuario.getRut());
+            session.persist(Usuario);
+           // usuario = findByRut(usuario.getRut());
             
         } catch (Exception e) {
             
         }
-        return usuario2;
+        return Usuario;
     }
 
     @Override

@@ -44,4 +44,7 @@
    <bean id="perfilDao" class="cl.taller.serviexpress.dao.hibernate.PerfilDaoHibernate">
    		<property name="sessionFactory" ref="sessionFactory"></property>
    </bean>
+   <bean id="credencialesDao" class="cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate">
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
 </beans>

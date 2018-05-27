@@ -41,8 +41,6 @@ public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao {
             perfil = (Perfil) query.uniqueResult();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return perfil;
     }

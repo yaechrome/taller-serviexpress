@@ -11,6 +11,7 @@
 
 	<bean id="userServices" class="cl.taller.serviexpress.services.impl.UsuarioServicesImpl">
 		<property name="userDao" ref="userDao" />
+		<property name="credencialesDao" ref="credencialesDao"/>
 	</bean>
 	<bean id="perfilServices" class="cl.taller.serviexpress.services.impl.PerfilServicesImpl">
 		<property name="perfilDao" ref="perfilDao"/>

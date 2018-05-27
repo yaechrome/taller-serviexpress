@@ -5,6 +5,7 @@
  */
 package cl.taller.serviexpress.web.frontend.controller;
 
+import cl.taller.serviexpress.domain.Credenciales;
 import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.PerfilServicesImpl;
@@ -64,12 +65,26 @@ public class UserController {
     
     @RequestMapping(value="/CrearUsuario",method=RequestMethod.POST)
     public String createUser(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-		List<Usuario> users = userDao.listarUsuarios();
-		List<Perfil> perfiles = perfilDao.listarPerfiles();
+		
+    	Usuario user = new Usuario();
+    	Credenciales credencial = new Credenciales();
     	
-		model.addAttribute("perfiles", perfiles);
-		model.addAttribute("users", users);
-    	model.addAttribute("UserViewModel", new UserViewModel());
+    	Perfil perfilCliente = perfilDao.buscarPorPerfil(2L);
+    	user.setNombre(userViewModel.getNombre());
+    	user.setRut(userViewModel.getRut());
+    	user.setDireccion(userViewModel.getDireccion());
+    	user.setContactoTelefonico(userViewModel.getTelefono());
+    	user.setPerfil(perfilCliente);
+    	credencial.setUsuario(user);
+    	credencial.setUsername(userViewModel.getUsername());
+    	credencial.setPassword(userViewModel.getPassword());
+    	
+    	if(userDao.crearUsuario(user) & userDao.crearCredenciales(credencial)) {
+    	
+    		List<Usuario> users = userDao.listarUsuarios();
+    		model.addAttribute("users", users);
+    		model.addAttribute("UserViewModel", new UserViewModel());
+    	}
     	return INDEX_URL;
     }
     
