@@ -9,13 +9,13 @@
 	<!-- dao -->
 	<import resource="classpath*:META-INF/spring/cl/taller/serviexpress/dao/hibernate/beans.xml" />
 
-<!--	<bean id="userServices" class="cl.taller.serviexpress.services.impl.UserServicesImpl"> -->
+	<bean id="userServices" class="cl.taller.serviexpress.services.impl.UsuarioServicesImpl">
 	
-<!--		<property name="userDao" ref="userDao" /> -->
+		<property name="userDao" ref="userDao" />
 	
-<!--	</bean> -->
+	</bean>
 	
-<!-- 	<bean id="userDetailsService" class="cl.junji.control.normativo.services.impl.UserServicesImpl"> -->
+<!-- 	<bean id="userServicesImpl" class="cl.junji.control.normativo.services.impl.UserServicesImpl"> -->
 <!-- 		<property name="defaultErrorView" value="error" /> -->
 <!-- 		<property name="userDao" ref="userDao" /> -->
 <!-- 	</bean> -->

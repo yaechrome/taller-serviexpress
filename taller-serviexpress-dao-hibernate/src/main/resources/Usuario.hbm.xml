@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="cl.taller.serviexpress.domain.Usuario" table="USUARIOS">
+	<class name="cl.taller.serviexpress.domain.Usuario" table="USUARIO">
 		<id name="id" column="ID" type="long">
 			<generator class="native">
 				<param name="sequence">UsuarioSequence</param>

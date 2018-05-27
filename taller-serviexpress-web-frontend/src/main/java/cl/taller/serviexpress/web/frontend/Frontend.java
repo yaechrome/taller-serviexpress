@@ -15,7 +15,6 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ImportResource("classpath*:META-INF/spring/cl/taller/serviexpress/web/frontend/beans.xml")
-// @ComponentScan(basePackages = { "cl.junji.control.normativo.**" })
 public class Frontend {
 
 	public static void main(String[] args) {

@@ -30,7 +30,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/Usuario")
 public class UserController {
 
-	UsuarioServicesImpl usuarioServicesImpl = new UsuarioServicesImpl();
+	@Autowired
+	UsuarioServicesImpl userDao;
 	
     private static final String INDEX_URL="Usuario";
     private static final String USER_URL="CrearUsuario";
@@ -41,7 +42,7 @@ public class UserController {
     @RequestMapping
     public String index(Model model) {
         
-		List<Usuario> users = usuarioServicesImpl.listarUsuarios();
+		List<Usuario> users = userDao.listarUsuarios();
     	
 		model.addAttribute("users", users);
     	model.addAttribute("UserViewModel", new UserViewModel());

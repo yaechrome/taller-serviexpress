@@ -5,11 +5,13 @@ import cl.taller.serviexpress.domain.Credenciales;
 import cl.taller.serviexpress.domain.DatosEmpleados;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.dao.hibernate.UsuarioDaoHibernate;
+import cl.taller.serviexpress.dao.UsuarioDao;
 import cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.DatosEmpleadoDaoHibernate;
 import cl.taller.serviexpress.services.UsuarioServices;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,7 +21,19 @@ import org.springframework.stereotype.Service;
 @Lazy
 public class UsuarioServicesImpl implements UsuarioServices{
 
-    @Override
+	private UsuarioDao userDao;
+	
+	@Autowired
+	private UsuarioServices userServices;
+	
+    /**
+	 * @param userDao the userDao to set
+	 */
+	public void setUserDao(UsuarioDao userDao) {
+		this.userDao = userDao;
+	}
+
+	@Override
     public boolean crearUsuario(Usuario usuario) {
         try {
             UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
@@ -38,14 +52,13 @@ public class UsuarioServicesImpl implements UsuarioServices{
         
         UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
                    
-        return udao.updateUsuario(usuario);    
+        return userDao.updateUsuario(usuario);    
     }
 
     @Override
     public List<Usuario> listarUsuarios() {
 
-            UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-            List<Usuario> lista = udao.findAllActive();
+            List<Usuario> lista = userDao.findAllActive();
             return lista;
     }
 

@@ -22,16 +22,6 @@
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 	</bean>
 	
-	
-	<!-- decorador para reglas de negocio -->
-<!--	<bean id="mutableSessionManager" -->
-<!--		class="cl.junji.control.normativo.services.impl.sessionmanagement.MutableSessionManagerImpl">-->
-<!--		<property name="mutableSessionManager">-->
-<!--			<bean-->
-<!--				class="cl.taisachile.antaios.security.springsecurity.MutableSessionManagerImpl" />-->
-<!--		</property>-->
-<!--	</bean>-->
-	
 	<bean id="simpleMappingExceptionResolver"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView" value="error" />

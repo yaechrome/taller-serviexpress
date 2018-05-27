@@ -3,7 +3,6 @@ package cl.taller.serviexpress.dao.hibernate;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,6 +12,16 @@ import cl.taller.serviexpress.dao.UsuarioDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 
+    private SessionFactory sessionFactory;
+    
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;}
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+         this.sessionFactory = sessionFactory;
+    }
+
+	
     @Override
     public Usuario findByIdUsuario(long idUsuario) {
         String sql = "from USUARIOS where ID = :idUsuario";
@@ -24,13 +33,17 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
         return (Usuario) query.uniqueResult();
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Usuario> findAllActive() {
-        String sql = "from USUARIOS";
+    	Session session = getSessionFactory().openSession();
+    	
+    	String sql = "select b from Usuario b";
 
-        Query query = getSession().createQuery(sql);
-
+        Query query = session.createQuery(sql);
+        
         return query.list();
+        
     }
 
     @Override

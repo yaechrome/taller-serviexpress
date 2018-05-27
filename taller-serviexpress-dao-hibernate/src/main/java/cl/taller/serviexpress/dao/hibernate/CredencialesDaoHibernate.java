@@ -13,7 +13,7 @@ import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 public class CredencialesDaoHibernate extends BaseHibernate implements CredencialesDao {
 
         @Override
-	public Credenciales findByUsername(String userName) {
+        public Credenciales findByUsername(String userName) {
 		String sql = "from Credenciales as u where u.username = :userName";
 
 		Query query = getSession().createQuery(sql);
