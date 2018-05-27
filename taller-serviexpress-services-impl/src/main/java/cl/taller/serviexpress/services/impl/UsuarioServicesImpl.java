@@ -39,15 +39,12 @@ public class UsuarioServicesImpl implements UsuarioServices {
         if (usuario2 != null) {
             return true;
         }
-
         return false;
     }
 
     @Override
     public boolean modificarUsuario(Usuario usuario) {
-
         UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
-
         return udao.updateUsuario(usuario);
     }
 
@@ -58,16 +55,13 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public Usuario buscarPorID(long id) {
-
         UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
         return udao.findByIdUsuario(id);
-
     }
 
     @Override
     public boolean crearDatosEmpleado(DatosEmpleados empleado) {
         DatosEmpleadoDaoHibernate cdao = new DatosEmpleadoDaoHibernate();
-
         return cdao.createDatosEmpleados(empleado);
     }
 
@@ -88,13 +82,18 @@ public class UsuarioServicesImpl implements UsuarioServices {
         CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
 
         return cdao.createCredenciales(credenciales);
-
     }
 
     @Override
     public boolean modificarCredenciales(Credenciales credenciales) {
         CredencialesDaoHibernate cdao = new CredencialesDaoHibernate();
         return cdao.updateCredenciales(credenciales);
+    }
+
+    @Override
+    public List<Usuario> listarUsuariosPorPerfil(long idPerfil) {
+        UsuarioDaoHibernate udao = new UsuarioDaoHibernate();
+        return udao.findByPerfil(idPerfil);
     }
 
 }

@@ -49,7 +49,6 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     @SuppressWarnings("unchecked")
 	@Override
     public List<Usuario> findAllActive() {
-        //List<Usuario> lista = null;
         
     	Session session = getSessionFactory().openSession();
     	
@@ -58,17 +57,6 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     	Query query = session.createQuery(sql);
     	
     	return query.list();
-    	/*
-        try {
-            
-        
-            lista = query.list();
-        } catch (Exception e) {
-            
-        }finally{
-            session.close();
-        }
-        return lista;*/
      
     }
 

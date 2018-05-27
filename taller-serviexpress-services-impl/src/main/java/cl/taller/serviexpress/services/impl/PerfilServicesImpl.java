@@ -29,5 +29,11 @@ public class PerfilServicesImpl implements PerfilServices{
     public List<Perfil> listarPerfiles() {
         return perfilDao.findAll();
     }
+
+    @Override
+    public Perfil buscarPorPerfil(Long idPerfil) {
+        PerfilDaoHibernate dao = new PerfilDaoHibernate();
+        return dao.findByIdPerfil(idPerfil);
+    }
     
 }

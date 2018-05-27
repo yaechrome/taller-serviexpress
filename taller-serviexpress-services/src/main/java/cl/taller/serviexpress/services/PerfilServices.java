@@ -8,4 +8,5 @@ public interface PerfilServices {
     
     List<Perfil> listarPerfiles();
     
+    Perfil buscarPorPerfil(Long idPerfil);
 }

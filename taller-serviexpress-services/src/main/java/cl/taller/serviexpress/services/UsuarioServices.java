@@ -15,6 +15,8 @@ public interface UsuarioServices extends UserDetailsService {
     
     List<Usuario> listarUsuarios();
     
+    List<Usuario> listarUsuariosPorPerfil(long idPerfil);
+    
     Usuario buscarPorID(long id);
     
     boolean crearDatosEmpleado(DatosEmpleados empleado);
