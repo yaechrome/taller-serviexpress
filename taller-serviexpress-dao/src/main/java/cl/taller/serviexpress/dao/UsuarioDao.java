@@ -24,7 +24,9 @@ public interface UsuarioDao {
         
         List<Usuario> findByPerfil(long idPerfil);
         
-        boolean createCredenciales(Usuario usuario);
+        Usuario createUsuario(Usuario usuario);
         
-        boolean updateCredenciales(Usuario usuario);
+        boolean updateUsuario(Usuario usuario);
+        
+        Usuario findByRut(String rut);
 }

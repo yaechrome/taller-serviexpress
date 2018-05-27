@@ -23,7 +23,7 @@ public interface ServicioDao {
 	 */
 	List<Servicio> findAllActive();
         
-        boolean createCredenciales(Servicio servicio);
+        boolean createServicio(Servicio servicio);
         
-        boolean updateCredenciales(Servicio servicio);
+        boolean updateServicio(Servicio servicio);
 }

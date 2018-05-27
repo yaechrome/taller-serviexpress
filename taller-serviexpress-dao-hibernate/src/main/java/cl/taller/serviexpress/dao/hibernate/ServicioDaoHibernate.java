@@ -38,7 +38,7 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
     }
 
     @Override
-    public boolean createCredenciales(Servicio servicio) {
+    public boolean createServicio(Servicio servicio) {
         try {
             getSession().save(servicio);
             getSession().getTransaction().commit();
@@ -50,7 +50,7 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
     }
 
     @Override
-    public boolean updateCredenciales(Servicio servicio) {
+    public boolean updateServicio(Servicio servicio) {
         try {
             String sql = "update from SERVICIO set ESTADOSERVICIO = :estadoServicio, "
                     + "VALOR = :valor, DESCRIPCIONSERVICIO = :descripcionServicio "
