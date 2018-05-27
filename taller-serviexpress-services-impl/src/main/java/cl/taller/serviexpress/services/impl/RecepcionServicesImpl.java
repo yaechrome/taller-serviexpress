@@ -5,63 +5,79 @@
  */
 package cl.taller.serviexpress.services.impl;
 
+import cl.taller.serviexpress.dao.RecepcionDao;
+import cl.taller.serviexpress.dao.RecepcionProductoDao;
 import cl.taller.serviexpress.domain.Recepcion;
 import cl.taller.serviexpress.domain.RecepcionProducto;
 import cl.taller.serviexpress.services.RecepcionServices;
 import cl.taller.serviexpress.dao.hibernate.RecepcionDaoHibernate;
 import cl.taller.serviexpress.dao.hibernate.RecepcionProductoDaoHibernate;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class RecepcionServicesImpl implements RecepcionServices{
+    private RecepcionDao recepcionDao;
+
+    @Autowired
+    private RecepcionServices recepcionServices;
+
+    /**
+     * @param ordenDao the userDao to set
+     */
+    public void setRecepcionDao(RecepcionDao recepcion) {
+        this.recepcionDao = recepcion;
+    }
+    
+    private RecepcionProductoDao recepcionProductoDao;
+
+   
+    /**
+     * @param ordenDao the userDao to set
+     */
+    public void setRecepcionProductoDao(RecepcionProductoDao recepcionProducto) {
+        this.recepcionProductoDao = recepcionProducto;
+    }
 
     @Override
     public boolean crearRecepcion(Recepcion recepcion) {
-        RecepcionDaoHibernate dao = new RecepcionDaoHibernate();
-        return dao.createRecepcion(recepcion);
+        return recepcionDao.createRecepcion(recepcion);
         
     }
 
     @Override
     public boolean modificarRecepcion(Recepcion recepcion) {
-       RecepcionDaoHibernate dao = new RecepcionDaoHibernate();
-        return dao.updateRecepcion(recepcion);
+        return recepcionDao.updateRecepcion(recepcion);
 
     }
 
     @Override
     public Recepcion buscarRecepcionPorId(long idRecepcion) {
-        RecepcionDaoHibernate dao = new RecepcionDaoHibernate();
-        return dao.findByIdRecepcion(idRecepcion);
+        return recepcionDao.findByIdRecepcion(idRecepcion);
     }
 
     @Override
     public List<Recepcion> listarRecepciones() {
-        RecepcionDaoHibernate dao = new RecepcionDaoHibernate();
-        return dao.findAllActive();
+        return recepcionDao.findAllActive();
     }
 
     @Override
     public List<Recepcion> listarRecepcionPorOrden(long idOrden) {
-        RecepcionDaoHibernate dao = new RecepcionDaoHibernate();
-        return dao.findByOrden(idOrden);
+        return recepcionDao.findByOrden(idOrden);
     }
 
     @Override
     public boolean crearRecepcionProducto(RecepcionProducto recepcionProducto) {
-        RecepcionProductoDaoHibernate dao = new RecepcionProductoDaoHibernate();
-        return dao.createRecepcionProducto(recepcionProducto);
+        return recepcionProductoDao.createRecepcionProducto(recepcionProducto);
     }
 
     @Override
     public boolean modificarRecepcionProducto(RecepcionProducto recepcionProducto) {
-        RecepcionProductoDaoHibernate dao = new RecepcionProductoDaoHibernate();
-        return dao.updateRecepcionProducto(recepcionProducto);
+        return recepcionProductoDao.updateRecepcionProducto(recepcionProducto);
     }
 
     @Override
     public List<RecepcionProducto> buscarRecepcionesProductosPorIdRecepcion(long idRecepcion) {
-        RecepcionProductoDaoHibernate dao = new RecepcionProductoDaoHibernate();
-        return dao.findByRecepcion(idRecepcion);
+        return recepcionProductoDao.findByRecepcion(idRecepcion);
     }
     
 }
