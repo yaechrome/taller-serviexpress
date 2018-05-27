@@ -38,9 +38,7 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
             producto = (Producto) query.uniqueResult();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
         return producto;
     }
 
@@ -56,9 +54,7 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
         return lista;
     }
 
@@ -75,30 +71,31 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
         return lista;
     }
 
     @Override
     public boolean createProducto(Producto producto) {
         Session session = getSessionFactory().openSession();
+        boolean creado = false;
         try {
+            session.beginTransaction();
+
             session.save(producto);
+
             session.getTransaction().commit();
-            return true;
+            creado = true;
         } catch (Exception e) {
 
-        }finally {
-            session.close();
         }
-        return false;
+        return creado;
     }
 
     @Override
     public boolean updateProducto(Producto producto) {
         Session session = getSessionFactory().openSession();
+        boolean actualizado = false;
         try {
             String sql = "update from Producto set tipoProducto = :tipo, "
                     + "nombreProducto = :nombre, precioVenta = :precio, "
@@ -116,13 +113,11 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
 
             int count = query.executeUpdate();
 
-            return true;
+            actualizado = true;
         } catch (Exception e) {
 
-        }finally {
-            session.close();
         }
-        return false;
+        return actualizado;
     }
 
 }

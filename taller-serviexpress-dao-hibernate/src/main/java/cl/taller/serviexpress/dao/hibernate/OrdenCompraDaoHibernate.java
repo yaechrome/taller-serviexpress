@@ -37,9 +37,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
             ordenCompra = (OrdenCompra) query.uniqueResult();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
         return ordenCompra;
     }
 
@@ -55,9 +53,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
         return lista;
     }
 
@@ -73,8 +69,6 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return lista;
     }
@@ -82,21 +76,22 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
     @Override
     public boolean createOrdenCompra(OrdenCompra ordenCompra) {
         Session session = getSessionFactory().openSession();
+        boolean creado = false;
         try {
+            session.beginTransaction();
             session.save(ordenCompra);
             session.getTransaction().commit();
-            return true;
+            creado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
-        return false;
+        } 
+        return creado;
     }
 
     @Override
     public boolean updateOrdenCompra(OrdenCompra ordenCompra) {
         Session session = getSessionFactory().openSession();
+        boolean actualizado = false;
         try {
             String sql = "update from OrdenCompra set usuario = :idUsuarioEmpleado,"
                     + " idProveedor = :idProveedor, fechaEmision = :fechaEmision,"
@@ -114,13 +109,11 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
 
             int count = query.executeUpdate();
 
-            return true;
+            actualizado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
-        return false;
+        } 
+        return actualizado;
     }
 
 }
