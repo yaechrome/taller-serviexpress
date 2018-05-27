@@ -16,24 +16,49 @@ import cl.taller.serviexpress.domain.TipoProducto;
 import cl.taller.serviexpress.dao.TipoProductoDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProductoDao{
-
+    
+    private SessionFactory sessionFactory;
+    
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;}
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+         this.sessionFactory = sessionFactory;
+    }
+    
     @Override
     public List<TipoProducto> findAllActive() {
-        String sql = "from TIPOPRODUCTO";
-
-	Query query = getSession().createQuery(sql);
-
-	return query.list();
+        List<TipoProducto> lista = null;
+        Session session = getSessionFactory().openSession();
+        String sql = "from TipoProducto";
+        try {
+            Query query = session.createQuery(sql);
+            lista = query.list();
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+	
+	return lista;
     }
 
     @Override
     public List<TipoProducto> findByFamilia(long idFamilia) {
-        String sql = "from TIPOPRODUCTO  where FAMILIAPRODUCTO = :idFamilia";
+        List<TipoProducto> lista = null;
+        Session session = getSessionFactory().openSession();
+        String sql = "from TipoProducto  where familiaProducto = :idFamilia";
+        try {
+            Query query = session.createQuery(sql);
+            query.setLong("idFamilia", idFamilia);
+            lista = query.list();
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+        return lista;
 
-	Query query = getSession().createQuery(sql);
-        query.setParameter("idFamilia", idFamilia);
-        
-        return query.list();
     }
     
 }

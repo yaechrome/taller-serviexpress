@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cl.taller.serviexpress.dao.hibernate;
+
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -14,62 +15,110 @@ import org.hibernate.SessionFactory;
 import cl.taller.serviexpress.domain.Recepcion;
 import cl.taller.serviexpress.dao.RecepcionDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
-public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao{
+
+public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao {
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public Recepcion findByIdRecepcion(long idRecepcion) {
-        String sql = "from RECEPCION where ID = :idRecepcion";
+        Recepcion recepcion = null;
+        Session session = getSessionFactory().openSession();
+        try {
+            String sql = "from Recepcion where id = :idRecepcion";
 
-		Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-		query.setParameter("idRecepcion", idRecepcion);
+            query.setLong("idRecepcion", idRecepcion);
 
-		return (Recepcion) query.uniqueResult();
+            recepcion = (Recepcion) query.uniqueResult();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return recepcion;
+
     }
 
     @Override
     public List<Recepcion> findAllActive() {
-        String sql = "from RECEPCION";
+        List<Recepcion> lista = null;
+        Session session = getSessionFactory().openSession();
+        try {
+            String sql = "from Recepcion";
 
-		Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-		return query.list();
+            lista = query.list();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return lista;
+
     }
 
     @Override
     public List<Recepcion> findByOrden(long idOrden) {
-        String sql = "from RECEPCION where ORDENCOMPRA = :idOrden";
+        List<Recepcion> lista = null;
+        Session session = getSessionFactory().openSession();
+        try {
+            String sql = "from Recepcion where ordenCompra = :idOrden";
 
-		Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-		query.setParameter("idOrden", idOrden);
+            query.setLong("idOrden", idOrden);
 
-		return query.list();
+            return query.list();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return lista;
+
     }
 
     @Override
     public boolean createRecepcion(Recepcion recepcion) {
+        boolean creado = false;
+        Session session = getSessionFactory().openSession();
         try {
-            getSession().save(recepcion);
-            getSession().getTransaction().commit();
-            return true;
+            session.save(recepcion);
+            session.getTransaction().commit();
+            creado = true;
         } catch (Exception e) {
-            
+
+        } finally {
+            session.close();
         }
-        return false;
+        return creado;
+
     }
 
     @Override
     public boolean updateRecepcion(Recepcion recepcion) {
+        boolean actualizado = false;
+        Session session = getSessionFactory().openSession();
         try {
-            String sql = "update from RECEPCION set ORDENCOMPRA = :idOrden, "
-                    + "IDUSUARIO = :idUsuarioEmpleado, FECHARECEPCION = :fechaRecepcion,"
-                    + " VALORTOTAL = :valorTotal, ESTADORECEPCION = :estadoRecepcion "
-                    + "where ID = :id";
-	
-            Query query = getSession().createQuery(sql);
+            String sql = "update from Recepcion set ordenCompra = :idOrden, "
+                    + "idUsuario = :idUsuarioEmpleado, fechaRecepcion = :fechaRecepcion,"
+                    + " valorTotal = :valorTotal, estadoRecepcion = :estadoRecepcion "
+                    + "where id = :id";
 
-            query.setParameter("idOrden", recepcion.getOrdenCompra().getId());
+            Query query = session.createQuery(sql);
+
+            query.setLong("idOrden", recepcion.getOrdenCompra().getId());
             query.setParameter("idUsuarioEmpleado", recepcion.getIdUsuario());
             query.setParameter("fechaRecepcion", recepcion.getFechaRecepcion());
             query.setParameter("valorTotal", recepcion.getValorTotal());
@@ -77,12 +126,14 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
             query.setLong("id", recepcion.getId());
 
             int count = query.executeUpdate();
-
-            return true;   
+            actualizado = true;
         } catch (Exception e) {
-            
+
+        } finally {
+            session.close();
         }
-        return false;
+        return actualizado;
+
     }
-    
+
 }

@@ -17,59 +17,94 @@ import cl.taller.serviexpress.dao.ServicioDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
 
+    private SessionFactory sessionFactory;
+    
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;}
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+         this.sessionFactory = sessionFactory;
+    }
+    
     @Override
     public Servicio findByIdServicio(long idServicio) {
-        String sql = "from SERVICIO where ID = :idServicio";
+        Servicio servicio = null;
+        Session session = getSessionFactory().openSession();
+        String sql = "from Servicio where id = :idServicio";
+        try {
+            Query query = session.createQuery(sql);
 
-		Query query = getSession().createQuery(sql);
-
-		query.setParameter("idServicio", idServicio);
-
-		return (Servicio) query.uniqueResult();
+            query.setLong("idServicio", idServicio);
+            servicio = (Servicio) query.uniqueResult();
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+        return servicio;
     }
 
     @Override
     public List<Servicio> findAllActive() {
-        String sql = "from SERVICIO";
+        List<Servicio> lista = null;
+        Session session = getSessionFactory().openSession();
+        String sql = "from Servicio";
+        try {
+            Query query = session.createQuery(sql);
 
-		Query query = getSession().createQuery(sql);
+            lista = query.list();
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+        return lista;
+        
 
-		return query.list();
+		
     }
 
     @Override
     public boolean createServicio(Servicio servicio) {
+        boolean creado = false;
+        Session session = getSessionFactory().openSession();
         try {
-            getSession().save(servicio);
-            getSession().getTransaction().commit();
-            return true;
+            session.save(servicio);
+            session.getTransaction().commit();
+            creado = true;
         } catch (Exception e) {
             
+        }finally{
+            session.close();
         }
-        return false;
+        return creado;
     }
 
     @Override
     public boolean updateServicio(Servicio servicio) {
+        boolean creado = false;
+        Session session = getSessionFactory().openSession();
         try {
-            String sql = "update from SERVICIO set ESTADOSERVICIO = :estadoServicio, "
-                    + "VALOR = :valor, DESCRIPCIONSERVICIO = :descripcionServicio "
-                    + "where ID = :id";
+            String sql = "update from Servicio set estadoServicio = :estadoServicio, "
+                    + "valor = :valor, descripcionServicio = :descripcionServicio "
+                    + "where id = :id";
 	
-            Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-            query.setParameter("estado_servicio", servicio.getEstadoServicio());
+            query.setParameter("estadoServicio", servicio.getEstadoServicio());
             query.setParameter("valor", servicio.getValor());
-            query.setParameter("descripcion_servicio", servicio.getDescripcionServicio());
+            query.setParameter("descripcionServicio", servicio.getDescripcionServicio());
             query.setLong("id", servicio.getId());
 
             int count = query.executeUpdate();
-
-            return true;   
+            creado = true;
         } catch (Exception e) {
             
+        }finally{
+            session.close();
         }
-        return false;
+        return creado;
+
     }
     
 }

@@ -17,53 +17,82 @@ import cl.taller.serviexpress.dao.RecepcionProductoDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 import cl.taller.serviexpress.domain.Producto;
 
-public class RecepcionProductoDaoHibernate extends BaseHibernate implements RecepcionProductoDao{
+public class RecepcionProductoDaoHibernate extends BaseHibernate implements RecepcionProductoDao {
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public List<RecepcionProducto> findByRecepcion(long idRecepcion) {
-        String sql = "from RECEPCION_PRODUCTO where ID = :idRecepcion";
 
-	Query query = getSession().createQuery(sql);
-        query.setParameter("idRecepcion", idRecepcion);
-        
-        return query.list();
+        List<RecepcionProducto> lista = null;
+        Session session = getSessionFactory().openSession();
+        try {
+            String sql = "from RecepcionProducto where id = :idRecepcion";
+            Query query = session.createQuery(sql);
+            query.setLong("idRecepcion", idRecepcion);
+            
+            lista = query.list();
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return lista;
+
     }
 
     @Override
     public boolean createRecepcionProducto(RecepcionProducto recepcionProducto) {
+
+        boolean creado = false;
+        Session session = getSessionFactory().openSession();
         try {
-            getSession().save(recepcionProducto);
-            getSession().getTransaction().commit();
-            return true;
+            session.save(recepcionProducto);
+            session.getTransaction().commit();
+            creado = true;
         } catch (Exception e) {
-            
+
+        } finally {
+            session.close();
         }
-        return false;
+        return creado;
+
     }
 
     @Override
     public boolean updateRecepcionProducto(RecepcionProducto recepcionProducto) {
+
+        boolean actualizado = false;
+        Session session = getSessionFactory().openSession();
         try {
-            
-            String sql = "update from RECEPCION_PRODUCTO set CODIGOPRODUCTO = :codigo, "
-                    + "CANTIDAD = :cantidad, FECHAVENCIMIENTO = :fecha, "
-                    + "ID = :id_recepcion, PRODUCTO = :id_producto";
-	
-            Query query = getSession().createQuery(sql);
+            String sql = "update from RecepcionProducto set codigoProducto = :codigo, "
+                    + "cantidad = :cantidad, fechaVencimiento = :fecha, "
+                    + "id = :id_recepcion, producto = :id_producto";
+
+            Query query = session.createQuery(sql);
 
             query.setParameter("codigo", recepcionProducto.getCodigoProducto());
             query.setParameter("cantidad", recepcionProducto.getCantidad());
             query.setDate("fecha", recepcionProducto.getFechaVencimiento());
             query.setLong("id_recepcion", recepcionProducto.getRecepcion().getId());
             query.setLong("id_producto", recepcionProducto.getProducto().getId());
-            
-            int count = query.executeUpdate();
 
-            return true;   
+            int count = query.executeUpdate();
+            actualizado = true;
         } catch (Exception e) {
-            
+
+        } finally {
+            session.close();
         }
-        return false;
+        return actualizado;
     }
-    
+
 }

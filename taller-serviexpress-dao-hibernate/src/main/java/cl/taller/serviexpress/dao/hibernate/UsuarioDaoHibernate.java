@@ -24,92 +24,132 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 	
     @Override
     public Usuario findByIdUsuario(long idUsuario) {
-        String sql = "from USUARIOS where ID = :idUsuario";
+        Usuario usuario = null;
+        Session session = getSessionFactory().openSession();
+        
+        String sql = "from Usuario where id = :idUsuario";
+        try {
+            
+            Query query = session.createQuery(sql);
 
-        Query query = getSession().createQuery(sql);
+            query.setLong("idUsuario", idUsuario);
 
-        query.setParameter("idUsuario", idUsuario);
-
-        return (Usuario) query.uniqueResult();
+            usuario = (Usuario) query.uniqueResult();
+            
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+        return usuario;
     }
 
     @SuppressWarnings("unchecked")
 	@Override
     public List<Usuario> findAllActive() {
+        List<Usuario> lista = null;
+        
     	Session session = getSessionFactory().openSession();
     	
-    	String sql = "select b from Usuario b";
-
-        Query query = session.createQuery(sql);
+    	String sql = "from Usuario";
+        try {
+            Query query = session.createQuery(sql);
         
-        return query.list();
-        
+            lista = query.list();
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+        return lista;
+     
     }
 
     @Override
     public List<Usuario> findByPerfil(long idPerfil) {
-        String sql = "from USUARIOS where PERFIL = :idPerfil";
+        List<Usuario> lista = null;
+        
+    	Session session = getSessionFactory().openSession();
+        String sql = "from Usuario where perfil = :idPerfil";
+        try {
+            Query query = session.createQuery(sql);
 
-        Query query = getSession().createQuery(sql);
+            query.setLong("idPerfil", idPerfil);
 
-        query.setParameter("idPerfil", idPerfil);
-
-        return query.list();
+            lista = query.list();
+        } catch (Exception e) {
+            
+        }finally{
+            session.close();
+        }
+        
+        return lista;
     }
 
     @Override
     public Usuario createUsuario(Usuario usuario) {
+        Usuario usuario2= null;
+        
+    	Session session = getSessionFactory().openSession();
+        
         try {
-            getSession().save(usuario);
-            getSession().getTransaction().commit();
+            session.save(usuario);
+            session.getTransaction().commit();
             
-            return findByRut(usuario.getRut());
+            usuario2 = findByRut(usuario.getRut());
             
         } catch (Exception e) {
             
         }
-        return null;
+        return usuario2;
     }
 
     @Override
     public boolean updateUsuario(Usuario usuario) {
+        boolean actualizado = false;
+    	Session session = getSessionFactory().openSession();
         try {
-            String sql = "update from USUARIOS set PERFIL = :idPerfil, "
-                    + "RUT = :rut, NOMBRE = :nombre, DIRECCION = :direccion,"
-                    + " CONTACTOTELEFONO = :contactoTelefono where ID = :id";
+            String sql = "update from Usuario set perfil = :idPerfil, "
+                    + "rut = :rut, nombre = :nombre, direccion = :direccion,"
+                    + " contactoTelefonico = :contactoTelefono where id = :id";
 	
-            Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
-            query.setParameter("id_perfil", usuario.getId());
+            query.setLong("idPerfil", usuario.getId());
             query.setParameter("rut", usuario.getRut());
+            query.setParameter("nombre", usuario.getNombre());
             query.setParameter("direccion", usuario.getDireccion());
-            query.setParameter("contacto_telefono", usuario.getContactoTelefonico());
+            query.setParameter("contactoTelefono", usuario.getContactoTelefonico());
             query.setLong("id", usuario.getId());
 
             int count = query.executeUpdate();
 
-            return true;   
+            actualizado = true;
         } catch (Exception e) {
             
+        }finally{
+            session.close();
         }
-        return false;
+        return actualizado;
     }
 
     @Override
     public Usuario findByRut(String rut) {
+        Usuario usuario = null;
+        
+    	Session session = getSessionFactory().openSession();
+        String sql = "from Usuario where rut = :rut";
         try {
-            String sql = "from USUARIOS where RUT = :rut";
-
-            Query query = getSession().createQuery(sql);
+            Query query = session.createQuery(sql);
 
             query.setParameter("rut", rut);
 
-            return (Usuario) query.uniqueResult();
+            usuario = (Usuario) query.uniqueResult();
             
         } catch (Exception e) {
             
         }
-        return null;
+        return usuario;
     }
     
 }
