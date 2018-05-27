@@ -8,13 +8,15 @@ package cl.taller.serviexpress.services.impl;
 import cl.taller.serviexpress.domain.Recepcion;
 import cl.taller.serviexpress.domain.RecepcionProducto;
 import cl.taller.serviexpress.services.RecepcionServices;
+import cl.taller.serviexpress.dao.hibernate.RecepcionDaoHibernate;
 import java.util.List;
 
 public class RecepcionServicesImpl implements RecepcionServices{
 
     @Override
     public boolean crearRecepcion(Recepcion recepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RecepcionDaoHibernate dao = new RecepcionDaoHibernate();
+        return true;
     }
 
     @Override

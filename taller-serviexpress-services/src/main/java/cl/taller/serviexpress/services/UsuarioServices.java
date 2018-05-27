@@ -24,6 +24,5 @@ public interface UsuarioServices extends UserDetailsService {
     boolean crearCredenciales(Credenciales credenciales);
     
     boolean modificarCredenciales(Credenciales credenciales);
-    
-    
+     
 }
