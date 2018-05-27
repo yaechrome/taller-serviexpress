@@ -5,7 +5,10 @@
  */
 package cl.taller.serviexpress.web.frontend.controller;
 
+import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.domain.Usuario;
+import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -23,20 +26,45 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author ochandia
  */
 @Controller
-@RequestMapping("/CrearUsuario")
+@RequestMapping("/Usuario")
 public class UserController {
 
-    
+	@Autowired
+	//UsuarioServicesImpl userServices;
+	
+    private static final String INDEX_URL="Usuario";
     private static final String USER_URL="CrearUsuario";
-    private static final String INDEX_URL = "user/managementUsers";
     private static final String ASSING_PROFILE_URL = "user/assignProfile";
-    private static final String CREATE_USER_URL = "user/createUser";
+    private static final String CREATE_USER_URL = "Usuario/CrearUsuario";
     private static final String EDIT_USER = "user/editUser";
     
     @RequestMapping
     public String index(Model model) {
         
-        return USER_URL;
+		//List<Usuario> users = userServices.findAllActiveUsers();
+    	
+		//model.addAttribute("users", users);
+    	model.addAttribute("UserViewModel", new UserViewModel());
+        return INDEX_URL;
+    }
+    
+    @RequestMapping(value="/CrearUsuario",method=RequestMethod.GET)
+    public String verCrearUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
+    	model.addAttribute("UserViewModel", new UserViewModel());
+    	
+    	return USER_URL;
+    }
+    
+    @RequestMapping(value="/CrearUsuario",method=RequestMethod.POST)
+    public String createUser(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
+    	model.addAttribute("UserViewModel", new UserViewModel());
+    	return INDEX_URL;
+    }
+    
+    @RequestMapping(value="/BuscarUsuario/{rut}",method=RequestMethod.GET)
+    public String buscarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
+    	model.addAttribute("UserViewModel", new UserViewModel());
+    	return INDEX_URL;
     }
     
 }

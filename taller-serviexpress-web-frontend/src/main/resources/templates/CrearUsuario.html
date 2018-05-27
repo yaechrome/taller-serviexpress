@@ -10,39 +10,35 @@
         <div class="row mb0 center-align relative full">
           <div class="center">
             <div class="col s12 mb20">
-              <form class="form" role="form" method="POST" action="/login/authenticate" th:action="@{/login/authenticate}" th:object="${loginViewModel}" accept-charset="UTF-8" autocomplete="off">
+              <form class="form" role="form" method="POST" action="/Usuario/CrearUsuario" th:action="@{/Usuario/CrearUsuario}" th:object="${UserViewModel}" accept-charset="UTF-8" autocomplete="off">
               <div class="card-panel pad0">
                 <div class="card-content pad24">
                   <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR USUARIO" width="170"/></div>
                   <table class="responsive-table striped">
                     <tbody>
                         <tr>
-                            <td>Usuario</td>
-                            <td></td>
-                        </tr>
-                        <tr>
                             <td>RUT</td>
-                            <td><input type="text" id="txtRut" /></td>
+                            <td><input type="text" id="rut" th:field="*{rut}"/></td>
                         </tr>
                         <tr>
                             <td>NOMBRE</td>
-                            <td><input type="text" id="txtNombre" /></td>
+                            <td><input type="text" id="nombre" th:field="*{nombre}" /></td>
                         </tr>
                         <tr>
                             <td>DIRECCION</td>
-                            <td><input type="text" id="txtDireccion"/></td>
+                            <td><input type="text" id="direccion" th:field="*{direccion}"/></td>
                         </tr>
                         <tr>
                             <td>TELEFONO</td>
-                            <td><input type="text" id="txtTelefono" /></td>
+                            <td><input type="text" id="telefono" th:field="*{telefono}"/></td>
                         </tr>
                         <tr>
                             <td>NOMBRE DE USUARIO</td>
-                            <td><input type="text" id="txtUser"  /></td>
+                            <td><input type="text" id="username"  th:field="*{username}"/></td>
                         </tr>
                         <tr>
                             <td>PASSWORD</td>
-                            <td><input type="password" id="txtPassword" /></td>
+                            <td><input type="password" id="password" th:field="*{password}"/></td>
                         </tr>
                         <tr>
                             <td>CONFIRME PASSWORD</td>
@@ -52,6 +48,7 @@
                 </table>
                 </div>
                 <div class="card-action"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></div>
+              <br/>
               </div>
               </form>
             </div>

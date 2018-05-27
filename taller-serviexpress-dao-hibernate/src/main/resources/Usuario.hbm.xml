@@ -9,7 +9,7 @@
 		</id>
 		<property name="nombre" />
 		<property name="apellidoPaterno" />
-		<property name="rut" />
+		<property name="rut" unique="true" />
 		<property name="direccion" />
 		<property name="contactoTelefonico" />
 		<many-to-one name="perfil" class="cl.taller.serviexpress.domain.Perfil"/>

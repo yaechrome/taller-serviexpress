@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+	<body>
+		<div class="col s12 mb10">
+        	<h3 class="title small">Gestión de usuarios</h3>
+       	</div>
+        <div class="col s12 mb20">
+        	<div class="card-panel pad0">
+            	<div class="card-content pad24">
+                	<div class="row mb0">
+                  		<form class="col s12" th:action="@{/Usuario/BuscarUsuario/{rut}}" th:object="${UserViewModel}" method="GET">
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<input class="validate" id="rut" type="text" th:field="*{rut}"/>
+                        			<label for="rut">Ingrese un rut</label>
+                      			</div>
+                      			<div class="input-field col s12 m3 l4 offset-l4 text_right">
+                        			<button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button>
+                      			</div>
+                    		</div>
+                  		</form>
+                	</div>
+              	</div>
+            </div>
+		</div>
+        	<div class="col s12 mb20">
+            	<div class="card-panel pad0">
+              		<div class="card-content pad24">
+                		<h3 class="title small mb10">Listado de usuarios</h3>
+                		<div class="row mb0">
+                  			<div class="col s12">
+                    			<table class="responsive-table striped">
+                      				<thead>
+                        				<tr>
+				                        	<th class="blue-text text-darken-3">Rut</th>
+				                          	<th class="blue-text text-darken-3">Nombre</th>
+				                          	<th class="blue-text text-darken-3">Perfil</th>
+				                          	<th class="blue-text text-darken-3 text_right">Acciones</th>
+                        				</tr>
+                      				</thead>
+                      				<tbody>
+				                        <tr th:each="user : ${users}">
+				                        	<td th:text="${user.rut}">11.111.111-1</td>
+				                          	<td th:text="${user.nombre}">Juan Pérez</td>
+				                          	<td th:text="${user.getPerfil().getDetallePerfil()}">Profesional</td>
+				                          	<td class="text_right">  
+				                          	<a class="table-btn" href="users/assign" th:href="@{/users/assign/{id}(id=${user.id})}"><i class="small material-icons blue-text text-darken-3">create</i></a>
+				                          	<a class="table-btn" href="#" th:onclick="'openDeleteModal(\'' +${user.id} +'\',\'' +${user.rut} +'\',\''+${user.nombre}+'\',\''+${user.perfil.detallePerfil}+'\')'"><i class="small material-icons red-text text-darken-1">delete</i></a>
+				                          	</td>
+				                        </tr>
+                      				</tbody>
+                    			</table>
+                  			</div>
+                  		<div class="col s12">
+                    		<hr/>
+                    		<div class="row mb0">
+                      			<div class="col s12 text_center">
+                        			<ul class="pagination">
+                          				<li class="disabled prev"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                          				<li class="active blue darken-3"><a href="#!">1</a></li>
+                          				<li class="waves-effect"><a href="#!">2</a></li>
+                          				<li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                        			</ul>
+                        			<br></br>
+                        			<a class="table-btn" href="Usuario/CrearUsuario" th:href="@{/Usuario/CrearUsuario}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></a>
+                      			</div>
+                    		</div>
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+    	</div>
+    	<div class="modal" id="modalDelete">
+        	<div class="modal-content">
+          		<h3 class="title mb10 blue-text text-darken-3">Eliminar usuario</h3>
+          		<table class="responsive-table striped">
+            		<thead>
+              			<tr>
+			            	<th class="blue-text text-darken-3">Rut</th>
+			                <th class="blue-text text-darken-3">Nombre</th>
+			                <th class="blue-text text-darken-3">Perfil</th>
+		              	</tr>
+		            </thead>
+            		<tbody>
+              			<tr>
+			                <td><div id="rut">11.111.111-1</div></td>
+			                <td><div id="nombre">Juan Pérez</div></td>
+			                <td><div id="perfil">Profesional</div></td>
+              			</tr>
+            		</tbody>
+          		</table>
+        	</div>
+        	<div class="modal-footer">
+          		<div class="row mb0">
+            		<div class="col s6 text_left"><a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!">Cancelar</a></div>
+            		<div class="col s6"><a id="delete" class="modal-action modal-close waves-effect waves-light btn red darken-1" href="#!">Aceptar</a></div>
+          		</div>
+        	</div>
+      	</div>
+      	<script type="text/javascript">
+	      	$('document').ready(function() {
+	      		//initialize all modals
+	      		$('.modal').modal({
+		      	    dismissible: true
+		      	});
+	      	});
+	      	
+	      	
+      		function openDeleteModal(id,rut, nombre, perfil){
+      			$("#modalDelete #rut").html(rut);
+      			$("#modalDelete #nombre").html(nombre);
+      			$("#modalDelete #perfil").html(perfil);
+      			
+      			$("#delete").attr("href", "users/delete/"+id);
+      			
+      			$('#modalDelete').modal('open');
+      		}
+      	</script>
+	</body>
+	</th:block>
+</html>
