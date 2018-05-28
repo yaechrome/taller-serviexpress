@@ -36,31 +36,31 @@ public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmp
 
             empleado = (DatosEmpleados) query.uniqueResult();
         } catch (Exception e) {
-        } finally {
-            session.close();
-        }
+        } 
         return empleado;
     }
 
     @Override
     public boolean createDatosEmpleados(DatosEmpleados empleado) {
         Session session = getSessionFactory().openSession();
-
+        boolean creado = false;
         try {
+            session.beginTransaction();
+
             session.save(empleado);
+
             session.getTransaction().commit();
-            return true;
+            creado = true;
         } catch (Exception e) {
-        } finally {
-            session.close();
-        }
-        return false;
+        } 
+        return creado;
 
     }
 
     @Override
     public boolean updateDatosEmpleados(DatosEmpleados empleado) {
         Session session = getSessionFactory().openSession();
+        boolean actualizado = false;
         try {
             String sql = "update  DatosEmpleados set fechaContratacion = :fechaContratacion, "
                     + "sueldo = :sueldo, cargo = :cargo, obsAdministrativas = :obsAdministrativas"
@@ -75,13 +75,11 @@ public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmp
             query.setParameter("obs_administrativas", empleado.getObsAdministrativas());
 
             int result = query.executeUpdate();
-            return true;
+            actualizado = true;
         } catch (Exception e) {
 
-        }finally{
-            session.close();
         }
-        return false;
+        return actualizado;
     }
 
 }

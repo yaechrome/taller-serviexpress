@@ -57,8 +57,6 @@ public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao {
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return lista;
     }

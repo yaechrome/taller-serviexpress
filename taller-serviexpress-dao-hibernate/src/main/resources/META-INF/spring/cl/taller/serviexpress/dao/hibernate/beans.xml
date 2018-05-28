@@ -47,4 +47,37 @@
    <bean id="credencialesDao" class="cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate">
    		<property name="sessionFactory" ref="sessionFactory"></property>
    </bean>
+   <bean id="datosEmpleadoDao" class="cl.taller.serviexpress.dao.hibernate.DatosEmpleadoDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   
+   <bean id="familiaProductoDao" class="cl.taller.serviexpress.dao.hibernate.FamiliaProductoDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   <bean id="tipoProductoDao" class="cl.taller.serviexpress.dao.hibernate.TipoProductoDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   <bean id="productoDao" class="cl.taller.serviexpress.dao.hibernate.ProductoDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   
+   <bean id="servicioDao" class="cl.taller.serviexpress.dao.hibernate.ServicioDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   
+   <bean id="ordenCompraDao" class="cl.taller.serviexpress.dao.hibernate.OrdenCompraDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   <bean id="ordenProductoDao" class="cl.taller.serviexpress.dao.hibernate.OrdenProductoDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   
+   <bean id="recepcionDao" class="cl.taller.serviexpress.dao.hibernate.RecepcionDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   <bean id="recepcionProductoDao" class="cl.taller.serviexpress.dao.hibernate.RecepcionProductoDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   
+   
 </beans>

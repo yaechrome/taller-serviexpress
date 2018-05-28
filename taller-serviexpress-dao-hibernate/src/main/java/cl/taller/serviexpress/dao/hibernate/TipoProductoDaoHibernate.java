@@ -36,8 +36,6 @@ public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProdu
             lista = query.list();
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
 	
 	return lista;
@@ -54,8 +52,6 @@ public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProdu
             lista = query.list();
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
         return lista;
 

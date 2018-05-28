@@ -42,8 +42,6 @@ public class RecepcionProductoDaoHibernate extends BaseHibernate implements Rece
             lista = query.list();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return lista;
 
@@ -55,13 +53,12 @@ public class RecepcionProductoDaoHibernate extends BaseHibernate implements Rece
         boolean creado = false;
         Session session = getSessionFactory().openSession();
         try {
+            
+            session.beginTransaction();
             session.save(recepcionProducto);
             session.getTransaction().commit();
-            creado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return creado;
 
@@ -89,8 +86,6 @@ public class RecepcionProductoDaoHibernate extends BaseHibernate implements Rece
             actualizado = true;
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return actualizado;
     }

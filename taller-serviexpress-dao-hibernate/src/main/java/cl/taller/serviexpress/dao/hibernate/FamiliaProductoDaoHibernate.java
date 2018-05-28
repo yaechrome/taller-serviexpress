@@ -33,8 +33,6 @@ public class FamiliaProductoDaoHibernate extends BaseHibernate implements Famili
 
             lista=  query.list();
         } catch (Exception e) {
-        }finally{
-            session.close();
         }
         return lista;
     }

@@ -12,10 +12,29 @@
 	<bean id="userServices" class="cl.taller.serviexpress.services.impl.UsuarioServicesImpl">
 		<property name="userDao" ref="userDao" />
 		<property name="credencialesDao" ref="credencialesDao"/>
+                <property name="datosEmpleadoDao" ref="datosEmpleadoDao"></property>
 	</bean>
 	<bean id="perfilServices" class="cl.taller.serviexpress.services.impl.PerfilServicesImpl">
 		<property name="perfilDao" ref="perfilDao"/>
 	</bean>
+        <bean id="productoServices" class="cl.taller.serviexpress.services.impl.ProductoServicesImpl">
+		<property name="productoDao" ref="productoDao"/>
+                <property name="tipoProductoDao" ref="tipoProductoDao"/>
+                <property name="familiaProductoDao" ref="familiaProductoDao"/>
+	</bean>
+        <bean id="servicioServices" class="cl.taller.serviexpress.services.impl.ServicioServicesImpl">
+		<property name="servicioDao" ref="servicioDao"/>
+	</bean>
+        <bean id="ordenServices" class="cl.taller.serviexpress.services.impl.OrdenServicesImpl">
+		<property name="ordenDao" ref="ordenDao"/>
+                <property name="ordenProductoDao" ref="ordenProductoDao"/>
+	</bean>
+        <bean id="recepcionServices" class="cl.taller.serviexpress.services.impl.RecepcionServicesImpl">
+		<property name="recepcionDao" ref="recepcionDao"/>
+                <property name="recepcionProductoDao" ref="recepcionProductoDao"/>
+	</bean>
+        
+        
 	
 <!-- 	<bean id="userServicesImpl" class="cl.junji.control.normativo.services.impl.UserServicesImpl"> -->
 <!-- 		<property name="defaultErrorView" value="error" /> -->
