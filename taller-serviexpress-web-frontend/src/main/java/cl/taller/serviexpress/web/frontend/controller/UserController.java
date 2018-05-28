@@ -10,7 +10,6 @@ import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.PerfilServicesImpl;
 import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
-import cl.taller.serviexpress.web.frontend.viewmodel.IdViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
 
 import java.util.List;
@@ -21,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -96,26 +94,26 @@ public class UserController {
         model.addAttribute("UserViewModel", new UserViewModel());
         return INDEX_URL;
     }
-    
+
     @RequestMapping(value = {"/EditarUsuario"}, method = RequestMethod.GET)
     public String editarUsuario(@Valid UserViewModel userViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
-    	Usuario usuario = userDao.buscarPorID(id);
-    	List<Perfil> perfiles = perfilDao.listarPerfiles();
-    	UserViewModel userViewModel2 = new UserViewModel();
-    	userViewModel2.setNombre(usuario.getNombre());
-    	userViewModel2.setRut(usuario.getRut());
-    	model.addAttribute("perfiles", perfiles);
-    	model.addAttribute("usuario", usuario);
+        Usuario usuario = userDao.buscarPorID(id);
+        List<Perfil> perfiles = perfilDao.listarPerfiles();
+        UserViewModel userViewModel2 = new UserViewModel();
+        userViewModel2.setNombre(usuario.getNombre());
+        userViewModel2.setRut(usuario.getRut());
+        model.addAttribute("perfiles", perfiles);
+        model.addAttribute("usuario", usuario);
         model.addAttribute("UserViewModel", userViewModel2);
         return EDIT_URL;
     }
-    
-        @RequestMapping(value = {"/ActualizarUsuario"}, method = RequestMethod.POST)
+
+    @RequestMapping(value = {"/ActualizarUsuario"}, method = RequestMethod.POST)
     public String ActualizarUsuario(@Valid UserViewModel userViewModel, @RequestParam("rut") String rut, BindingResult result, Model model) {
-    	Usuario usuario = userDao.buscarPorRut(rut);
+        Usuario usuario = userDao.buscarPorRut(rut);
         Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
         usuario.setPerfil(perfil);
-        if(userDao.modificarUsuario(usuario)){
+        if (userDao.modificarUsuario(usuario)) {
             List<Usuario> users = userDao.listarUsuarios();
             model.addAttribute("users", users);
             model.addAttribute("UserViewModel", new UserViewModel());
@@ -125,11 +123,11 @@ public class UserController {
 
     @RequestMapping(value = "/EditarUsuario", method = RequestMethod.POST)
     public String editar(@Valid UserViewModel userViewModel, Model model) {
-    	
-    	Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
-    	Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
-    	usuario.setPerfil(perfil);
-    	if (userDao.modificarUsuario(usuario)) {
+
+        Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
+        Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+        usuario.setPerfil(perfil);
+        if (userDao.modificarUsuario(usuario)) {
 
             List<Usuario> users = userDao.listarUsuarios();
             model.addAttribute("users", users);
@@ -137,11 +135,11 @@ public class UserController {
         }
         return INDEX_URL;
     }
-    
+
     @RequestMapping(value = {"/LeerUsuario"}, method = RequestMethod.GET)
     public String leerUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
-    	Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
-    	model.addAttribute("usuario", usuario);
+        Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+        model.addAttribute("usuario", usuario);
         return READ_URL;
     }
 
