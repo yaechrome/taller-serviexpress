@@ -46,9 +46,10 @@ public class UserController {
     
     @RequestMapping
     public String index(Model model) {
-        
 		List<Usuario> users = userDao.listarUsuarios();
+		List<Perfil> perfiles = perfilDao.listarPerfiles();
 		model.addAttribute("users", users);
+		model.addAttribute("perfiles", perfiles);
     	model.addAttribute("UserViewModel", new UserViewModel());
     	
         return INDEX_URL;

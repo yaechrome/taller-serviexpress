@@ -90,7 +90,6 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
     @Override
     public boolean crearCredenciales(Credenciales credenciales) {
-
         return credencialesDao.createCredenciales(credenciales);
     }
 

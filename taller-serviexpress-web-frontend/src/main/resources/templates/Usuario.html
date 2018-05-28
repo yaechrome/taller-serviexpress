@@ -19,7 +19,7 @@
                         			<label for="rut">Ingrese un rut</label>
                       			</div>
                       			<div class="input-field col s12 m3 l4 offset-l4 text_right">
-                        			<button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button>
+                      			<a class="table-btn" href="#" th:each="user : ${users}" th:object="${user}" th:if="${user.rut} eq '123123123'" th:onclick="'openBuscarModal(\'' +${user.id} +'\',\'' +${user.rut} +'\',\''+${user.nombre}+'\',\''+${user.perfil.detallePerfil}+'\')'"><button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button></a>	
                       			</div>
                     		</div>
                   		</form>
@@ -48,8 +48,7 @@
 				                          	<td th:text="${user.nombre}">Juan Pérez</td>
 				                          	<td th:text="${user.getPerfil().getDetallePerfil()}">Profesional</td>
 				                          	<td class="text_right">  
-				                          	<a class="table-btn" href="users/assign" th:href="@{/users/assign/{id}(id=${user.id})}"><i class="small material-icons blue-text text-darken-3">create</i></a>
-				                          	<a class="table-btn" href="#" th:onclick="'openDeleteModal(\'' +${user.id} +'\',\'' +${user.rut} +'\',\''+${user.nombre}+'\',\''+${user.perfil.detallePerfil}+'\')'"><i class="small material-icons red-text text-darken-1">delete</i></a>
+				                          	<a class="table-btn" href="#" th:onclick="'openDeleteModal(\'' +${user.id} +'\',\'' +${user.rut} +'\',\''+${user.nombre}+'\',\''+${user.perfil.detallePerfil}+'\')'"><i class="small material-icons blue-text text-darken-1">delete</i></a>
 				                          	</td>
 				                        </tr>
                       				</tbody>
@@ -74,9 +73,36 @@
               	</div>
             </div>
     	</div>
-    	<div class="modal" id="modalDelete">
+    	<div class="modal" id="modalBuscar">
         	<div class="modal-content">
-          		<h3 class="title mb10 blue-text text-darken-3">Eliminar usuario</h3>
+          		<h3 class="title mb10 blue-text text-darken-3">Buscar Usuario</h3>
+          		<table class="responsive-table striped">
+            		<thead>
+              			<tr>
+			            	<th class="blue-text text-darken-3">Rut</th>
+			                <th class="blue-text text-darken-3">Nombre</th>
+			                <th class="blue-text text-darken-3">Perfil</th>
+		              	</tr>
+		            </thead>
+            		<tbody>
+              			<tr>
+			                <td><div id="rut">11.111.111-1</div></td>
+			                <td><div id="nombre">Juan Pérez</div></td>
+			                <td><div id="perfil">Profesional</div></td>
+              			</tr>
+            		</tbody>
+          		</table>
+        	</div>
+        	<div class="modal-footer">
+          		<div class="row mb0">
+            		<div class="col s6 text_left"><a class="modal-action modal-close waves-effect waves-green btn-flat" href="#!">Cancelar</a></div>
+            		<div class="col s6"><a id="delete" class="modal-action modal-close waves-effect waves-light btn red darken-1" href="#!">Aceptar</a></div>
+          		</div>
+        	</div>
+      	</div>
+      	   <div class="modal" id="modalEditar">
+        	<div class="modal-content">
+          		<h3 class="title mb10 blue-text text-darken-3">Editar usuario</h3>
           		<table class="responsive-table striped">
             		<thead>
               			<tr>
@@ -109,11 +135,18 @@
 		      	});
 	      	});
 	      	
-	      	
+      		function openBuscarModal(id,rut, nombre, perfil){
+      			$("#modalBuscar #rut").html(rut);
+      			$("#modalBuscar #nombre").html(nombre);
+      			$("#modalBuscar #perfil").html(perfil);
+      			
+      			$('#modalBuscar').modal('open');
+      		}
+      		
       		function openDeleteModal(id,rut, nombre, perfil){
-      			$("#modalDelete #rut").html(rut);
-      			$("#modalDelete #nombre").html(nombre);
-      			$("#modalDelete #perfil").html(perfil);
+      			$("#modalBuscar #rut").html(rut);
+      			$("#modalBuscar #nombre").html(nombre);
+      			$("#modalBuscar #perfil").html(perfil);
       			
       			$("#delete").attr("href", "users/delete/"+id);
       			
