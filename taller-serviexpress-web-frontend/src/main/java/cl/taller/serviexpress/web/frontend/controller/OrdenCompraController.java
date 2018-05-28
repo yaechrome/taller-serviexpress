@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/OrdenCompra")
 public class OrdenCompraController {
-    @Autowired
+    
+	@Autowired
     OrdenServicesImpl ordenCompraDao;
     
     private static final String INDEX_URL="OrdenCompra";

@@ -20,8 +20,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/Usuario")
@@ -35,6 +37,7 @@ public class UserController {
 
     private static final String INDEX_URL = "Usuario";
     private static final String USER_URL = "CrearUsuario";
+    private static final String EDIT_URL = "EditarUsuario";
     private static final String ASSING_PROFILE_URL = "user/assignProfile";
     private static final String CREATE_USER_URL = "Usuario/CrearUsuario";
     private static final String EDIT_USER = "user/editUser";
@@ -94,5 +97,22 @@ public class UserController {
         model.addAttribute("UserViewModel", new UserViewModel());
         return INDEX_URL;
     }
+    
+    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.GET)
+    public String editarUsuario(@RequestParam("id") Long id, BindingResult result, Model model) {
+
+        model.addAttribute("UserViewModel", new UserViewModel());
+        return EDIT_URL;
+    }
+/*
+    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.GET)
+    public String editar(Model model) {
+
+    	
+
+        model.addAttribute("UserViewModel", new UserViewModel());
+        return EDIT_URL;
+    }
+*/
 
 }

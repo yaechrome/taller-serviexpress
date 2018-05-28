@@ -11,7 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 public class OrdenServicesImpl implements OrdenCompraServices{
 
-    private OrdenCompraDao ordenDao;
+    private OrdenCompraDao ordenCompraDao;
 
     @Autowired
     private OrdenCompraServices ordenServices;
@@ -19,8 +19,8 @@ public class OrdenServicesImpl implements OrdenCompraServices{
     /**
      * @param ordenDao the userDao to set
      */
-    public void setOrdenDao(OrdenCompraDao ordenDao) {
-        this.ordenDao = ordenDao;
+    public void setOrdenCompraDao(OrdenCompraDao ordenCompraDao) {
+        this.ordenCompraDao = ordenCompraDao;
     }
     
     private OrdenProductoDao ordenProductoDao;
@@ -36,27 +36,27 @@ public class OrdenServicesImpl implements OrdenCompraServices{
     
     @Override
     public boolean crearOrdenCompra(OrdenCompra ordenCompra) {
-        return ordenDao.createOrdenCompra(ordenCompra);
+        return ordenCompraDao.createOrdenCompra(ordenCompra);
     }
 
     @Override
     public boolean modificarOrdenCompra(OrdenCompra ordenCompra) {
-        return ordenDao.updateOrdenCompra(ordenCompra);
+        return ordenCompraDao.updateOrdenCompra(ordenCompra);
     }
 
     @Override
     public OrdenCompra buscarOrdenCompraPorId(long idOrdenCompra) {
-        return ordenDao.findByIdOrden(idOrdenCompra);
+        return ordenCompraDao.findByIdOrden(idOrdenCompra);
     }
 
     @Override
     public List<OrdenCompra> listarOrdenCompra() {
-        return ordenDao.findAll();
+        return ordenCompraDao.findAll();
     }
 
     @Override
     public List<OrdenCompra> listarOrdenCompraPorProveedor(long idProveedor) {
-        return ordenDao.findByProveedor(idProveedor);
+        return ordenCompraDao.findByProveedor(idProveedor);
     }
 
     @Override
