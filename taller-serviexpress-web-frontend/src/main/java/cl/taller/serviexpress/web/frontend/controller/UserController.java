@@ -20,84 +20,79 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- *
- * @author ochandia
- */
 @Controller
 @RequestMapping("/Usuario")
 public class UserController {
 
-	@Autowired
-	UsuarioServicesImpl userDao;
-	
-	@Autowired
-	PerfilServicesImpl perfilDao;
-	
-    private static final String INDEX_URL="Usuario";
-    private static final String USER_URL="CrearUsuario";
+    @Autowired
+    UsuarioServicesImpl userDao;
+
+    @Autowired
+    PerfilServicesImpl perfilDao;
+
+    private static final String INDEX_URL = "Usuario";
+    private static final String USER_URL = "CrearUsuario";
     private static final String ASSING_PROFILE_URL = "user/assignProfile";
     private static final String CREATE_USER_URL = "Usuario/CrearUsuario";
     private static final String EDIT_USER = "user/editUser";
-    
+
     @RequestMapping
     public String index(Model model) {
-		List<Usuario> users = userDao.listarUsuarios();
-		List<Perfil> perfiles = perfilDao.listarPerfiles();
-		model.addAttribute("users", users);
-		model.addAttribute("perfiles", perfiles);
-    	model.addAttribute("UserViewModel", new UserViewModel());
-    	
+        List<Usuario> users = userDao.listarUsuarios();
+        List<Perfil> perfiles = perfilDao.listarPerfiles();
+        model.addAttribute("users", users);
+        model.addAttribute("perfiles", perfiles);
+        model.addAttribute("UserViewModel", new UserViewModel());
+
         return INDEX_URL;
     }
-    
-    @RequestMapping(value="/CrearUsuario",method=RequestMethod.GET)
-    public String verCrearUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-		List<Usuario> users = userDao.listarUsuarios();
-		model.addAttribute("users", users);
-    	model.addAttribute("UserViewModel", new UserViewModel());
-    	
-    	return USER_URL;
+
+    @RequestMapping(value = "/CrearUsuario", method = RequestMethod.GET)
+    public String verCrearUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
+        List<Usuario> users = userDao.listarUsuarios();
+        model.addAttribute("users", users);
+        model.addAttribute("UserViewModel", new UserViewModel());
+
+        return USER_URL;
     }
-    
-    @RequestMapping(value="/CrearUsuario",method=RequestMethod.POST)
-    public String createUser(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-		
-    	Usuario user = new Usuario();
-    	Credenciales credencial = new Credenciales();
-    	
-    	Perfil perfilCliente = perfilDao.buscarPorPerfil(2L);
-    	user.setNombre(userViewModel.getNombre());
-    	user.setRut(userViewModel.getRut());
-    	user.setDireccion(userViewModel.getDireccion());
-    	user.setContactoTelefonico(userViewModel.getTelefono());
-    	user.setPerfil(perfilCliente);
-    	credencial.setUsuario(user);
-    	credencial.setUsername(userViewModel.getUsername());
-    	credencial.setPassword(userViewModel.getPassword());
-    	
-    	if(userDao.crearUsuario(user) & userDao.crearCredenciales(credencial)) {
-    	
-    		List<Usuario> users = userDao.listarUsuarios();
-    		model.addAttribute("users", users);
-    		model.addAttribute("UserViewModel", new UserViewModel());
-    	}
-    	return INDEX_URL;
+
+    @RequestMapping(value = "/CrearUsuario", method = RequestMethod.POST)
+    public String createUser(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
+
+        Usuario user = new Usuario();
+        Credenciales credencial = new Credenciales();
+
+        Perfil perfilCliente = perfilDao.buscarPorPerfil(2L);
+        user.setNombre(userViewModel.getNombre());
+        user.setRut(userViewModel.getRut());
+        user.setDireccion(userViewModel.getDireccion());
+        user.setContactoTelefonico(userViewModel.getTelefono());
+        user.setPerfil(perfilCliente);
+        credencial.setUsuario(user);
+        credencial.setUsername(userViewModel.getUsername());
+        credencial.setPassword(userViewModel.getPassword());
+
+        if (userDao.crearUsuario(user) & userDao.crearCredenciales(credencial)) {
+
+            List<Usuario> users = userDao.listarUsuarios();
+            model.addAttribute("users", users);
+            model.addAttribute("UserViewModel", new UserViewModel());
+        }
+        return INDEX_URL;
     }
-    
-    @RequestMapping(value="/BuscarUsuario/{rut}",method=RequestMethod.GET)
-    public String buscarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-		List<Usuario> users = userDao.listarUsuarios();
-		List<Perfil> perfiles = perfilDao.listarPerfiles();
-    	
-		model.addAttribute("perfiles", perfiles);
-		model.addAttribute("users", users);
-    	model.addAttribute("UserViewModel", new UserViewModel());
-    	return INDEX_URL;
+
+    @RequestMapping(value = "/BuscarUsuario/{rut}", method = RequestMethod.GET)
+    public String buscarUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
+        List<Usuario> users = userDao.listarUsuarios();
+        List<Perfil> perfiles = perfilDao.listarPerfiles();
+
+        model.addAttribute("perfiles", perfiles);
+        model.addAttribute("users", users);
+        model.addAttribute("UserViewModel", new UserViewModel());
+        return INDEX_URL;
     }
-    
+
 }
