@@ -8,6 +8,7 @@ public class UserViewModel {
 	private String telefono;
 	private String username;
 	private String password;
+	private Long idPerfil;
 	/**
 	 * @return the rut
 	 */
@@ -79,6 +80,18 @@ public class UserViewModel {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	/**
+	 * @return the idPerfil
+	 */
+	public Long getIdPerfil() {
+		return idPerfil;
+	}
+	/**
+	 * @param idPerfil the idPerfil to set
+	 */
+	public void setIdPerfil(Long idPerfil) {
+		this.idPerfil = idPerfil;
 	}
 
 

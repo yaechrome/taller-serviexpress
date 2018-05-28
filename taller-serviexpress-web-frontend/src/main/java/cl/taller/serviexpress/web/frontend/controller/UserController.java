@@ -10,6 +10,7 @@ import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.PerfilServicesImpl;
 import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
+import cl.taller.serviexpress.web.frontend.viewmodel.IdViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
 
 import java.util.List;
@@ -100,19 +101,30 @@ public class UserController {
     
     @RequestMapping(value = {"/EditarUsuario"}, method = RequestMethod.GET)
     public String editarUsuario(@Valid UserViewModel userViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
-
-        model.addAttribute("UserViewModel", new UserViewModel());
+    	Usuario usuario = userDao.buscarPorID(id);
+    	List<Perfil> perfiles = perfilDao.listarPerfiles();
+    	UserViewModel userViewModel2 = new UserViewModel();
+    	userViewModel2.setNombre(usuario.getNombre());
+    	userViewModel2.setRut(usuario.getRut());
+    	model.addAttribute("perfiles", perfiles);
+    	model.addAttribute("usuario", usuario);
+        model.addAttribute("UserViewModel", userViewModel2);
         return EDIT_URL;
     }
-/*
-    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.GET)
-    public String editar(Model model) {
 
+    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.POST)
+    public String editar(@Valid UserViewModel userViewModel, Model model) {
     	
+    	Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
+    	Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+    	usuario.setPerfil(perfil);
+    	if (userDao.modificarUsuario(usuario)) {
 
-        model.addAttribute("UserViewModel", new UserViewModel());
-        return EDIT_URL;
+            List<Usuario> users = userDao.listarUsuarios();
+            model.addAttribute("users", users);
+            model.addAttribute("UserViewModel", new UserViewModel());
+        }
+        return INDEX_URL;
     }
-*/
 
 }

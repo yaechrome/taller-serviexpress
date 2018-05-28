@@ -14,51 +14,29 @@
           <div class="col s12 mb20">
             <div class="card-panel pad0">
               <div class="card-content pad24">
-                <div class="row mb0">
-                  <form class="col s12">
-                    <div class="row mb0">
-                      <div class="input-field col s12 m3 l4">
-                        <input class="validate" id="rut" type="text" value=""/>
-                        <label for="rut">Ingrese un rut</label>
-                      </div>
-                      <div class="input-field col s12 m3 l4 offset-l4 text_right">
-                        <button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col s12 mb20">
-            <div class="card-panel pad0">
-              <div class="card-content pad24">
-                <h3 class="title mb10 blue-text text-darken-3 mb20">Asignar perfil</h3>
-                <form class="row mb0" action="gestion_usuarios.html">
+                <h3 class="title mb10 blue-text text-darken-3 mb20">Modificar perfil</h3>
+                <form class="row mb0" th:action="@{/Usuario/EditarUsuario}" th:object="${UserViewModel}" method="POST">
                   <div class="col s12 m3">
                     <dl class="def">
                       <dt class="def-term">Rut:</dt>
-                      <dd class="def-des">11.111.111-1</dd>
+                      <dd class="def-des" th:text="${usuario.rut}"></dd>
                     </dl>
                   </div>
                   <div class="col s12 m3">
                     <dl class="def">
                       <dt class="def-term">Nombre:</dt>
-                      <dd class="def-des">María salgado</dd>
+                      <dd class="def-des" th:text="${usuario.nombre}" ></dd>
                     </dl>
                   </div>
                   <div class="input-field col s12 m3">
-                    <select class="validate">
-                      <option value="" disabled="" selected="">Selecciona</option>
-                      <option value="1">Profesional</option>
-                      <option value="2">Encargado</option>
-                      <option value="3">Dirnac</option>
-                      <option value="4">Admin TI</option>
+                    <select class="form-control" th:field="*{idPerfil}">
+                      <option value="">Seleccion Perfil</option>
+                      <option th:each="perfil : ${perfiles}" th:value="${perfil.id}" th:text="${perfil.detallePerfil}" ></option>
                     </select>
                     <label>Perfil</label>
                   </div>
                   <div class="col s12 m3 text_right">
-                    <button class="waves-effect waves-light btn blue darken-3 mt10" type="submit">guardar</button>
+                    <button class="waves-effect waves-light btn blue darken-3 mt10" type="submit">Actualizar</button>
                   </div>
                 </form>
               </div>

@@ -50,7 +50,7 @@ public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao {
         Session session = getSessionFactory().openSession();
         List<Perfil> lista = null;
         try {
-            String sql = "from Peril";
+            String sql = "from Perfil";
 
             Query query = session.createQuery(sql);
 
