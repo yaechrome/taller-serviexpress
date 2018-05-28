@@ -48,7 +48,7 @@
 				                          	<td th:text="${user.nombre}">Juan Pérez</td>
 				                          	<td th:text="${user.getPerfil().getDetallePerfil()}">Profesional</td>
 				                          	<td class="text_right">
-				                          		<a class="table-btn" th:href="@{/Usuario/EditarUsuario(id = ${user.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          		<a class="table-btn" href="/Usuario/EditarUsuario" th:href="@{/Usuario/EditarUsuario(id = ${user.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
 				                          	</td>
 				                        </tr>
                       				</tbody>

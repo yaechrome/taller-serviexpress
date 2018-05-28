@@ -98,8 +98,8 @@ public class UserController {
         return INDEX_URL;
     }
     
-    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.GET)
-    public String editarUsuario(@RequestParam("id") Long id, BindingResult result, Model model) {
+    @RequestMapping(value = {"/EditarUsuario"}, method = RequestMethod.GET)
+    public String editarUsuario(@Valid UserViewModel userViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
 
         model.addAttribute("UserViewModel", new UserViewModel());
         return EDIT_URL;
