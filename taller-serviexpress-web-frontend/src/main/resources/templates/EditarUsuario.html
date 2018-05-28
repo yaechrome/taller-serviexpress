@@ -15,7 +15,7 @@
             <div class="card-panel pad0">
               <div class="card-content pad24">
                 <h3 class="title mb10 blue-text text-darken-3 mb20">Modificar perfil</h3>
-                <form class="row mb0" th:action="@{/Usuario/EditarUsuario}" th:object="${UserViewModel}" method="POST">
+                <form class="row mb0" th:action="@{/Usuario/ActualizarUsuario(rut = ${usuario.rut})}" th:object="${UserViewModel}" method="POST">
                   <div class="col s12 m3">
                     <dl class="def">
                       <dt class="def-term">Rut:</dt>

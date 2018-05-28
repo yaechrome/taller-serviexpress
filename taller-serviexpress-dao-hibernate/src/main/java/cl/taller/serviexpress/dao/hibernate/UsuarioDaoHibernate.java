@@ -103,6 +103,7 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
         boolean actualizado = false;
     	Session session = getSessionFactory().openSession();
         try {
+            /**
             String sql = "update from Usuario set perfil = :idPerfil, "
                     + "rut = :rut, nombre = :nombre, direccion = :direccion,"
                     + " contactoTelefonico = :contactoTelefono where id = :id";
@@ -118,7 +119,11 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
 
             int count = query.executeUpdate();
 
+*           */
+            session.beginTransaction();
+            session.saveOrUpdate(usuario);
             actualizado = true;
+            session.getTransaction().commit();
         } catch (Exception e) {
             
         }finally{

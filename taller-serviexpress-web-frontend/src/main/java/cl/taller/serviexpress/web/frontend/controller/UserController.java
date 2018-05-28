@@ -109,6 +109,19 @@ public class UserController {
         model.addAttribute("UserViewModel", userViewModel2);
         return EDIT_URL;
     }
+    
+        @RequestMapping(value = {"/ActualizarUsuario"}, method = RequestMethod.POST)
+    public String ActualizarUsuario(@Valid UserViewModel userViewModel, @RequestParam("rut") String rut, BindingResult result, Model model) {
+    	Usuario usuario = userDao.buscarPorRut(rut);
+        Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
+        usuario.setPerfil(perfil);
+        if(userDao.modificarUsuario(usuario)){
+            List<Usuario> users = userDao.listarUsuarios();
+            model.addAttribute("users", users);
+            model.addAttribute("UserViewModel", new UserViewModel());
+        }
+        return INDEX_URL;
+    }
 
     @RequestMapping(value = "/EditarUsuario", method = RequestMethod.POST)
     public String editar(@Valid UserViewModel userViewModel, Model model) {
