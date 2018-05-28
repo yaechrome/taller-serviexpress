@@ -12,14 +12,14 @@
         	<div class="card-panel pad0">
             	<div class="card-content pad24">
                 	<div class="row mb0">
-                  		<form class="col s12" th:action="@{/Usuario/BuscarUsuario/{rut}}" th:object="${UserViewModel}" method="GET">
+                  		<form class="col s12" th:action="@{/Usuario/LeerUsuario}" th:object="${UserViewModel}" method="GET">
                     		<div class="row mb0">
                       			<div class="input-field col s12 m3 l4">
                         			<input class="validate" id="rut" type="text" th:field="*{rut}"/>
                         			<label for="rut">Ingrese un rut</label>
                       			</div>
                       			<div class="input-field col s12 m3 l4 offset-l4 text_right">
-                      			<a class="table-btn" href="#" th:each="user : ${users}" th:object="${user}" th:if="${user.rut} eq '123123123'" th:onclick="'openBuscarModal(\'' +${user.id} +'\',\'' +${user.rut} +'\',\''+${user.nombre}+'\',\''+${user.perfil.detallePerfil}+'\')'"><button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button></a>	
+                                            <a class="table-btn" ><button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button></a>	
                       			</div>
                     		</div>
                   		</form>

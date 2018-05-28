@@ -18,36 +18,27 @@
                     <tbody>
                         <tr>
                             <td>RUT</td>
-                            <td><input type="text" id="rut" th:field="*{rut}"/></td>
+                            <td type="text" id="rut" th:text="${usuario.rut}"></td>
                         </tr>
                         <tr>
                             <td>NOMBRE</td>
-                            <td><input type="text" id="nombre" th:field="*{nombre}" /></td>
-                        </tr>
-                        <tr>
-                            <td>APELLIDO</td>
-                            <td><input type="text" id="apellido" th:field="*{apellido}" /></td>
+                            <td><a type="text" id="nombre" th:text="${usuario.nombre}" /></td>
                         </tr>
                         <tr>
                             <td>DIRECCION</td>
-                            <td><input type="text" id="direccion" th:field="*{direccion}"/></td>
+                            <td><a type="text" id="direccion" th:text="${usuario.direccion}"/></td>
                         </tr>
                         <tr>
                             <td>TELEFONO</td>
-                            <td><input type="text" id="telefono" th:field="*{telefono}"/></td>
+                            <td><a type="text" id="telefono" th:text="${usuario.contactoTelefonico}"/></td>
                         </tr>
-                        <tr>
-                            <td>NOMBRE DE USUARIO</td>
-                            <td><input type="text" id="username"  th:field="*{username}"/></td>
-                        </tr>
-                        <tr>
-                            <td>CONTRASEÑA</td>
-                            <td><input type="password" id="password" th:field="*{password}"/></td>
-                        </tr>
-                    </tbody>
+                    </tbody>     
                 </table>
                 </div>
-                <div class="card-action"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></div>
+                  <div class="center-align"> 
+                      <a class="btn btn-delete" href="/Usuario" th:href="@{/Usuario}">Volver</a>     
+                  </div>
+                  
               <br/>
               </div>
               </form>

@@ -39,9 +39,7 @@ public class UserController {
     private static final String INDEX_URL = "Usuario";
     private static final String USER_URL = "CrearUsuario";
     private static final String EDIT_URL = "EditarUsuario";
-    private static final String ASSING_PROFILE_URL = "user/assignProfile";
-    private static final String CREATE_USER_URL = "Usuario/CrearUsuario";
-    private static final String EDIT_USER = "user/editUser";
+    private static final String READ_URL = "LeerUsuario";
 
     @RequestMapping
     public String index(Model model) {
@@ -125,6 +123,13 @@ public class UserController {
             model.addAttribute("UserViewModel", new UserViewModel());
         }
         return INDEX_URL;
+    }
+    
+    @RequestMapping(value = {"/LeerUsuario"}, method = RequestMethod.GET)
+    public String leerUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
+    	Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+    	model.addAttribute("usuario", usuario);
+        return READ_URL;
     }
 
 }

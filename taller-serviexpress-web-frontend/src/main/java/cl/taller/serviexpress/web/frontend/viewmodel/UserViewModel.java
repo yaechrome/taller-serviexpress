@@ -4,6 +4,7 @@ public class UserViewModel {
 
 	private String rut;
 	private String nombre;
+        private String apellido;
 	private String direccion;
 	private String telefono;
 	private String username;
@@ -33,6 +34,17 @@ public class UserViewModel {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+        
+        
+        
 	/**
 	 * @return the direccion
 	 */
