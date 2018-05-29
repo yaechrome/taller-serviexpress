@@ -2,7 +2,11 @@ package cl.taller.serviexpress.web.frontend.controller;
 
 import cl.taller.serviexpress.domain.OrdenCompra;
 import cl.taller.serviexpress.domain.OrdenProducto;
+import cl.taller.serviexpress.domain.Producto;
+import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.OrdenServicesImpl;
+import cl.taller.serviexpress.services.impl.ProductoServicesImpl;
+import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.IdViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.OrdenCompraViewModel;
 import java.util.List;
@@ -20,10 +24,16 @@ public class OrdenCompraController {
     
 	@Autowired
     OrdenServicesImpl ordenCompraDao;
+	
+	@Autowired
+	ProductoServicesImpl productoDao;
+	
+    @Autowired
+    UsuarioServicesImpl userDao;
+
     
     private static final String INDEX_URL="OrdenCompra";
     private static final String ORDER_URL="CrearOrdenCompra";
-    private static final String CREATE_ORDER_URL = "OrdenCompra/CrearOrdenCompra";
     private static final String ORDEN_FILTER_URL = "FiltroOrdenes";
     @RequestMapping
     public String index(Model model) {
@@ -38,7 +48,11 @@ public class OrdenCompraController {
     @RequestMapping(value="/CrearOrdenCompra",method=RequestMethod.GET)
     public String verCrearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result,Model model) {
 		List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+		List<Producto> productos = productoDao.listarProductos();
+		List<Usuario> proveedores = userDao.listarUsuariosPorPerfil(5L);
+		model.addAttribute("proveedores", proveedores);
 		model.addAttribute("ordenes", ordenes);
+		model.addAttribute("productos", productos);
     	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
     	
     	return ORDER_URL;
@@ -76,8 +90,7 @@ public class OrdenCompraController {
     }
     
     @RequestMapping(value="/FiltroOrdenes",method=RequestMethod.GET)
-    public String filtroOrdenCompra(@Valid IdViewModel idViewModel, BindingResult result,Model model) {
-        OrdenCompra orden = ordenCompraDao.buscarOrdenCompraPorId(idViewModel.getId());
+    public String filtroOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result,Model model) {
         List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
         model.addAttribute("ordenes", ordenes);
     	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());

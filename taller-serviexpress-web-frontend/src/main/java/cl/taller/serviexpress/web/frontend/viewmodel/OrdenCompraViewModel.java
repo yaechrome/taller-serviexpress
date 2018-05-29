@@ -14,8 +14,55 @@ public class OrdenCompraViewModel {
     private String estadoOrden;
     private String observacionOrden;
     private Set<OrdenProducto> ordenProducto;
+    private Long precioUnitario;
+    private Long cantidad;
+    private Long idProducto;
 
-    public Usuario getUsuario() {
+    
+    
+    /**
+	 * @return the idProducto
+	 */
+	public Long getIdProducto() {
+		return idProducto;
+	}
+
+	/**
+	 * @param idProducto the idProducto to set
+	 */
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
+	}
+
+	/**
+	 * @return the precioUnitario
+	 */
+	public Long getPrecioUnitario() {
+		return precioUnitario;
+	}
+
+	/**
+	 * @param precioUnitario the precioUnitario to set
+	 */
+	public void setPrecioUnitario(Long precioUnitario) {
+		this.precioUnitario = precioUnitario;
+	}
+
+	/**
+	 * @return the cantidad
+	 */
+	public Long getCantidad() {
+		return cantidad;
+	}
+
+	/**
+	 * @param cantidad the cantidad to set
+	 */
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public Usuario getUsuario() {
         return usuario;
     }
 
