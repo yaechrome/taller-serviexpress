@@ -10,6 +10,7 @@ public class OrdenCompraViewModel {
     private Usuario usuario;
     private Long idProveedor;
     private Date fechaEmision;
+    private Date fechaFiltroHasta;
     private String estadoOrden;
     private String observacionOrden;
     private Set<OrdenProducto> ordenProducto;
@@ -61,6 +62,20 @@ public class OrdenCompraViewModel {
     public void setOrdenProducto(Set<OrdenProducto> ordenProducto) {
         this.ordenProducto = ordenProducto;
     }
+
+	/**
+	 * @return the fechaFiltroHasta
+	 */
+	public Date getFechaFiltroHasta() {
+		return fechaFiltroHasta;
+	}
+
+	/**
+	 * @param fechaFiltroHasta the fechaFiltroHasta to set
+	 */
+	public void setFechaFiltroHasta(Date fechaFiltroHasta) {
+		this.fechaFiltroHasta = fechaFiltroHasta;
+	}
     
     
 }

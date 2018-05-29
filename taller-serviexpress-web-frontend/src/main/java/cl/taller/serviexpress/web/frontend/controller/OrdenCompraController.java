@@ -24,12 +24,12 @@ public class OrdenCompraController {
     private static final String INDEX_URL="OrdenCompra";
     private static final String ORDER_URL="CrearOrdenCompra";
     private static final String CREATE_ORDER_URL = "OrdenCompra/CrearOrdenCompra";
-
+    private static final String ORDEN_FILTER_URL = "FiltroOrdenes";
     @RequestMapping
     public String index(Model model) {
         
-        List<OrdenCompra> orden = ordenCompraDao.listarOrdenCompra();
-        model.addAttribute("orden", orden);
+        List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+        model.addAttribute("ordenes", ordenes);
     	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
     	
         return INDEX_URL;
@@ -73,6 +73,15 @@ public class OrdenCompraController {
         model.addAttribute("orden", orden);
     	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
     	return INDEX_URL;
+    }
+    
+    @RequestMapping(value="/FiltroOrdenes",method=RequestMethod.GET)
+    public String filtroOrdenCompra(@Valid IdViewModel idViewModel, BindingResult result,Model model) {
+        OrdenCompra orden = ordenCompraDao.buscarOrdenCompraPorId(idViewModel.getId());
+        List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+        model.addAttribute("ordenes", ordenes);
+    	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
+    	return ORDEN_FILTER_URL;
     }
 }
 

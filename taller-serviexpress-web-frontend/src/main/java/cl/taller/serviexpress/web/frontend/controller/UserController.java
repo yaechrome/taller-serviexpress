@@ -122,21 +122,6 @@ public class UserController {
         }
         return INDEX_URL;
     }
-
-    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.POST)
-    public String editar(@Valid UserViewModel userViewModel, Model model) {
-    	
-    	Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
-    	Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
-    	usuario.setPerfil(perfil);
-    	if (userDao.modificarUsuario(usuario)) {
-
-            List<Usuario> users = userDao.listarUsuarios();
-            model.addAttribute("users", users);
-            model.addAttribute("UserViewModel", new UserViewModel());
-        }
-        return INDEX_URL;
-    }
     
     @RequestMapping(value = {"/LeerUsuario"}, method = RequestMethod.GET)
     public String leerUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
@@ -145,4 +130,6 @@ public class UserController {
         return READ_URL;
     }
 
+    
+    
 }
