@@ -24,5 +24,7 @@ public interface ProductoServices {
     
     List<FamiliaProducto> listarFamiliasProductos();
     
+    TipoProducto buscarTipoProductoPorId(long id);
+    
     
 }
