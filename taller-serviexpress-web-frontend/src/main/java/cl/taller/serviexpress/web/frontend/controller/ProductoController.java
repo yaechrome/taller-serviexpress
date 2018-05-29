@@ -29,9 +29,7 @@ public class ProductoController {
 
     private static final String INDEX_URL = "Producto";
     private static final String PRODUCT_URL = "CrearProducto";
-    private static final String ASSING_TYPE_URL = "Producto/asignarTipo";
-    private static final String CREATE_PRODUCT_URL = "Producto/CrearProducto";
-    private static final String EDIT_URL = "Producto/editarProducto";
+    private static final String EDIT_URL = "EditarProducto";
     private static final String READ_URL = "LeerProducto";
     
     @RequestMapping
@@ -50,9 +48,9 @@ public class ProductoController {
 
     @RequestMapping(value = "/CrearProducto", method = RequestMethod.GET)
     public String verCrearProducto(@Valid ProductoViewModel productoViewModel, BindingResult result, Model model) {
-        List<Producto> users = productoDao.listarProductos();
-        model.addAttribute("users", users);
-        model.addAttribute("UserViewModel", new UserViewModel());
+        List<Producto> productos = productoDao.listarProductos();
+        model.addAttribute("productos", productos);
+        model.addAttribute("ProductoViewModel", new ProductoViewModel());
 
         return PRODUCT_URL;
     }
@@ -80,7 +78,7 @@ public class ProductoController {
         return INDEX_URL;
     }
 
-    @RequestMapping(value = {"/BuscarPorId"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/LeerProducto"}, method = RequestMethod.GET)
     public String leerProducto(@Valid IdViewModel idViewModel, BindingResult result, Model model) {
         Producto producto = productoDao.buscarProductoPorId(idViewModel.getId());
         model.addAttribute("producto", producto);
