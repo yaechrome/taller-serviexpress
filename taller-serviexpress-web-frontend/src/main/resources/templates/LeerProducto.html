@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mb0 center-align relative full">
+          <div class="center">
+            <div class="col s12 mb20">
+              <form class="form" role="form" method="POST" action="/Producto/CrearProducto" th:action="@{/Producto/CrearProducto}" th:object="${ProductoViewModel}" accept-charset="UTF-8" autocomplete="off">
+              <div class="card-panel pad0">
+                <div class="card-content pad24">
+                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR PRODUCTO" width="170"/></div>
+                  <table class="responsive-table striped">
+                    <tbody>
+                        <tr>
+                            <td>NOMBRE</td>
+                            <td type="text" id="nombre" th:text="${producto.nombre}"></td>
+                        </tr>
+                        <tr>
+                            <td>TIPO PRODUCTO</td>
+                            <td><a type="text" id="tipoProducto" th:text="${producto.getTipoProducto().getDescripcionTipo()}" /></td>
+                        </tr>
+                        <tr>
+                            <td>PRECIO VENTA</td>
+                            <td><a type="number" id="precioVenta" th:text="${producto.precioVenta}"/></td>
+                        </tr>
+                        <tr>
+                            <td>STOCK</td>
+                            <td><a type="number" id="stock" th:text="${producto.stock}"/></td>
+                        </tr>
+                        <tr>
+                            <td>STOCK CRÍTICO</td>
+                            <td><a type="number" id="stockCritico" th:text="${producto.stockCritico}"/></td>
+                        </tr>
+                    </tbody>     
+                </table>
+                </div>
+                  <div class="center-align"> 
+                      <a class="btn btn-delete" href="/Producto" th:href="@{/Producto}">Volver</a>     
+                  </div>
+                  
+              <br/>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
+</th:block>
+</html>

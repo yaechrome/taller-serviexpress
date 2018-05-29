@@ -7,7 +7,6 @@ package cl.taller.serviexpress.dao.hibernate;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,17 +14,19 @@ import org.hibernate.SessionFactory;
 import cl.taller.serviexpress.domain.TipoProducto;
 import cl.taller.serviexpress.dao.TipoProductoDao;
 import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
-public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProductoDao{
-    
+
+public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProductoDao {
+
     private SessionFactory sessionFactory;
-    
+
     public SessionFactory getSessionFactory() {
-        return sessionFactory;}
-    
-    public void setSessionFactory(SessionFactory sessionFactory) {
-         this.sessionFactory = sessionFactory;
+        return sessionFactory;
     }
-    
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public List<TipoProducto> findAllActive() {
         List<TipoProducto> lista = null;
@@ -35,10 +36,10 @@ public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProdu
             Query query = session.createQuery(sql);
             lista = query.list();
         } catch (Exception e) {
-            
+
         }
-	
-	return lista;
+
+        return lista;
     }
 
     @Override
@@ -51,10 +52,26 @@ public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProdu
             query.setLong("idFamilia", idFamilia);
             lista = query.list();
         } catch (Exception e) {
-            
+
         }
         return lista;
 
     }
-    
+
+    @Override
+    public TipoProducto findById(long idTipo) {
+        TipoProducto tipo = null;
+        Session session = getSessionFactory().openSession();
+        String sql = "from TipoProducto where id = :idTipo";
+        try {
+            Query query = session.createQuery(sql);
+            query.setLong("idTipo", idTipo);
+            tipo = (TipoProducto) query.uniqueResult();
+        } catch (Exception e) {
+
+        }
+
+        return tipo;
+    }
+
 }
