@@ -4,7 +4,7 @@
 	<class name="cl.taller.serviexpress.domain.Producto" table="PRODUCTO">
 		<id name="id" type="long">
 			<generator class="native">
-				<param name="sequence">ProductoSequence</param>
+                                    <param name="sequence">ProductoSequence</param>
 			</generator>
 		</id>
 		<many-to-one name="tipoProducto" class="cl.taller.serviexpress.domain.TipoProducto"/>

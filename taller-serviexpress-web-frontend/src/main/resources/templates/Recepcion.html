@@ -9,15 +9,15 @@
       <section class="container">
         <div class="row mt50 mb0">
           <div class="col s12 mb10">
-            <h3 class="title small">Gestion de Ordenes de Compra</h3>
+            <h3 class="title small">Gestion de Recepciones</h3>
           </div>
           <div class="input-field col s12 text_right">
-          <a class="table-btn" href="/Recepcion/CrearRecepcion" th:href="@{/Recepcion/CrearRecepcion}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Orden</button></a>
+          <a class="table-btn" href="/Recepcion/CrearRecepcion" th:href="@{/Recepcion/CrearRecepcion}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Recepcion</button></a>
           </div>
           <div class="col s12 mb20">
             <div class="card-panel pad0">
               <div class="card-head">
-                <h2 class="title">Filtro de Ordenes</h2>
+                <h2 class="title">Filtro de Recepciones</h2>
               </div>
               <div class="card-content pad24">
                 <div class="row mb0">
@@ -33,7 +33,6 @@
                       </div>
                       <div class="input-field col s12 m3 l3">
                         <select class="validate" th:field="*{estadoRecepcion}">
-                          <option value="" >Selecciona</option>
                           <option value="Recepcionada">Recepcionada</option>
                           <option value="Pendiente">Pendiente</option>
                           <option value="Rechazada">Rechazada</option>
@@ -54,7 +53,7 @@
           <div class="col s12 mb20">
             <div class="card-panel pad0">
               <div class="card-content pad24">
-                <h3 class="title small mb10">Ordenes</h3>
+                <h3 class="title small mb10">Recepciones</h3>
                 <div class="row mb0">
                   <div class="col s12">
                     <table class="responsive-table striped">

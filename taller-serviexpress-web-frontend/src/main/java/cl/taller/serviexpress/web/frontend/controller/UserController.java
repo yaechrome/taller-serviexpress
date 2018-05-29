@@ -62,7 +62,7 @@ public class UserController {
         Usuario user = new Usuario();
         Credenciales credencial = new Credenciales();
 
-        Perfil perfilCliente = perfilDao.buscarPorPerfil(2L);
+        Perfil perfilCliente = perfilDao.buscarPorPerfil(4L);
         user.setNombre(userViewModel.getNombre());
         user.setRut(userViewModel.getRut());
         user.setDireccion(userViewModel.getDireccion());
