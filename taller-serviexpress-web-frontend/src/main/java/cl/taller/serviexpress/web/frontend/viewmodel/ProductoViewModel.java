@@ -12,13 +12,46 @@ import cl.taller.serviexpress.domain.TipoProducto;
  * @author yaechrome
  */
 public class ProductoViewModel {
+	
+	private Long id;
 	private TipoProducto tipoProducto;
 	private String nombreProducto;
 	private Long precioVenta;
 	private Long stock;
 	private Long stockCritico;
+	private Long idTipo;
+	
+	
 
-    public TipoProducto getTipoProducto() {
+    /**
+	 * @return the idTipo
+	 */
+	public Long getIdTipo() {
+		return idTipo;
+	}
+
+	/**
+	 * @param idTipo the idTipo to set
+	 */
+	public void setIdTipo(Long idTipo) {
+		this.idTipo = idTipo;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public TipoProducto getTipoProducto() {
         return tipoProducto;
     }
 

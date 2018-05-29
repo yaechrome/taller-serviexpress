@@ -10,7 +10,6 @@
         <div class="row mb0 center-align relative full">
           <div class="center">
             <div class="col s12 mb20">
-              <form class="form" role="form" method="POST" action="/Servicio/CrearServicio" th:action="@{/Servicio/CrearServicio}" th:object="${ServicioViewModel}" accept-charset="UTF-8" autocomplete="off">
               <div class="card-panel pad0">
                 <div class="card-content pad24">
                   <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR SERVICIO" width="170"/></div>
@@ -18,7 +17,7 @@
                     <tbody>
                         <tr>
                             <td>Descripción</td>
-                            <td type="text" id="descripcionServicio" th:text="${servicio.estadoServicio}"></td>
+                            <td type="text" id="descripcionServicio" th:text="${servicio.descripcionServicio}"></td>
                         </tr>
                         <tr>
                             <td>Valor</td>
@@ -37,7 +36,6 @@
                   
               <br/>
               </div>
-              </form>
             </div>
           </div>
         </div>

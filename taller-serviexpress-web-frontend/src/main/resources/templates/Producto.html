@@ -5,9 +5,15 @@
 	layout:decorator="master/layout/public">
 	<th:block layout:fragment="content">
 	<body>
+			    <main role="main">
+	     <section class="container">
+        <div class="row mt50 mb0">
 		<div class="col s12 mb10">
         	<h3 class="title small">Gestión de productos</h3>
        	</div>
+		<div class="input-field col s12 text_right">
+			<a class="table-btn" href="Producto/CrearProducto" th:href="@{/Producto/CrearProducto}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Producto</button></a>
+        </div>
         <div class="col s12 mb20">
         	<div class="card-panel pad0">
             	<div class="card-content pad24">
@@ -43,12 +49,12 @@
                         				</tr>
                       				</thead>
                       				<tbody>
-				                        <tr th:each="productos : ${productos}">
-				                        	<td th:text="${productos.nombreProducto}"></td>
-				                          	<td th:text="${productos.precioVenta}"></td>
-				                          	<td th:text="${productos.stock}"></td>
+				                        <tr th:each="producto : ${productos}">
+				                        	<td th:text="${producto.nombreProducto}"></td>
+				                          	<td th:text="${producto.precioVenta}"></td>
+				                          	<td th:text="${producto.stock}"></td>
 				                          	<td class="text_right">
-				                          		<a class="table-btn" href="/Producto/EditarProducto" th:href="@{/Producto/EditarProducto(id = ${Producto.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          		<a class="table-btn" href="/Producto/EditarProducto" th:href="@{/Producto/EditarProducto(id = ${producto.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
 				                          	</td>
 				                        </tr>
                       				</tbody>
@@ -64,15 +70,16 @@
                           				<li class="waves-effect"><a href="#!">2</a></li>
                           				<li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                         			</ul>
-                        			<br></br>
-                        			<a class="table-btn" href="Producto/CrearProducto" th:href="@{/Producto/CrearProducto}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Producto</button></a>
-                      			</div>
+                        		</div>
                     		</div>
                   		</div>
                 	</div>
               	</div>
             </div>
     	</div>
+    	    	        </div>
+      </section>
+    </main>
 	</body>
 	</th:block>
 </html>

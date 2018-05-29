@@ -15,7 +15,7 @@
             <div class="card-panel pad0">
               <div class="card-content pad24">
                 <h3 class="title mb10 blue-text text-darken-3 mb20">Modificar producto</h3>
-                <form class="row mb0" th:action="@{/Producto/ActualizarProducto(id = ${producto.id})}" th:object="${IdViewModel}" method="POST">
+                <form class="row mb0" th:action="@{/Producto/ActualizarProducto(id = ${producto.id})}" th:object="${ProductoViewModel}" method="POST">
                   <div class="col s12 m3">
                     <dl class="def">
                       <dt class="def-term">Nombre:</dt>
@@ -34,20 +34,24 @@
                       <dd class="def-des" th:text="${producto.stock}" ></dd>
                     </dl>
                   </div>
-                    <div class="col s12 m3">
+                  <div class="input-field col s12 m3" th:field="*{stockCritico}">
+					<input type="text" id="stockCritico" th:value="${producto.stockCritico}"/>
+                    <label>StockCritico</label>
+                  </div>
+
+                   <div class="col s12 m3">
                     <dl class="def">
-                      <dt class="def-term">stock critico:</dt>
-                      <dd class="def-des" th:text="${producto.stockCritico}" ></dd>
+                      <dt class="def-term">Tipo Producto</dt>
+                      <dd class="def-des" th:text="${producto.getTipoProducto().getDescripcionTipo()}" ></dd>
                     </dl>
                   </div>
-                  <div class="input-field col s12 m3">
-                    <select class="form-control" th:field="*{idTipo}">
-                      <option value="">Seleccion Tipo</option>
-                      <option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.descripcionTipo}" ></option>
-                    </select>
-                    <label>Perfil</label>
+                  <div class="col s12 m3">
+                    <dl class="def">
+                      <dt class="def-term">Familia Producto</dt>
+                      <dd class="def-des" th:text="${producto.getTipoProducto().getFamiliaProducto().getDescripcionFamilia()}" ></dd>
+                    </dl>
                   </div>
-                  <div class="col s12 m3 text_right">
+                  <div class="text_right">
                     <button class="waves-effect waves-light btn blue darken-3 mt10" type="submit">Actualizar</button>
                   </div>
                 </form>

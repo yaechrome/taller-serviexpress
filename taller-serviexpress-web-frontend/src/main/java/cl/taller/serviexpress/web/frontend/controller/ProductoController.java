@@ -7,6 +7,8 @@ import cl.taller.serviexpress.services.impl.ProductoServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.IdViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.ProductoViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
+
+import java.util.Collections;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,6 @@ public class ProductoController {
     @Autowired
     ProductoServicesImpl productoDao;
     
-    @Autowired
-    
-
     private static final String INDEX_URL = "Producto";
     private static final String PRODUCT_URL = "CrearProducto";
     private static final String EDIT_URL = "EditarProducto";
@@ -41,7 +40,7 @@ public class ProductoController {
         model.addAttribute("productos", productos);
         model.addAttribute("tipos", tipos);
         model.addAttribute("familias", familias);
-        model.addAttribute("ProductosViewModel", new ProductoViewModel());
+        model.addAttribute("ProductoViewModel", new ProductoViewModel());
 
         return INDEX_URL;
     }
@@ -49,7 +48,9 @@ public class ProductoController {
     @RequestMapping(value = "/CrearProducto", method = RequestMethod.GET)
     public String verCrearProducto(@Valid ProductoViewModel productoViewModel, BindingResult result, Model model) {
         List<Producto> productos = productoDao.listarProductos();
+        List<TipoProducto> tipos = productoDao.listarTiposProductos();
         model.addAttribute("productos", productos);
+        model.addAttribute("tipos", tipos);
         model.addAttribute("ProductoViewModel", new ProductoViewModel());
 
         return PRODUCT_URL;
@@ -59,8 +60,8 @@ public class ProductoController {
     public String createProduct(@Valid ProductoViewModel productoViewModel, BindingResult result, Model model) {
 
         Producto producto = new Producto();
-
-        producto.setTipoProducto(productoViewModel.getTipoProducto());
+        TipoProducto tipo = productoDao.buscarTipoProductoPorId(productoViewModel.getIdTipo());
+        producto.setTipoProducto(tipo);
         producto.setNombreProducto(productoViewModel.getNombreProducto());
         producto.setPrecioVenta(productoViewModel.getPrecioVenta());
         producto.setStock(productoViewModel.getStock());
@@ -87,13 +88,12 @@ public class ProductoController {
     }
     
     @RequestMapping(value = {"/ActualizarProducto"}, method = RequestMethod.POST)
-    public String ActualizarProducto(@Valid ProductoViewModel productoViewModel,@RequestParam("id") Long id, BindingResult result, Model model) {
+    public String ActualizarProducto(@Valid ProductoViewModel productoViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
         Producto producto = productoDao.buscarProductoPorId(id);
-        
         if (productoDao.modificarProducto(producto)) {
             List<Producto> productos = productoDao.listarProductos();
             model.addAttribute("productos", productos);
-            model.addAttribute("ProductoViewModel", new UserViewModel());
+            model.addAttribute("ProductoViewModel", new ProductoViewModel());
         }
         return INDEX_URL;
     }
@@ -102,15 +102,11 @@ public class ProductoController {
     public String editarProducto(@Valid ProductoViewModel productoViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
         Producto producto = productoDao.buscarProductoPorId(id);
         ProductoViewModel productoViewModel2 = new ProductoViewModel();
-        TipoProducto tipo = productoDao.buscarTipoProductoPorId(productoViewModel.getTipoProducto().getId());
-        List<TipoProducto> tipos = productoDao.listarTiposProductos();
-        producto.setTipoProducto(tipo);
         productoViewModel2.setNombreProducto(producto.getNombreProducto());
         productoViewModel2.setStock(producto.getStock());
         productoViewModel2.setPrecioVenta(producto.getPrecioVenta());
-        model.addAttribute("tipos", tipos);
         model.addAttribute("producto", producto);
-        model.addAttribute("ProductoViewModel", productoViewModel2);
+        model.addAttribute("ProductoViewModel", new ProductoViewModel());
         return EDIT_URL;
     }
     

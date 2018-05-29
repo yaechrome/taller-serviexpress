@@ -89,9 +89,7 @@ public class ServicioController {
     @RequestMapping(value = {"/ActualizarServicio"}, method = RequestMethod.POST)
     public String ActualizarUsuario(@Valid ServicioViewModel servicioViewModel, @RequestParam("id") long id, BindingResult result, Model model) {
         Servicio servicio = servicioDao.buscarPorId(id);
-        servicio.setDescripcionServicio(servicioViewModel.getDescripcionServicio());
         servicio.setEstadoServicio(servicioViewModel.getEstadoServicio());
-        servicio.setValor(servicioViewModel.getValor());
         if (servicioDao.modificarServicio(servicio)) {
             List<Servicio> servicios = servicioDao.listarServicios();
             model.addAttribute("servicios", servicios);

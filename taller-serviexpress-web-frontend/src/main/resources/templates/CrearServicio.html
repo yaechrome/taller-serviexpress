@@ -26,7 +26,13 @@
                         </tr>
                         <tr>
                             <td>Estado</td>
-                            <td><input type="text" id="estadoServicio" th:field="*{estadoServicio}" /></td>
+							<td>
+                    			<select class="form-control" th:field="*{estadoServicio}">
+                      			<option value="">Seleccion Perfil</option>
+                      			<option value="VIGENTE">Vigente</option>
+                      			<option value="NO VIGENTE">No Vigente</option>
+                    			</select>
+							</td>
                         </tr>
                     </tbody>
                 </table>

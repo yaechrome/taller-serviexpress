@@ -5,10 +5,16 @@
 	layout:decorator="master/layout/public">
 	<th:block layout:fragment="content">
 	<body>
+		    <main role="main">
+	     <section class="container">
+        <div class="row mt50 mb0">
 		<div class="col s12 mb10">
         	<h3 class="title small">Gestión de servicios</h3>
        	</div>
-        <div class="col s12 mb20">
+       	<div class="input-field col s12 text_right">
+  			<a class="table-btn" href="Servicio/CrearServicio" th:href="@{/Servicio/CrearServicio}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Servicio</button></a>
+        </div>
+		 <div class="col s12 mb20">
         	<div class="card-panel pad0">
             	<div class="card-content pad24">
                 	<div class="row mb0">
@@ -36,6 +42,7 @@
                     			<table class="responsive-table striped">
                       				<thead>
                         				<tr>
+                        					<th class="blue-text text-darken-3">ID</th>
 				                        	<th class="blue-text text-darken-3">Descripcion</th>
 				                          	<th class="blue-text text-darken-3">Valor</th>
 				                          	<th class="blue-text text-darken-3">Estado</th>
@@ -44,6 +51,7 @@
                       				</thead>
                       				<tbody>
 				                        <tr th:each="servicio : ${servicios}">
+				                        	<td th:text="${servicio.id}"></td>
 				                        	<td th:text="${servicio.descripcionServicio}"></td>
 				                          	<td th:text="${servicio.valor}"> </td>
 				                          	<td th:text="${servicio.estadoServicio}"></td>
@@ -64,8 +72,6 @@
                           				<li class="waves-effect"><a href="#!">2</a></li>
                           				<li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                         			</ul>
-                        			<br></br>
-                        			<a class="table-btn" href="Servicio/CrearServicio" th:href="@{/Servicio/CrearServicio}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Servicio</button></a>
                       			</div>
                     		</div>
                   		</div>
@@ -73,6 +79,9 @@
               	</div>
             </div>
     	</div>
+    	        </div>
+      </section>
+    </main>
 	</body>
 	</th:block>
 </html>
