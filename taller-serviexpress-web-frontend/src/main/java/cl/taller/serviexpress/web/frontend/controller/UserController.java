@@ -11,11 +11,8 @@ import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.PerfilServicesImpl;
 import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
-
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
