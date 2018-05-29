@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+	<body>
+		<div class="col s12 mb10">
+        	<h3 class="title small">Gestión de productos</h3>
+       	</div>
+        <div class="col s12 mb20">
+        	<div class="card-panel pad0">
+            	<div class="card-content pad24">
+                	<div class="row mb0">
+                  		<form class="col s12" th:action="@{/Producto/LeerProducto}" th:object="${ProductoViewModel}" method="GET">
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<input class="validate" id="id" type="text" th:field="*{id}"/>
+                        			<label for="id">Ingrese un id</label>
+                      			</div>
+                      			<div class="input-field col s12 m3 l4 offset-l4 text_right">
+                                            <a class="table-btn" ><button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar Producto</button></a>	
+                      			</div>
+                    		</div>
+                  		</form>
+                	</div>
+              	</div>
+            </div>
+		</div>
+        	<div class="col s12 mb20">
+            	<div class="card-panel pad0">
+              		<div class="card-content pad24">
+                		<h3 class="title small mb10">Listado de productos</h3>
+                		<div class="row mb0">
+                  			<div class="col s12">
+                    			<table class="responsive-table striped">
+                      				<thead>
+                        				<tr>
+				                        	<th class="blue-text text-darken-3">Nombre</th>
+				                          	<th class="blue-text text-darken-3">Precio</th>
+				                          	<th class="blue-text text-darken-3">stock</th>
+				                          	<th class="blue-text text-darken-3 text_right">Acciones</th>
+                        				</tr>
+                      				</thead>
+                      				<tbody>
+				                        <tr th:each="productos : ${productos}">
+				                        	<td th:text="${productos.nombreProducto}"></td>
+				                          	<td th:text="${productos.precioVenta}"></td>
+				                          	<td th:text="${productos.stock}"></td>
+				                          	<td class="text_right">
+				                          		<a class="table-btn" href="/Producto/EditarProducto" th:href="@{/Producto/EditarProducto(id = ${Producto.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          	</td>
+				                        </tr>
+                      				</tbody>
+                    			</table>
+                  			</div>
+                  		<div class="col s12">
+                    		<hr/>
+                    		<div class="row mb0">
+                      			<div class="col s12 text_center">
+                        			<ul class="pagination">
+                          				<li class="disabled prev"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                          				<li class="active blue darken-3"><a href="#!">1</a></li>
+                          				<li class="waves-effect"><a href="#!">2</a></li>
+                          				<li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                        			</ul>
+                        			<br></br>
+                        			<a class="table-btn" href="Producto/CrearProducto" th:href="@{/Producto/CrearProducto}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Producto</button></a>
+                      			</div>
+                    		</div>
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+    	</div>
+	</body>
+	</th:block>
+</html>
