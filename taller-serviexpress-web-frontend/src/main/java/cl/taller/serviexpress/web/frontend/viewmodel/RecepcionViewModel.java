@@ -11,11 +11,26 @@ public class RecepcionViewModel {
     	private OrdenCompra ordenCompra;
 	private String idUsuario;
 	private Date fechaRecepcion;
+	private Date fechaFiltroHasta;
 	private Long valorTotal;
 	private String estadoRecepcion;
 	private Set<RecepcionProducto> recepcionProducto;
 
-    public OrdenCompra getOrdenCompra() {
+    /**
+	 * @return the fechaFiltroHasta
+	 */
+	public Date getFechaFiltroHasta() {
+		return fechaFiltroHasta;
+	}
+
+	/**
+	 * @param fechaFiltroHasta the fechaFiltroHasta to set
+	 */
+	public void setFechaFiltroHasta(Date fechaFiltroHasta) {
+		this.fechaFiltroHasta = fechaFiltroHasta;
+	}
+
+	public OrdenCompra getOrdenCompra() {
         return ordenCompra;
     }
 

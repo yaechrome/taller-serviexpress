@@ -42,6 +42,7 @@
                     			<table class="responsive-table striped">
                       				<thead>
                         				<tr>
+                        					<th class="blue-text text-darken-3">ID</th>
 				                        	<th class="blue-text text-darken-3">Nombre</th>
 				                          	<th class="blue-text text-darken-3">Precio</th>
 				                          	<th class="blue-text text-darken-3">stock</th>
@@ -50,6 +51,7 @@
                       				</thead>
                       				<tbody>
 				                        <tr th:each="producto : ${productos}">
+				                        	<td th:text="${producto.id}"></td>
 				                        	<td th:text="${producto.nombreProducto}"></td>
 				                          	<td th:text="${producto.precioVenta}"></td>
 				                          	<td th:text="${producto.stock}"></td>

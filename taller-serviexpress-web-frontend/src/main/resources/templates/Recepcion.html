@@ -12,7 +12,7 @@
             <h3 class="title small">Gestion de Ordenes de Compra</h3>
           </div>
           <div class="input-field col s12 text_right">
-          <a class="table-btn" href="OrdenCompra/CrearOrden" th:href="@{/OrdenCompra/CrearOrden}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Orden</button></a>
+          <a class="table-btn" href="/Recepcion/CrearRecepcion" th:href="@{/Recepcion/CrearRecepcion}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Orden</button></a>
           </div>
           <div class="col s12 mb20">
             <div class="card-panel pad0">
@@ -21,10 +21,10 @@
               </div>
               <div class="card-content pad24">
                 <div class="row mb0">
-                  <form class="col s12" th:action="@{/OrdenCompra/FiltroOrdenes}" th:object="${OrdenCompraViewModel}" method="GET">
+                  <form class="col s12" th:action="@{/Recepcion/FiltroRecepciones}" th:object="${RecepcionViewModel}" method="GET">
                     <div class="row mb0">
                       <div class="input-field col s12 m3 l3">
-                        <input class="validate datepicker" id="init_date" type="text" th:field="*{fechaEmision}"/>
+                        <input class="validate datepicker" id="init_date" type="text" th:field="*{fechaRecepcion}"/>
                         <label for="init_date">Fecha desde</label>
                       </div>
                       <div class="input-field col s12 m3 l3">
@@ -32,7 +32,7 @@
                         <label for="end_date">Fecha hasta</label>
                       </div>
                       <div class="input-field col s12 m3 l3">
-                        <select class="validate" th:field="*{estadoOrden}">
+                        <select class="validate" th:field="*{estadoRecepcion}">
                           <option value="" >Selecciona</option>
                           <option value="Recepcionada">Recepcionada</option>
                           <option value="Pendiente">Pendiente</option>
@@ -60,24 +60,24 @@
                     <table class="responsive-table striped">
                       <thead>
                         <tr>
-                          <th class="blue-text text-darken-3">ID</th>	
-                          <th class="blue-text text-darken-3">Fecha Orden</th>
-                          <th class="blue-text text-darken-3">ID Proveedor</th>
-                          <th class="blue-text text-darken-3">Empleado</th>
+                        	<th class="blue-text text-darken-3">ID</th>
+                          <th class="blue-text text-darken-3">Fecha Emision OC</th>
+                          <th class="blue-text text-darken-3">Fecha Recepcion</th>
+                          <th class="blue-text text-darken-3">Valor Total</th>
                           <th class="blue-text text-darken-3">Estado</th>
                           <th class="blue-text text-darken-3">Accion</th>
                         </tr>
                       </thead>
                       				<tbody>
-				                        <tr th:each="orden : ${ordenes}">
-				                        	<td th:text="${orden.id}"></td>
-				                        	<td th:text="${orden.fechaEmision}"></td>
-				                          	<td class="text_center" th:text="${orden.idProveedor}"></td>
-				                          	<td th:text="${orden.getUsuario().getNombre()}"></td>
-				                    		<td th:text="${orden.estadoOrden}"></td>
+				                        <tr th:each="recepcion : ${recepciones}">
+				                        	<td th:text="${recepcion.id}"></td>
+				                        	<td th:text="${recepcion.getOrdenCompra().getFechaEmision()}"></td>
+				                          	<td th:text="${recepcion.fechaRecepcion}"></td>
+				                          	<td th:text="${recepcion.valorTotal}"></td>
+				                    		<td th:text="${recepcion.estadoRecepcion}"></td>
 				                          	<td class="text_right">
-				                          		<a class="table-btn" href="/OrdenCompra/EditarOrden" th:href="@{/OrdenCompra/EditarUsuario(id = ${orden.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
-				                          		<a class="table-btn" href="/OrdenCompra/EditarOrden" th:href="@{/OrdenCompra/EditarUsuario(id = ${orden.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          		<a class="table-btn" href="/Recepcion/EditarRecepcion" th:href="@{/Recepcion/EditarRecepcion(id = ${recepcion.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          		<a class="table-btn" href="/Recepcion/EditarRecepcion" th:href="@{/Recepcion/EditarRecepcion(id = ${recepcion.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
 				                          	</td>
 				                        </tr>
                       				</tbody>
