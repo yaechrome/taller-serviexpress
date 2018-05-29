@@ -22,11 +22,9 @@
                       <dd class="def-des" th:text="${producto.nombreProducto}"></dd>
                     </dl>
                   </div>
-                  <div class="col s12 m3">
-                    <dl class="def">
-                      <dt class="def-term">Precio venta:</dt>
-                      <dd class="def-des" th:text="${producto.precioVenta}" ></dd>
-                    </dl>
+ 					<div class="input-field col s12 m3">
+					<input type="text" id="precioVenta" th:field="*{precioVenta}"/>
+                    <label>Precio Venta</label>
                   </div>
                    <div class="col s12 m3">
                     <dl class="def">
@@ -34,9 +32,9 @@
                       <dd class="def-des" th:text="${producto.stock}" ></dd>
                     </dl>
                   </div>
-                  <div class="input-field col s12 m3" th:field="*{stockCritico}">
-					<input type="text" id="stockCritico" th:value="${producto.stockCritico}"/>
-                    <label>StockCritico</label>
+                  <div class="input-field col s12 m3">
+					<input type="text" id="stockCritico" th:field="*{stockCritico}"/>
+                    <label>Stock Critico</label>
                   </div>
 
                    <div class="col s12 m3">

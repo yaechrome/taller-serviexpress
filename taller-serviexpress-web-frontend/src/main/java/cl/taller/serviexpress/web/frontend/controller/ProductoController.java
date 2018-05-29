@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductoController {
 
     @Autowired
-    ProductoServicesImpl productoDao;
-    
+    ProductoServicesImpl productoDao;   
+
     private static final String INDEX_URL = "Producto";
     private static final String PRODUCT_URL = "CrearProducto";
     private static final String EDIT_URL = "EditarProducto";
@@ -90,7 +90,14 @@ public class ProductoController {
     @RequestMapping(value = {"/ActualizarProducto"}, method = RequestMethod.POST)
     public String ActualizarProducto(@Valid ProductoViewModel productoViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
         Producto producto = productoDao.buscarProductoPorId(id);
-        if (productoDao.modificarProducto(producto)) {
+        TipoProducto tipo = producto.getTipoProducto();
+        FamiliaProducto familia = producto.getTipoProducto().getFamiliaProducto();
+        Producto productoGuardar = producto;        
+        tipo.setFamiliaProducto(familia);
+        productoGuardar.setTipoProducto(tipo);
+        productoGuardar.setPrecioVenta(productoViewModel.getPrecioVenta());
+        productoGuardar.setStockCritico(productoViewModel.getStockCritico());
+        if (productoDao.modificarProducto(productoGuardar)) {
             List<Producto> productos = productoDao.listarProductos();
             model.addAttribute("productos", productos);
             model.addAttribute("ProductoViewModel", new ProductoViewModel());
