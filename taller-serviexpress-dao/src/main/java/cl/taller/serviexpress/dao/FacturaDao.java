@@ -9,7 +9,7 @@ public interface FacturaDao {
 
     List<Factura> findAll();
 
-    List<Factura> findByCliente(long idCliente);
+    List<Factura> findByCliente(String rutCliente);
 
     boolean createFactura(Factura factura);
 
