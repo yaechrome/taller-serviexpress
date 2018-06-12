@@ -65,20 +65,23 @@ public class OrdenProductoDaoHibernate extends BaseHibernate implements OrdenPro
         Session session = getSessionFactory().openSession();
         boolean actualizado = false;
         try {
-            String sql = "update from OrdenProducto set cantidad = :cantidad, "
-                    + "precioCompra = :precio_compra where producto = :id_producto "
-                    + "and ID = :id_orden_compra";
+//            String sql = "update from OrdenProducto set cantidad = :cantidad, "
+//                    + "precioCompra = :precio_compra where producto = :id_producto "
+//                    + "and ID = :id_orden_compra";
+//
+//            Query query = session.createQuery(sql);
+//
+//            query.setParameter("cantidad", ordenProducto.getCantidad());
+//            query.setParameter("precio_compra", ordenProducto.getPrecioCompra());
+//            query.setLong("id_producto", ordenProducto.getProducto().getId());
+//            query.setLong("id_orden_compra", ordenProducto.getOrdenCompra().getId());
+//
+//            int count = query.executeUpdate();
 
-            Query query = session.createQuery(sql);
-
-            query.setParameter("cantidad", ordenProducto.getCantidad());
-            query.setParameter("precio_compra", ordenProducto.getPrecioCompra());
-            query.setLong("id_producto", ordenProducto.getProducto().getId());
-            query.setLong("id_orden_compra", ordenProducto.getOrdenCompra().getId());
-
-            int count = query.executeUpdate();
-
+            session.beginTransaction();
+            session.saveOrUpdate(ordenProducto);
             actualizado = true;
+            session.getTransaction().commit();
         } catch (Exception e) {
 
         } 

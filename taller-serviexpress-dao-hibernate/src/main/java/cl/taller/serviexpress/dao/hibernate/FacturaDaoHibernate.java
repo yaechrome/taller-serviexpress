@@ -89,26 +89,30 @@ public class FacturaDaoHibernate implements FacturaDao {
         Session session = getSessionFactory().openSession();
         boolean actualizado = false;
         try {
-            String sql = "update from OrdenCompra set"
-                    + " USUARIO = :idUsuario, RUTCLIENTE = :rutCliente,"
-                    + " PATENTEVEHICULO = :patente, VALORNETO = :neto,"
-                    + " IVA = : iva, TOTALFACTURA = :totalFactura, ESTADOFACTURA = :estadoFactura, "
-                    + "ESTADOPAGO = :estadoPago where id = :id";
+//            String sql = "update from OrdenCompra set"
+//                    + " USUARIO = :idUsuario, RUTCLIENTE = :rutCliente,"
+//                    + " PATENTEVEHICULO = :patente, VALORNETO = :neto,"
+//                    + " IVA = : iva, TOTALFACTURA = :totalFactura, ESTADOFACTURA = :estadoFactura, "
+//                    + "ESTADOPAGO = :estadoPago where id = :id";
+//
+//            Query query = session.createQuery(sql);
+//
+//            query.setLong("idUsuario", factura.getUsuario().getId());
+//            query.setParameter("rutCliente", factura.getUsuario().getRut());
+//            query.setParameter("patente", factura.getPatenteVehiculo());
+//            query.setLong("neto", factura.getValorNeto());
+//            query.setLong("iva", factura.getIva());
+//            query.setLong("total", factura.getTotalFactura());
+//            query.setParameter("estadoFatura", factura.getEstadoFactura());
+//            query.setParameter("estadoPago", factura.getEstadoPago());
+//            
+//            int count = query.executeUpdate();
 
-            Query query = session.createQuery(sql);
-
-            query.setLong("idUsuario", factura.getUsuario().getId());
-            query.setParameter("rutCliente", factura.getUsuario().getRut());
-            query.setParameter("patente", factura.getPatenteVehiculo());
-            query.setLong("neto", factura.getValorNeto());
-            query.setLong("iva", factura.getIva());
-            query.setLong("total", factura.getTotalFactura());
-            query.setParameter("estadoFatura", factura.getEstadoFactura());
-            query.setParameter("estadoPago", factura.getEstadoPago());
-            
-            int count = query.executeUpdate();
-
+            session.beginTransaction();
+            session.saveOrUpdate(factura);
             actualizado = true;
+            session.getTransaction().commit();
+
         } catch (Exception e) {
 
         } 

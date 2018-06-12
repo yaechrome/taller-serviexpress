@@ -58,7 +58,7 @@ public class FacturaProductoDaoHibernate implements FacturaProductoDao{
 
     @Override
     public boolean updateFacturaProducto(FacturaProducto facturaProducto) {
-         boolean actualizado = false;
+        boolean actualizado = false;
     	Session session = getSessionFactory().openSession();
         try {
             session.beginTransaction();
@@ -67,8 +67,6 @@ public class FacturaProductoDaoHibernate implements FacturaProductoDao{
             session.getTransaction().commit();
         } catch (Exception e) {
             
-        }finally{
-            session.close();
         }
         return actualizado;    
     }

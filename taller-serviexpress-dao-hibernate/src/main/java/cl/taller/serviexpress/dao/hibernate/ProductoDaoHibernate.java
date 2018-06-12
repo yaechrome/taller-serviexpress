@@ -102,7 +102,6 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
             actualizado = true;
             session.getTransaction().commit();
 
-            actualizado = true;
         } catch (Exception e) {
 
         }

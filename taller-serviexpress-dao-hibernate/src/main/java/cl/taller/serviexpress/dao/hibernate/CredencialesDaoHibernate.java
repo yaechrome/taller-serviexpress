@@ -36,8 +36,6 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
             credenciales = (Credenciales) query.uniqueResult();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
         }
         return credenciales;
 
@@ -60,9 +58,7 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
             credenciales = (Credenciales) query.uniqueResult();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
+        } 
         return credenciales;
 
     }
@@ -95,38 +91,43 @@ public class CredencialesDaoHibernate extends BaseHibernate implements Credencia
     @Override
     public boolean createCredenciales(Credenciales credencial) {
         Session session = getSessionFactory().openSession();
+        boolean creado = false;
         try {
-        	session.beginTransaction();
+            session.beginTransaction();
             session.save(credencial);
             session.getTransaction().commit();
-            return true;
+            creado = true; 
         } catch (Exception e) {
 
         }
-        return false;
+        return creado;
     }
 
     @Override
     public boolean updateCredenciales(Credenciales credencial) {
         Session session = getSessionFactory().openSession();
+        boolean actualizado = false;
         try {
-            String sql = "update from Credenciales set username = :username, password = :password where id = :id";
+//            String sql = "update from Credenciales set username = :username, password = :password where id = :id";
+//
+//            Query query = session.createQuery(sql);
+//
+//            query.setParameter("username", credencial.getUsername());
+//            query.setParameter("password", credencial.getPassword());
+//            query.setLong("id", credencial.getId());
+//
+//            int count = query.executeUpdate();
+//
+//            return true;
 
-            Query query = session.createQuery(sql);
-
-            query.setParameter("username", credencial.getUsername());
-            query.setParameter("password", credencial.getPassword());
-            query.setLong("id", credencial.getId());
-
-            int count = query.executeUpdate();
-
-            return true;
+            session.beginTransaction();
+            session.saveOrUpdate(credencial);
+            actualizado = true;
+            session.getTransaction().commit();
         } catch (Exception e) {
 
-        } finally {
-            session.close();
-        }
-        return false;
+        } 
+        return actualizado;
     }
 
 }

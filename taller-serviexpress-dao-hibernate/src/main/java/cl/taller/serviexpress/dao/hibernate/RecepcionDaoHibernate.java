@@ -104,22 +104,25 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
         boolean actualizado = false;
         Session session = getSessionFactory().openSession();
         try {
-            String sql = "update from Recepcion set ordenCompra = :idOrden, "
-                    + "idUsuario = :idUsuarioEmpleado, fechaRecepcion = :fechaRecepcion,"
-                    + " valorTotal = :valorTotal, estadoRecepcion = :estadoRecepcion "
-                    + "where id = :id";
-
-            Query query = session.createQuery(sql);
-
-            query.setLong("idOrden", recepcion.getOrdenCompra().getId());
-            query.setParameter("idUsuarioEmpleado", recepcion.getIdUsuario());
-            query.setParameter("fechaRecepcion", recepcion.getFechaRecepcion());
-            query.setParameter("valorTotal", recepcion.getValorTotal());
-            query.setParameter("estadoRecepcion", recepcion.getEstadoRecepcion());
-            query.setLong("id", recepcion.getId());
-
-            int count = query.executeUpdate();
+//            String sql = "update from Recepcion set ordenCompra = :idOrden, "
+//                    + "idUsuario = :idUsuarioEmpleado, fechaRecepcion = :fechaRecepcion,"
+//                    + " valorTotal = :valorTotal, estadoRecepcion = :estadoRecepcion "
+//                    + "where id = :id";
+//
+//            Query query = session.createQuery(sql);
+//
+//            query.setLong("idOrden", recepcion.getOrdenCompra().getId());
+//            query.setParameter("idUsuarioEmpleado", recepcion.getIdUsuario());
+//            query.setParameter("fechaRecepcion", recepcion.getFechaRecepcion());
+//            query.setParameter("valorTotal", recepcion.getValorTotal());
+//            query.setParameter("estadoRecepcion", recepcion.getEstadoRecepcion());
+//            query.setLong("id", recepcion.getId());
+//
+//            int count = query.executeUpdate();
+            session.beginTransaction();
+            session.saveOrUpdate(recepcion);
             actualizado = true;
+            session.getTransaction().commit();
         } catch (Exception e) {
 
         }
