@@ -86,7 +86,33 @@ public class FacturaDaoHibernate implements FacturaDao {
 
     @Override
     public boolean updateFactura(Factura factura) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = getSessionFactory().openSession();
+        boolean actualizado = false;
+        try {
+            String sql = "update from OrdenCompra set"
+                    + " USUARIO = :idUsuario, RUTCLIENTE = :rutCliente,"
+                    + " PATENTEVEHICULO = :patente, VALORNETO = :neto,"
+                    + " IVA = : iva, TOTALFACTURA = :totalFactura, ESTADOFACTURA = :estadoFactura, "
+                    + "ESTADOPAGO = :estadoPago where id = :id";
+
+            Query query = session.createQuery(sql);
+
+            query.setLong("idUsuario", factura.getUsuario().getId());
+            query.setParameter("rutCliente", factura.getUsuario().getRut());
+            query.setParameter("patente", factura.getPatenteVehiculo());
+            query.setLong("neto", factura.getValorNeto());
+            query.setLong("iva", factura.getIva());
+            query.setLong("total", factura.getTotalFactura());
+            query.setParameter("estadoFatura", factura.getEstadoFactura());
+            query.setParameter("estadoPago", factura.getEstadoPago());
+            
+            int count = query.executeUpdate();
+
+            actualizado = true;
+        } catch (Exception e) {
+
+        } 
+        return actualizado;
     }
 
 }
