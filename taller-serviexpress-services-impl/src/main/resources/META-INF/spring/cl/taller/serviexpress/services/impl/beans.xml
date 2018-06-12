@@ -38,6 +38,8 @@
 	</bean>
         <bean id="facturaServices" class="cl.taller.serviexpress.services.impl.FacturaServicesImpl">
 		<property name="facturaDao" ref="facturaDao"/>
+                <property name="facturaProductoDao" ref="facturaProductoDao"/>
+                <property name="facturaServicioDao" ref="facturaServicioDao"/>
 	</bean>
         
         
