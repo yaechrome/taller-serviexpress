@@ -51,12 +51,18 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     public List<Usuario> findAllActive() {
         
     	Session session = getSessionFactory().openSession();
+    	List<Usuario> lista = null;
+        
+    	try {
+            String sql = "select b from Usuario b";
     	
-    	String sql = "select b from Usuario b";
+            Query query = session.createQuery(sql);
     	
-    	Query query = session.createQuery(sql);
-    	
-    	return query.list();
+            lista = query.list();
+        } catch (Exception e) {
+        }
+        
+        return lista;
      
     }
 
@@ -82,20 +88,20 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     }
 
     @Override
-    public Usuario createUsuario(Usuario Usuario) { 
+    public Usuario createUsuario(Usuario usuario) { 
     	Session session = getSessionFactory().openSession();
         
         try {
             session.beginTransaction();
 
-            session.save(Usuario);
+            session.save(usuario);
 
             session.getTransaction().commit();
             
         } catch (Exception e) {
             
         }
-        return Usuario;
+        return usuario;
     }
 
     @Override
