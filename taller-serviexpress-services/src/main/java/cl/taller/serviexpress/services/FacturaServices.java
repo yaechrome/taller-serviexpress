@@ -11,7 +11,7 @@ public interface FacturaServices {
     boolean modificarFactura(Factura factura);
     Factura buscarFacturaPorId(long idFactura);
     List<Factura> listarFactura();
-    List<Factura> buscarFacturaPorCliente();
+    List<Factura> buscarFacturaPorCliente(String rut);
     
     
 }
