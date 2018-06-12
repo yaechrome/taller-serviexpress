@@ -21,80 +21,78 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/OrdenCompra")
 public class OrdenCompraController {
-    
-	@Autowired
+
+    @Autowired
     OrdenServicesImpl ordenCompraDao;
-	
-	@Autowired
-	ProductoServicesImpl productoDao;
-	
+
+    @Autowired
+    ProductoServicesImpl productoDao;
+
     @Autowired
     UsuarioServicesImpl userDao;
 
-    
-    private static final String INDEX_URL="OrdenCompra";
-    private static final String ORDER_URL="CrearOrdenCompra";
+    private static final String INDEX_URL = "OrdenCompra";
+    private static final String ORDER_URL = "CrearOrdenCompra";
     private static final String ORDEN_FILTER_URL = "FiltroOrdenes";
+
     @RequestMapping
     public String index(Model model) {
-        
+
         List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
         model.addAttribute("ordenes", ordenes);
-    	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
-    	
+        model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
+
         return INDEX_URL;
     }
 
-    @RequestMapping(value="/CrearOrdenCompra",method=RequestMethod.GET)
-    public String verCrearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result,Model model) {
-		List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
-		List<Producto> productos = productoDao.listarProductos();
-		List<Usuario> proveedores = userDao.listarUsuariosPorPerfil(5L);
-		model.addAttribute("proveedores", proveedores);
-		model.addAttribute("ordenes", ordenes);
-		model.addAttribute("productos", productos);
-    	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
-    	
-    	return ORDER_URL;
-    }
-    
-    @RequestMapping(value="/CrearOrdenCompra",method=RequestMethod.POST)
-    public String crearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result,Model model) {
-		
-    	OrdenCompra orden = new OrdenCompra();
-    	
-    	orden.setIdProveedor(ordenCompraViewModel.getIdProveedor());
-    	orden.setUsuario(ordenCompraViewModel.getUsuario());
-    	orden.setFechaEmision(ordenCompraViewModel.getFechaEmision());
-    	orden.setEstadoOrden(ordenCompraViewModel.getEstadoOrden());
-        orden.setObservacionOrden(ordenCompraViewModel.getObservacionOrden());
-    	orden.setOrdenProducto(ordenCompraViewModel.getOrdenProducto());
+    @RequestMapping(value = "/CrearOrdenCompra", method = RequestMethod.GET)
+    public String verCrearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result, Model model) {
+        List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+        List<Producto> productos = productoDao.listarProductos();
+        List<Usuario> proveedores = userDao.listarUsuariosPorPerfil(5L);
+        model.addAttribute("proveedores", proveedores);
+        model.addAttribute("ordenes", ordenes);
+        model.addAttribute("productos", productos);
+        model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
 
-    	
-    	if(ordenCompraDao.crearOrdenCompra(orden)) {
-    	
+        return ORDER_URL;
+    }
+
+    @RequestMapping(value = "/CrearOrdenCompra", method = RequestMethod.POST)
+    public String crearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result, Model model) {
+
+        OrdenCompra orden = new OrdenCompra();
+
+        orden.setIdProveedor(ordenCompraViewModel.getIdProveedor());
+        orden.setUsuario(ordenCompraViewModel.getUsuario());
+        orden.setFechaEmision(ordenCompraViewModel.getFechaEmision());
+        orden.setEstadoOrden(ordenCompraViewModel.getEstadoOrden());
+        orden.setObservacionOrden(ordenCompraViewModel.getObservacionOrden());
+        orden.setOrdenProducto(ordenCompraViewModel.getOrdenProducto());
+
+        if (ordenCompraDao.crearOrdenCompra(orden)) {
+
             List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
             model.addAttribute("ordenes", ordenes);
             model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
-    	}
-    	return INDEX_URL;
+        }
+        return INDEX_URL;
     }
-    
-    @RequestMapping(value="/BuscarOrdenCompra/{id}",method=RequestMethod.GET)
-    public String buscarOrdenCompra(@Valid IdViewModel idViewModel, BindingResult result,Model model) {
+
+    @RequestMapping(value = "/BuscarOrdenCompra/{id}", method = RequestMethod.GET)
+    public String buscarOrdenCompra(@Valid IdViewModel idViewModel, BindingResult result, Model model) {
         OrdenCompra orden = ordenCompraDao.buscarOrdenCompraPorId(idViewModel.getId());
 
         model.addAttribute("orden", orden);
-    	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
-    	return INDEX_URL;
+        model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
+        return INDEX_URL;
     }
-    
-    @RequestMapping(value="/FiltroOrdenes",method=RequestMethod.GET)
-    public String filtroOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result,Model model) {
+
+    @RequestMapping(value = "/FiltroOrdenes", method = RequestMethod.GET)
+    public String filtroOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result, Model model) {
         List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
         model.addAttribute("ordenes", ordenes);
-    	model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
-    	return ORDEN_FILTER_URL;
+        model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
+        return ORDEN_FILTER_URL;
     }
 }
-
