@@ -78,6 +78,13 @@
    <bean id="recepcionProductoDao" class="cl.taller.serviexpress.dao.hibernate.RecepcionProductoDaoHibernate" >
         <property name="sessionFactory" ref="sessionFactory"></property>
    </bean> 
+   <bean id="reservaDao" class="cl.taller.serviexpress.dao.hibernate.ReservaDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
+   
+   <bean id="facturaDao" class="cl.taller.serviexpress.dao.hibernate.FacturaDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+   </bean> 
    
    
 </beans>
