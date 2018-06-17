@@ -88,5 +88,10 @@ public class ProductoServicesImpl implements ProductoServices{
     public List<FamiliaProducto> listarFamiliasProductos() {
         return familiaProductoDao.findAll();
     }
+
+    @Override
+    public TipoProducto buscarTipoProductoPorId(long id) {
+        return tipoProductoDao.findById(id);
+    }
     
 }

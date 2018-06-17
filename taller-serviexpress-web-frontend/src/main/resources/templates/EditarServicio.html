@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mt50 mb0">
+          <div class="col s12 mb10">
+            <h3 class="title small">Gestión de servicios</h3>
+          </div>
+          <div class="col s12 mb20">
+            <div class="card-panel pad0">
+              <div class="card-content pad24">
+                <h3 class="title mb10 blue-text text-darken-3 mb20">Modificar Servicio</h3>
+                <form class="row mb0" th:action="@{/Servicio/ActualizarServicio(id = ${servicio.id})}" th:object="${ServicioViewModel}" method="POST">
+                  <div class="col s12 m3">
+                    <dl class="def">
+                      <dt class="def-term">Descripcion:</dt>
+                      <dd class="def-des" th:text="${servicio.descripcionServicio}"></dd>
+                    </dl>
+                  </div>
+                  <div class="col s12 m3">
+                    <dl class="def">
+                      <dt class="def-term">Valor:</dt>
+                      <dd class="def-des" th:text="${servicio.valor}" ></dd>
+                    </dl>
+                  </div>
+                  <div class="input-field col s12 m3">
+                    			<select class="form-control" th:field="*{estadoServicio}">
+                      			<option value="">Seleccion Estado</option>
+                      			<option value="VIGENTE">Vigente</option>
+                      			<option value="NO VIGENTE">No Vigente</option>
+                    			</select>
+                    <label>Estado</label>
+                  </div>
+                  <div class="col s12 m3 text_right">
+                    <button class="waves-effect waves-light btn blue darken-3 mt10" type="submit">Actualizar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
+</th:block>
+</html>

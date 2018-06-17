@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mb0 center-align relative full">
+          <div class="center">
+            <div class="col s12 mb20">
+              <form class="form" role="form" method="POST" action="/Servicio/CrearServicio" th:action="@{/Servicio/CrearServicio}" th:object="${ServicioViewModel}" accept-charset="UTF-8" autocomplete="off">
+              <div class="card-panel pad0">
+                <div class="card-content pad24">
+                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR SERVICIO" width="170"/></div>
+                  <table class="responsive-table striped">
+                    <tbody>
+                        <tr>
+                            <td>Descripción</td>
+                            <td><input type="text" id="descripcionServicio" th:field="*{descripcionServicio}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Valor</td>
+                            <td><input type="text" id="valor" th:field="*{valor}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Estado</td>
+							<td>
+                    			<select class="form-control" th:field="*{estadoServicio}">
+                      			<option value="">Seleccion Perfil</option>
+                      			<option value="VIGENTE">Vigente</option>
+                      			<option value="NO VIGENTE">No Vigente</option>
+                    			</select>
+							</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="card-action"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Servicio</button></div>
+              <br/>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
+</th:block>
+</html>

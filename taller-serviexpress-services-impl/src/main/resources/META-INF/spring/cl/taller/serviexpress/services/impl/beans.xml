@@ -33,6 +33,14 @@
 		<property name="recepcionDao" ref="recepcionDao"/>
                 <property name="recepcionProductoDao" ref="recepcionProductoDao"/>
 	</bean>
+        <bean id="reservaServices" class="cl.taller.serviexpress.services.impl.ReservaServicesImpl">
+		<property name="reservaDao" ref="reservaDao"/>
+	</bean>
+        <bean id="facturaServices" class="cl.taller.serviexpress.services.impl.FacturaServicesImpl">
+		<property name="facturaDao" ref="facturaDao"/>
+                <property name="facturaProductoDao" ref="facturaProductoDao"/>
+                <property name="facturaServicioDao" ref="facturaServicioDao"/>
+	</bean>
         
         
 	

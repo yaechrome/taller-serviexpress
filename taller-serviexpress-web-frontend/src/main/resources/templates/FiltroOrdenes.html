@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+          <div class="col s12 mb20">
+            <div class="card-panel pad0">
+              <div class="card-content pad24">
+                <h3 class="title small mb10">Ordenes Filtradas</h3>
+                <div class="row mb0">
+                  <div class="col s12">
+                    <table class="responsive-table striped">
+                      <thead>
+                        <tr>
+                          <th class="blue-text text-darken-3">Fecha Orden</th>
+                          <th class="blue-text text-darken-3">ID Proveedor</th>
+                          <th class="blue-text text-darken-3">Empleado</th>
+                          <th class="blue-text text-darken-3">Estado</th>
+                          <th class="blue-text text-darken-3">Accion</th>
+                        </tr>
+                      </thead>
+                      				<tbody>
+				                        <tr th:each="orden : ${ordenes}">
+				                        	<td th:text="${orden.fechaEmision}"></td>
+				                          	<td th:text="${orden.idProveedor}"></td>
+				                          	<td th:text="${orden.getUsuario().getNombre()}"></td>
+				                    		<td th:text="${orden.estadoOrden}"></td>
+				                          	<td class="text_right">
+				                          		<a class="table-btn" href="/OrdenCompra/EditarOrden" th:href="@{/OrdenCompra/EditarUsuario(id = ${orden.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          	</td>
+				                        </tr>
+                      				</tbody>
+                    </table>
+                  </div>
+                  <div class="col s12">
+                    <hr></hr>
+                    <div class="row mb0">
+                      <div class="col s12 m6 text_left">
+                        <ul class="pagination">
+                          <li class="disabled prev"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                          <li class="active blue darken-3"><a href="#!">1</a></li>
+                          <li class="waves-effect"><a href="#!">2</a></li>
+                          <li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                      </div>
+                      <div class="col s12 m6 text_right"><a class="waves-effect waves-light btn btn-small blue-grey lighten-5 blue-text text-darken-3 mmb20 mwfull" href="#!"> exportar a Excel</a></div>                 
+                    </div>                
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+    </main>
+  </body>
+</th:block>
+</html>

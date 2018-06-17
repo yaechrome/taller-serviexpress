@@ -97,23 +97,11 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
         Session session = getSessionFactory().openSession();
         boolean actualizado = false;
         try {
-            String sql = "update from Producto set tipoProducto = :tipo, "
-                    + "nombreProducto = :nombre, precioVenta = :precio, "
-                    + "stock = :stock, stockCritico = :stock_critico"
-                    + "where id = :id_producto";
-
-            Query query = session.createQuery(sql);
-
-            query.setParameter("tipo", producto.getTipoProducto().getId());
-            query.setParameter("nombre", producto.getNombreProducto());
-            query.setLong("precio", producto.getPrecioVenta());
-            query.setLong("stock", producto.getStock());
-            query.setLong("stock_critico", producto.getStockCritico());
-            query.setLong("id_producto", producto.getId());
-
-            int count = query.executeUpdate();
-
+            session.beginTransaction();
+            session.saveOrUpdate(producto);
             actualizado = true;
+            session.getTransaction().commit();
+
         } catch (Exception e) {
 
         }

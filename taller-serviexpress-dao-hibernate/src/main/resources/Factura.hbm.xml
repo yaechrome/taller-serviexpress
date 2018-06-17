@@ -8,7 +8,7 @@
 				<param name="sequence">FacturaSequence</param>
 			</generator>
 		</id>
-		<many-to-one name="usuario" class="cl.taller.serviexpress.domain.Usuario" unique="true"/>
+		<many-to-one name="usuario" class="cl.taller.serviexpress.domain.Usuario"/>
 		<property name="rutCliente"/>
 		<property name="valorNeto"/>
 		<property name="patenteVehiculo"/>

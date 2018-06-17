@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mb0 center-align relative full">
+          <div class="center">
+            <div class="col s12 mb20">
+              <form class="form" role="form" method="POST" action="/Usuario/CrearUsuario" th:action="@{/Usuario/CrearUsuario}" th:object="${UserViewModel}" accept-charset="UTF-8" autocomplete="off">
+              <div class="card-panel pad0">
+                <div class="card-content pad24">
+                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR USUARIO" width="170"/></div>
+                  <table class="responsive-table striped">
+                    <tbody>
+                        <tr>
+                            <td>RUT</td>
+                            <td type="text" id="rut" th:text="${usuario.rut}"></td>
+                        </tr>
+                        <tr>
+                            <td>NOMBRE</td>
+                            <td><a type="text" id="nombre" th:text="${usuario.nombre}" /></td>
+                        </tr>
+                        <tr>
+                            <td>DIRECCION</td>
+                            <td><a type="text" id="direccion" th:text="${usuario.direccion}"/></td>
+                        </tr>
+                        <tr>
+                            <td>TELEFONO</td>
+                            <td><a type="text" id="telefono" th:text="${usuario.contactoTelefonico}"/></td>
+                        </tr>
+                    </tbody>     
+                </table>
+                </div>
+                  <div class="center-align"> 
+                      <a class="btn btn-delete" href="/Usuario" th:href="@{/Usuario}">Volver</a>     
+                  </div>
+                  
+              <br/>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
+</th:block>
+</html>

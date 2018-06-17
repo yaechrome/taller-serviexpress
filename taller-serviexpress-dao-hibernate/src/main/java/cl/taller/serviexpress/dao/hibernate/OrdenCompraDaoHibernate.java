@@ -93,23 +93,26 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
         Session session = getSessionFactory().openSession();
         boolean actualizado = false;
         try {
-            String sql = "update from OrdenCompra set usuario = :idUsuarioEmpleado,"
-                    + " idProveedor = :idProveedor, fechaEmision = :fechaEmision,"
-                    + " estadoOrden = :estadoOrden, observacionOrden = :observacionOrden"
-                    + " where id = :id";
+//            String sql = "update from OrdenCompra set usuario = :idUsuarioEmpleado,"
+//                    + " idProveedor = :idProveedor, fechaEmision = :fechaEmision,"
+//                    + " estadoOrden = :estadoOrden, observacionOrden = :observacionOrden"
+//                    + " where id = :id";
+//
+//            Query query = session.createQuery(sql);
+//
+//            query.setParameter("idUsuarioEmpleado", ordenCompra.getUsuario().getId());
+//            query.setParameter("idProveedor", ordenCompra.getIdProveedor());
+//            query.setParameter("fechaEmision", ordenCompra.getFechaEmision());
+//            query.setParameter("estadoOrden", ordenCompra.getEstadoOrden());
+//            query.setParameter("observacionOrden", ordenCompra.getObservacionOrden());
+//            query.setLong("id", ordenCompra.getId());
+//
+//            int count = query.executeUpdate();
 
-            Query query = session.createQuery(sql);
-
-            query.setParameter("idUsuarioEmpleado", ordenCompra.getUsuario().getId());
-            query.setParameter("idProveedor", ordenCompra.getIdProveedor());
-            query.setParameter("fechaEmision", ordenCompra.getFechaEmision());
-            query.setParameter("estadoOrden", ordenCompra.getEstadoOrden());
-            query.setParameter("observacionOrden", ordenCompra.getObservacionOrden());
-            query.setLong("id", ordenCompra.getId());
-
-            int count = query.executeUpdate();
-
+            session.beginTransaction();
+            session.saveOrUpdate(ordenCompra);
             actualizado = true;
+            session.getTransaction().commit();
         } catch (Exception e) {
 
         } 

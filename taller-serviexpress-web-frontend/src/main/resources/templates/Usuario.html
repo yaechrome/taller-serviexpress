@@ -5,14 +5,22 @@
 	layout:decorator="master/layout/public">
 	<th:block layout:fragment="content">
 	<body>
+	    <main role="main">
+	     <section class="container">
+        <div class="row mt50 mb0">
 		<div class="col s12 mb10">
         	<h3 class="title small">Gestión de usuarios</h3>
        	</div>
+       	<div class="input-field col s12 text_right">
+          <a class="table-btn" href="Usuario/CrearUsuario" th:href="@{/Usuario/CrearUsuario}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></a>
+        </div>
         <div class="col s12 mb20">
         	<div class="card-panel pad0">
             	<div class="card-content pad24">
                 	<div class="row mb0">
                   		<form class="col s12" th:action="@{/Usuario/BuscarUsuario}" th:object="${UserViewModel}" method="POST">
+                  		</form>
+                  		<form class="col s12" th:action="@{/Usuario/LeerUsuario}" th:object="${UserViewModel}" method="GET">
                     		<div class="row mb0">
                       			<div class="input-field col s12 m3 l4">
                         			<input class="validate" id="rut" type="text" th:field="*{rut}"/>
@@ -20,6 +28,8 @@
                       			</div>
                       			<div class="input-field col s12 m3 l4 offset-l4 text_right">
 									<button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button>
+
+                                            <a class="table-btn" ><button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button></a>	
                       			</div>
                     		</div>
                   		</form>
@@ -53,6 +63,8 @@
 				                          	<form th:action="@{/Usuario/BuscarUsuario}" th:object="${UserViewModel}" method="POST" >
 				                          	<button class="waves-effect waves-light btn blue darken-3">Editar</button>
 				                          	</form>
+				                          	<td class="text_right">
+				                          		<a class="table-btn" href="/Usuario/EditarUsuario" th:href="@{/Usuario/EditarUsuario(id = ${user.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
 				                          	</td>
 				                        </tr> 
                       				</tbody>
@@ -71,12 +83,17 @@
                         			<br></br>
                         			<a class="table-btn" href="Usuario/CrearUsuario" th:href="@{/Usuario/CrearUsuario}" ><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></a>
                       			</div>
+                        		</div>
                     		</div>
                   		</div>
                 	</div>
               	</div>
             </div>
     	</div>
+    	        </div>
+      </section>
+    </main>
+
 	</body>
 	</th:block>
 </html>

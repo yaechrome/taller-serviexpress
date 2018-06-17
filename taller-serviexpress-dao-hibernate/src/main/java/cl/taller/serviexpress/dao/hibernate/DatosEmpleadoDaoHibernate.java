@@ -62,20 +62,23 @@ public class DatosEmpleadoDaoHibernate extends BaseHibernate implements DatosEmp
         Session session = getSessionFactory().openSession();
         boolean actualizado = false;
         try {
-            String sql = "update  DatosEmpleados set fechaContratacion = :fechaContratacion, "
-                    + "sueldo = :sueldo, cargo = :cargo, obsAdministrativas = :obsAdministrativas"
-                    + " where usuario = :idUsuario";
-
-            Query query = session.createQuery(sql);
-
-            query.setParameter("idUsuario", empleado.getUsuario().getId());
-            query.setParameter("fechaContratacion", empleado.getFechaContratacion());
-            query.setParameter("sueldo", empleado.getSueldo());
-            query.setParameter("cargo", empleado.getCargo());
-            query.setParameter("obs_administrativas", empleado.getObsAdministrativas());
-
-            int result = query.executeUpdate();
+//            String sql = "update  DatosEmpleados set fechaContratacion = :fechaContratacion, "
+//                    + "sueldo = :sueldo, cargo = :cargo, obsAdministrativas = :obsAdministrativas"
+//                    + " where usuario = :idUsuario";
+//
+//            Query query = session.createQuery(sql);
+//
+//            query.setParameter("idUsuario", empleado.getUsuario().getId());
+//            query.setParameter("fechaContratacion", empleado.getFechaContratacion());
+//            query.setParameter("sueldo", empleado.getSueldo());
+//            query.setParameter("cargo", empleado.getCargo());
+//            query.setParameter("obs_administrativas", empleado.getObsAdministrativas());
+//
+//            int result = query.executeUpdate();
+            session.beginTransaction();
+            session.saveOrUpdate(empleado);
             actualizado = true;
+            session.getTransaction().commit();
         } catch (Exception e) {
 
         }
