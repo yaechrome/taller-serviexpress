@@ -40,7 +40,8 @@ public class UserController {
 	
     private static final String INDEX_URL="Usuario";
     private static final String USER_URL="CrearUsuario";
-    private static final String ASSING_PROFILE_URL = "user/assignProfile";
+    private static final String BUSCAR_URL="BuscarUsuario";
+    private static final String EDITAR_URL = "EditarUsuario";
     private static final String CREATE_USER_URL = "Usuario/CrearUsuario";
     private static final String EDIT_USER = "user/editUser";
     
@@ -89,15 +90,22 @@ public class UserController {
     	return INDEX_URL;
     }
     
-    @RequestMapping(value="/BuscarUsuario/{rut}",method=RequestMethod.GET)
+    @RequestMapping(value="/BuscarUsuario",method=RequestMethod.POST)
     public String buscarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-		List<Usuario> users = userDao.listarUsuarios();
-		List<Perfil> perfiles = perfilDao.listarPerfiles();
     	
-		model.addAttribute("perfiles", perfiles);
-		model.addAttribute("users", users);
-    	model.addAttribute("UserViewModel", new UserViewModel());
-    	return INDEX_URL;
+		Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+    	model.addAttribute("usuario", usuario);
+    	
+    	return BUSCAR_URL;
+    }
+    
+    @RequestMapping(value="/EditarUsuario",method=RequestMethod.GET)
+    public String editarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
+    	
+		Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+    	model.addAttribute("userViewModel", new UserViewModel());
+    	model.addAttribute("usuario", usuario);
+    	return EDITAR_URL;
     }
     
 }

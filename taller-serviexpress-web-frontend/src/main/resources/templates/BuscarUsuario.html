@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mb0 center-align relative full">
+          <div class="center">
+            <div class="col s12 mb20">
+              <div class="card-panel pad0">
+                <div class="card-content pad24">
+                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="USUARIO" width="170"/></div>
+                  <table class="responsive-table striped">
+                    <tbody>
+                        <tr>
+                            <td>RUT</td>
+                            <td th:text="${usuario.rut}"></td>
+                        </tr>
+                        <tr>
+                            <td>NOMBRE</td>
+                            <td th:text="${usuario.nombre}" ></td>
+                        </tr>
+                        <tr>
+                            <td>DIRECCION</td>
+                            <td th:text="${usuario.direccion}"></td>
+                        </tr>
+                        <tr>
+                            <td>TELEFONO</td>
+                            <td th:text="${usuario.contactoTelefonico}"></td>
+                        </tr>
+                        <tr>
+                            <td>TELEFONO</td>
+                            <td th:text="${usuario.getPerfil().getDetallePerfil()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="card-action"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></div>
+              <br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+</body>
+</th:block>
+</html>

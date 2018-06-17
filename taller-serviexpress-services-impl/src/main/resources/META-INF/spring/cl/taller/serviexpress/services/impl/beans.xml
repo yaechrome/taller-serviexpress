@@ -26,7 +26,7 @@
 		<property name="servicioDao" ref="servicioDao"/>
 	</bean>
         <bean id="ordenServices" class="cl.taller.serviexpress.services.impl.OrdenServicesImpl">
-		<property name="ordenDao" ref="ordenDao"/>
+		<property name="ordenCompraDao" ref="ordenCompraDao"/>
                 <property name="ordenProductoDao" ref="ordenProductoDao"/>
 	</bean>
         <bean id="recepcionServices" class="cl.taller.serviexpress.services.impl.RecepcionServicesImpl">
