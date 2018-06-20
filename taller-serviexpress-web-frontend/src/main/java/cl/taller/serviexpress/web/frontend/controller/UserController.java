@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
 	@Autowired
-	UsuarioServicesImpl userDao;
+	UsuarioServicesImpl userServices;
 	
 	@Autowired
-	PerfilServicesImpl perfilDao;
+	PerfilServicesImpl perfilServices;
 	
 	/**   
     private static final String INDEX_URL="Usuario";
@@ -48,8 +48,8 @@ public class UserController {
 
     @RequestMapping
     public String index(Model model) {
-        List<Usuario> users = userDao.listarUsuarios();
-        List<Perfil> perfiles = perfilDao.listarPerfiles();
+        List<Usuario> users = userServices.listarUsuarios();
+        List<Perfil> perfiles = perfilServices.listarPerfiles();
         model.addAttribute("users", users);
         model.addAttribute("perfiles", perfiles);
         model.addAttribute("UserViewModel", new UserViewModel());
@@ -59,7 +59,7 @@ public class UserController {
 
     @RequestMapping(value = "/CrearUsuario", method = RequestMethod.GET)
     public String verCrearUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
-        List<Usuario> users = userDao.listarUsuarios();
+        List<Usuario> users = userServices.listarUsuarios();
         model.addAttribute("users", users);
         model.addAttribute("UserViewModel", new UserViewModel());
 
@@ -72,7 +72,7 @@ public class UserController {
         Usuario user = new Usuario();
         Credenciales credencial = new Credenciales();
 
-        Perfil perfilCliente = perfilDao.buscarPorPerfil(4L);
+        Perfil perfilCliente = perfilServices.buscarPorPerfil(4L);
         user.setNombre(userViewModel.getNombre());
         user.setRut(userViewModel.getRut());
         user.setDireccion(userViewModel.getDireccion());
@@ -82,9 +82,9 @@ public class UserController {
         credencial.setUsername(userViewModel.getUsername());
         credencial.setPassword(userViewModel.getPassword());
 
-        if (userDao.crearUsuario(user) & userDao.crearCredenciales(credencial)) {
+        if (userServices.crearUsuario(user) & userServices.crearCredenciales(credencial)) {
 
-            List<Usuario> users = userDao.listarUsuarios();
+            List<Usuario> users = userServices.listarUsuarios();
             model.addAttribute("users", users);
             model.addAttribute("UserViewModel", new UserViewModel());
         }
@@ -104,7 +104,7 @@ public class UserController {
     @RequestMapping(value="/EditarUsuario",method=RequestMethod.GET)
     public String editarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
     	
-		Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+		Usuario usuario = userServices.buscarPorRut(userViewModel.getRut());
     	model.addAttribute("userViewModel", new UserViewModel());
     	model.addAttribute("usuario", usuario);
     	return EDITAR_URL;
@@ -112,8 +112,8 @@ public class UserController {
     
     @RequestMapping(value = "/BuscarUsuario/{rut}", method = RequestMethod.GET)
     public String buscarUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
-        List<Usuario> users = userDao.listarUsuarios();
-        List<Perfil> perfiles = perfilDao.listarPerfiles();
+        List<Usuario> users = userServices.listarUsuarios();
+        List<Perfil> perfiles = perfilServices.listarPerfiles();
 
         model.addAttribute("perfiles", perfiles);
         model.addAttribute("users", users);
@@ -121,10 +121,11 @@ public class UserController {
         return INDEX_URL;
     }
 
+    /**
     @RequestMapping(value = {"/EditarUsuario"}, method = RequestMethod.GET)
     public String editarUsuario(@Valid UserViewModel userViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
-        Usuario usuario = userDao.buscarPorID(id);
-        List<Perfil> perfiles = perfilDao.listarPerfiles();
+        Usuario usuario = userServices.buscarPorID(id);
+        List<Perfil> perfiles = perfilServices.listarPerfiles();
         UserViewModel userViewModel2 = new UserViewModel();
         userViewModel2.setNombre(usuario.getNombre());
         userViewModel2.setRut(usuario.getRut());
@@ -132,15 +133,15 @@ public class UserController {
         model.addAttribute("usuario", usuario);
         model.addAttribute("UserViewModel", userViewModel2);
         return EDIT_URL;
-    }
+    }*/
 
     @RequestMapping(value = {"/ActualizarUsuario"}, method = RequestMethod.POST)
     public String ActualizarUsuario(@Valid UserViewModel userViewModel, @RequestParam("rut") String rut, BindingResult result, Model model) {
-        Usuario usuario = userDao.buscarPorRut(rut);
-        Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
+        Usuario usuario = userServices.buscarPorRut(rut);
+        Perfil perfil = perfilServices.buscarPorPerfil(userViewModel.getIdPerfil());
         usuario.setPerfil(perfil);
-        if (userDao.modificarUsuario(usuario)) {
-            List<Usuario> users = userDao.listarUsuarios();
+        if (userServices.modificarUsuario(usuario)) {
+            List<Usuario> users = userServices.listarUsuarios();
             model.addAttribute("users", users);
             model.addAttribute("UserViewModel", new UserViewModel());
         }
@@ -150,12 +151,12 @@ public class UserController {
     @RequestMapping(value = "/EditarUsuario", method = RequestMethod.POST)
     public String editar(@Valid UserViewModel userViewModel, Model model) {
 
-        Perfil perfil = perfilDao.buscarPorPerfil(userViewModel.getIdPerfil());
-        Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+        Perfil perfil = perfilServices.buscarPorPerfil(userViewModel.getIdPerfil());
+        Usuario usuario = userServices.buscarPorRut(userViewModel.getRut());
         usuario.setPerfil(perfil);
-        if (userDao.modificarUsuario(usuario)) {
+        if (userServices.modificarUsuario(usuario)) {
 
-            List<Usuario> users = userDao.listarUsuarios();
+            List<Usuario> users = userServices.listarUsuarios();
             model.addAttribute("users", users);
             model.addAttribute("UserViewModel", new UserViewModel());
         }
@@ -164,7 +165,7 @@ public class UserController {
 
     @RequestMapping(value = {"/LeerUsuario"}, method = RequestMethod.GET)
     public String leerUsuario(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
-        Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
+        Usuario usuario = userServices.buscarPorRut(userViewModel.getRut());
         model.addAttribute("usuario", usuario);
         return READ_URL;
     }

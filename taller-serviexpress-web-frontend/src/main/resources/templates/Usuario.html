@@ -59,10 +59,11 @@
 				                          	<td th:text="${user.nombre}">Juan Pérez</td>
 				                          	<td th:text="${user.getPerfil().getDetallePerfil()}">Profesional</td>
 				                          	
-				                          	<td class="text_right">
+				                          	<td class="text_right"> 
 				                          	<form th:action="@{/Usuario/BuscarUsuario}" th:object="${UserViewModel}" method="POST" >
 				                          	<button class="waves-effect waves-light btn blue darken-3">Editar</button>
 				                          	</form>
+				                          	</td>
 				                          	<td class="text_right">
 				                          		<a class="table-btn" href="/Usuario/EditarUsuario" th:href="@{/Usuario/EditarUsuario(id = ${user.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
 				                          	</td>
@@ -90,7 +91,6 @@
               	</div>
             </div>
     	</div>
-    	        </div>
       </section>
     </main>
 

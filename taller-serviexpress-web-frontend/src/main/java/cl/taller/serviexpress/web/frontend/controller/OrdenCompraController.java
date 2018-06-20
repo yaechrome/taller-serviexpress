@@ -1,7 +1,6 @@
 package cl.taller.serviexpress.web.frontend.controller;
 
 import cl.taller.serviexpress.domain.OrdenCompra;
-import cl.taller.serviexpress.domain.OrdenProducto;
 import cl.taller.serviexpress.domain.Producto;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.OrdenServicesImpl;
@@ -23,13 +22,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class OrdenCompraController {
 
     @Autowired
-    OrdenServicesImpl ordenCompraDao;
+    OrdenServicesImpl ordenServices;
 
     @Autowired
-    ProductoServicesImpl productoDao;
+    ProductoServicesImpl productoServices;
 
     @Autowired
-    UsuarioServicesImpl userDao;
+    UsuarioServicesImpl userServices;
 
     private static final String INDEX_URL = "OrdenCompra";
     private static final String ORDER_URL = "CrearOrdenCompra";
@@ -38,7 +37,7 @@ public class OrdenCompraController {
     @RequestMapping
     public String index(Model model) {
 
-        List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+        List<OrdenCompra> ordenes = ordenServices.listarOrdenCompra();
         model.addAttribute("ordenes", ordenes);
         model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
 
@@ -47,9 +46,9 @@ public class OrdenCompraController {
 
     @RequestMapping(value = "/CrearOrdenCompra", method = RequestMethod.GET)
     public String verCrearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result, Model model) {
-        List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
-        List<Producto> productos = productoDao.listarProductos();
-        List<Usuario> proveedores = userDao.listarUsuariosPorPerfil(5L);
+        List<OrdenCompra> ordenes = ordenServices.listarOrdenCompra();
+        List<Producto> productos = productoServices.listarProductos();
+        List<Usuario> proveedores = userServices.listarUsuariosPorPerfil(5L);
         model.addAttribute("proveedores", proveedores);
         model.addAttribute("ordenes", ordenes);
         model.addAttribute("productos", productos);
@@ -70,9 +69,9 @@ public class OrdenCompraController {
         orden.setObservacionOrden(ordenCompraViewModel.getObservacionOrden());
         orden.setOrdenProducto(ordenCompraViewModel.getOrdenProducto());
 
-        if (ordenCompraDao.crearOrdenCompra(orden)) {
+        if (ordenServices.crearOrdenCompra(orden)) {
 
-            List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+            List<OrdenCompra> ordenes = ordenServices.listarOrdenCompra();
             model.addAttribute("ordenes", ordenes);
             model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
         }
@@ -81,7 +80,7 @@ public class OrdenCompraController {
 
     @RequestMapping(value = "/BuscarOrdenCompra/{id}", method = RequestMethod.GET)
     public String buscarOrdenCompra(@Valid IdViewModel idViewModel, BindingResult result, Model model) {
-        OrdenCompra orden = ordenCompraDao.buscarOrdenCompraPorId(idViewModel.getId());
+        OrdenCompra orden = ordenServices.buscarOrdenCompraPorId(idViewModel.getId());
 
         model.addAttribute("orden", orden);
         model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
@@ -90,7 +89,7 @@ public class OrdenCompraController {
 
     @RequestMapping(value = "/FiltroOrdenes", method = RequestMethod.GET)
     public String filtroOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result, Model model) {
-        List<OrdenCompra> ordenes = ordenCompraDao.listarOrdenCompra();
+        List<OrdenCompra> ordenes = ordenServices.listarOrdenCompra();
         model.addAttribute("ordenes", ordenes);
         model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
         return ORDEN_FILTER_URL;

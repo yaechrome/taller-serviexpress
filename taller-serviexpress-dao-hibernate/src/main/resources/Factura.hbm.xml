@@ -17,14 +17,14 @@
 		<property name="estadoFactura"/>
 		<property name="estadoPago"/>
 		<set name="FacturaServicio" table="FACTURA_SERVICIO">
-			<key column="ID"/>
+			<key column="factura"/>
 			<composite-element class="cl.taller.serviexpress.domain.FacturaServicio">
 				<property name="idMecanico"/>
 				<many-to-one name="servicio" class="cl.taller.serviexpress.domain.Servicio"/>
 			</composite-element>
 		</set>
 		<set name="FacturaProducto" table="FACTURA_PRODUCTO">
-			<key column="ID"/>
+			<key column="factura"/>
 			<composite-element class="cl.taller.serviexpress.domain.FacturaProducto">
 				<property name="cantidad"/>
 				<many-to-one name="producto" class="cl.taller.serviexpress.domain.Producto"/>

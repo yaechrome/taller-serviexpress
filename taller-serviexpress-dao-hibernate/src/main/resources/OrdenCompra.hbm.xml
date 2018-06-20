@@ -13,7 +13,7 @@
 		<property name="estadoOrden"/>
 		<property name="observacionOrden"/>
 		<set name="OrdenProducto" table="ORDEN_PRODUCTO">
-			<key column="ID"/>
+			<key column="ordenCompra"/>
 			<composite-element class="cl.taller.serviexpress.domain.OrdenProducto">
 				<property name="cantidad"/>
 				<property name="precioCompra"/>

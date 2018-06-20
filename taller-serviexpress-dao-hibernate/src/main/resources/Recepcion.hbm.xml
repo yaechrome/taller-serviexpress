@@ -13,7 +13,7 @@
 		<property name="valorTotal"/>
 		<property name="estadoRecepcion"/>
 		<set name="RecepcionProducto" table="RECEPCION_PRODUCTO">
-			<key column="ID"/>
+			<key column="recepcion"/>
 			<composite-element class="cl.taller.serviexpress.domain.RecepcionProducto">
 				<property name="codigoProducto"/>
 				<property name="cantidad"/>

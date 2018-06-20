@@ -2,11 +2,8 @@
 package cl.taller.serviexpress.web.frontend.controller;
 
 import cl.taller.serviexpress.domain.Recepcion;
-import cl.taller.serviexpress.domain.RecepcionProducto;
-import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.RecepcionServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.RecepcionViewModel;
-import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/Recepcion")
 public class RecepcionController {
-    @Autowired
-	RecepcionServicesImpl recepcionDao;
+    
+	@Autowired
+	RecepcionServicesImpl recepcionServices;
     
     private static final String INDEX_URL="Recepcion";
     private static final String RECEPTION_URL="CrearRecepcion";
@@ -30,7 +28,7 @@ public class RecepcionController {
 
     @RequestMapping
     public String index(Model model) {
-		List<Recepcion> recepciones = recepcionDao.listarRecepciones();
+		List<Recepcion> recepciones = recepcionServices.listarRecepciones();
 		model.addAttribute("recepciones", recepciones);
     	model.addAttribute("RecepcionViewModel", new RecepcionViewModel());
     	
@@ -39,7 +37,7 @@ public class RecepcionController {
     
     @RequestMapping(value="/CrearRecepcion",method=RequestMethod.GET)
     public String verCrearRecepcion(@Valid RecepcionViewModel recepcionViewModel, BindingResult result,Model model) {
-		List<Recepcion> recepciones = recepcionDao.listarRecepciones();
+		List<Recepcion> recepciones = recepcionServices.listarRecepciones();
 		model.addAttribute("recepciones", recepciones);
     	model.addAttribute("RecepcionViewModel", new RecepcionViewModel());
     	
@@ -58,8 +56,8 @@ public class RecepcionController {
         recepcion.setValorTotal(recepcionViewModel.getValorTotal());
         recepcion.setRecepcionProducto(recepcionViewModel.getRecepcionProducto());
     	
-    	if(recepcionDao.crearRecepcion(recepcion)) {
-    		List<Recepcion> recepciones = recepcionDao.listarRecepciones();
+    	if(recepcionServices.crearRecepcion(recepcion)) {
+    		List<Recepcion> recepciones = recepcionServices.listarRecepciones();
     		model.addAttribute("recepciones", recepciones);
     		model.addAttribute("RecepcionViewModel", new RecepcionViewModel());
     	}
@@ -69,7 +67,7 @@ public class RecepcionController {
     
     @RequestMapping(value="/BuscarRecepcionPorOrden/{id}",method=RequestMethod.GET)
     public String buscarRecepcion(@Valid RecepcionViewModel recepcionViewModel, BindingResult result,Model model) {
-		List<Recepcion> recepciones = recepcionDao.listarRecepcionPorOrden(recepcionViewModel.getOrdenCompra().getId());
+		List<Recepcion> recepciones = recepcionServices.listarRecepcionPorOrden(recepcionViewModel.getOrdenCompra().getId());
 		model.addAttribute("recepciones", recepciones);
                 
     	model.addAttribute("RecepcionViewModel", new RecepcionViewModel());

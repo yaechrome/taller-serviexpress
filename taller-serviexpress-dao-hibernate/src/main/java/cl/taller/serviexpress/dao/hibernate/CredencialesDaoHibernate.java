@@ -5,6 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import cl.taller.serviexpress.domain.Credenciales;
 import cl.taller.serviexpress.dao.CredencialesDao;
@@ -12,6 +13,7 @@ import cl.taller.serviexpress.dao.hibernate.base.BaseHibernate;
 
 public class CredencialesDaoHibernate extends BaseHibernate implements CredencialesDao {
 
+	
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {

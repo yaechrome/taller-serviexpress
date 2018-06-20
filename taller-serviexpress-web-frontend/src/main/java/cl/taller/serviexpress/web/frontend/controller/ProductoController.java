@@ -6,9 +6,7 @@ import cl.taller.serviexpress.domain.TipoProducto;
 import cl.taller.serviexpress.services.impl.ProductoServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.IdViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.ProductoViewModel;
-import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
 
-import java.util.Collections;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductoController {
 
     @Autowired
-    ProductoServicesImpl productoDao;   
+    ProductoServicesImpl productoServices;   
 
     private static final String INDEX_URL = "Producto";
     private static final String PRODUCT_URL = "CrearProducto";
@@ -34,9 +32,9 @@ public class ProductoController {
     @RequestMapping
     public String index(Model model) {
 
-        List<Producto> productos = productoDao.listarProductos();
-        List<TipoProducto> tipos = productoDao.listarTiposProductos();
-        List<FamiliaProducto> familias = productoDao.listarFamiliasProductos();
+        List<Producto> productos = productoServices.listarProductos();
+        List<TipoProducto> tipos = productoServices.listarTiposProductos();
+        List<FamiliaProducto> familias = productoServices.listarFamiliasProductos();
         model.addAttribute("productos", productos);
         model.addAttribute("tipos", tipos);
         model.addAttribute("familias", familias);
@@ -47,8 +45,8 @@ public class ProductoController {
 
     @RequestMapping(value = "/CrearProducto", method = RequestMethod.GET)
     public String verCrearProducto(@Valid ProductoViewModel productoViewModel, BindingResult result, Model model) {
-        List<Producto> productos = productoDao.listarProductos();
-        List<TipoProducto> tipos = productoDao.listarTiposProductos();
+        List<Producto> productos = productoServices.listarProductos();
+        List<TipoProducto> tipos = productoServices.listarTiposProductos();
         model.addAttribute("productos", productos);
         model.addAttribute("tipos", tipos);
         model.addAttribute("ProductoViewModel", new ProductoViewModel());
@@ -60,17 +58,17 @@ public class ProductoController {
     public String createProduct(@Valid ProductoViewModel productoViewModel, BindingResult result, Model model) {
 
         Producto producto = new Producto();
-        TipoProducto tipo = productoDao.buscarTipoProductoPorId(productoViewModel.getIdTipo());
+        TipoProducto tipo = productoServices.buscarTipoProductoPorId(productoViewModel.getIdTipo());
         producto.setTipoProducto(tipo);
         producto.setNombreProducto(productoViewModel.getNombreProducto());
         producto.setPrecioVenta(productoViewModel.getPrecioVenta());
         producto.setStock(productoViewModel.getStock());
         producto.setStockCritico(productoViewModel.getStockCritico());
 
-        if (productoDao.crearProducto(producto)) {
-            List<Producto> productos = productoDao.listarProductos();
-            List<TipoProducto> tipos = productoDao.listarTiposProductos();
-            List<FamiliaProducto> familias = productoDao.listarFamiliasProductos();
+        if (productoServices.crearProducto(producto)) {
+            List<Producto> productos = productoServices.listarProductos();
+            List<TipoProducto> tipos = productoServices.listarTiposProductos();
+            List<FamiliaProducto> familias = productoServices.listarFamiliasProductos();
             model.addAttribute("productos", productos);
             model.addAttribute("tipos", tipos);
             model.addAttribute("familias", familias);
@@ -81,7 +79,7 @@ public class ProductoController {
 
     @RequestMapping(value = {"/LeerProducto"}, method = RequestMethod.GET)
     public String leerProducto(@Valid IdViewModel idViewModel, BindingResult result, Model model) {
-        Producto producto = productoDao.buscarProductoPorId(idViewModel.getId());
+        Producto producto = productoServices.buscarProductoPorId(idViewModel.getId());
         model.addAttribute("producto", producto);
         model.addAttribute("ProductoViewModel", new ProductoViewModel());
         return READ_URL;
@@ -89,7 +87,7 @@ public class ProductoController {
     
     @RequestMapping(value = {"/ActualizarProducto"}, method = RequestMethod.POST)
     public String ActualizarProducto(@Valid ProductoViewModel productoViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
-        Producto producto = productoDao.buscarProductoPorId(id);
+        Producto producto = productoServices.buscarProductoPorId(id);
         TipoProducto tipo = producto.getTipoProducto();
         FamiliaProducto familia = producto.getTipoProducto().getFamiliaProducto();
         Producto productoGuardar = producto;        
@@ -97,8 +95,8 @@ public class ProductoController {
         productoGuardar.setTipoProducto(tipo);
         productoGuardar.setPrecioVenta(productoViewModel.getPrecioVenta());
         productoGuardar.setStockCritico(productoViewModel.getStockCritico());
-        if (productoDao.modificarProducto(productoGuardar)) {
-            List<Producto> productos = productoDao.listarProductos();
+        if (productoServices.modificarProducto(productoGuardar)) {
+            List<Producto> productos = productoServices.listarProductos();
             model.addAttribute("productos", productos);
             model.addAttribute("ProductoViewModel", new ProductoViewModel());
         }
@@ -107,7 +105,7 @@ public class ProductoController {
     
     @RequestMapping(value = {"/EditarProducto"}, method = RequestMethod.GET)
     public String editarProducto(@Valid ProductoViewModel productoViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
-        Producto producto = productoDao.buscarProductoPorId(id);
+        Producto producto = productoServices.buscarProductoPorId(id);
         ProductoViewModel productoViewModel2 = new ProductoViewModel();
         productoViewModel2.setNombreProducto(producto.getNombreProducto());
         productoViewModel2.setStock(producto.getStock());

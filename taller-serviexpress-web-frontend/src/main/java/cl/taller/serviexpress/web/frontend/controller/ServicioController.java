@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ServicioController {
 
     @Autowired
-    ServicioServicesImpl servicioDao;
+    ServicioServicesImpl servicioServices;
 
     private static final String INDEX_URL = "Servicio";
     private static final String SERVICE_URL = "CrearServicio";
@@ -34,7 +34,7 @@ public class ServicioController {
     @RequestMapping
     public String index(Model model) {
 
-        List<Servicio> servicios = servicioDao.listarServicios();
+        List<Servicio> servicios = servicioServices.listarServicios();
         model.addAttribute("servicios", servicios);
         model.addAttribute("ServicioViewModel", new ServicioViewModel());
 
@@ -43,7 +43,7 @@ public class ServicioController {
 
     @RequestMapping(value = "/CrearServicio", method = RequestMethod.GET)
     public String verCrearServicio(@Valid ServicioViewModel serviceViewModel, BindingResult result, Model model) {
-        List<Servicio> servicios = servicioDao.listarServicios();
+        List<Servicio> servicios = servicioServices.listarServicios();
         model.addAttribute("servicios", servicios);
         model.addAttribute("ServicioViewModel", new ServicioViewModel());
 
@@ -58,8 +58,8 @@ public class ServicioController {
         servicio.setEstadoServicio(serviceViewModel.getEstadoServicio());
         servicio.setValor(serviceViewModel.getValor());
 
-        if (servicioDao.crearServicio(servicio)) {
-            List<Servicio> servicios = servicioDao.listarServicios();
+        if (servicioServices.crearServicio(servicio)) {
+            List<Servicio> servicios = servicioServices.listarServicios();
             model.addAttribute("servicios", servicios);
             model.addAttribute("ServicioViewModel", new ServicioViewModel());
         }
@@ -68,7 +68,7 @@ public class ServicioController {
 
     @RequestMapping(value = {"/LeerServicio"}, method = RequestMethod.GET)
     public String leerServicio(@Valid IdViewModel idViewModel, BindingResult result, Model model) {
-        Servicio servicio = servicioDao.buscarPorId(idViewModel.getId());
+        Servicio servicio = servicioServices.buscarPorId(idViewModel.getId());
         model.addAttribute("servicio", servicio);
         model.addAttribute("ServicioViewModel", new ServicioViewModel());
         return READ_URL;
@@ -76,7 +76,7 @@ public class ServicioController {
 
     @RequestMapping(value = {"/EditarServicio"}, method = RequestMethod.GET)
     public String editarUsuario(@Valid ServicioViewModel servicioViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
-        Servicio servicio = servicioDao.buscarPorId(id);
+        Servicio servicio = servicioServices.buscarPorId(id);
         ServicioViewModel servicioViewModel2 = new ServicioViewModel();
         servicioViewModel2.setDescripcionServicio(servicio.getDescripcionServicio());
         servicioViewModel2.setEstadoServicio(servicio.getEstadoServicio());
@@ -88,10 +88,10 @@ public class ServicioController {
 
     @RequestMapping(value = {"/ActualizarServicio"}, method = RequestMethod.POST)
     public String ActualizarUsuario(@Valid ServicioViewModel servicioViewModel, @RequestParam("id") long id, BindingResult result, Model model) {
-        Servicio servicio = servicioDao.buscarPorId(id);
+        Servicio servicio = servicioServices.buscarPorId(id);
         servicio.setEstadoServicio(servicioViewModel.getEstadoServicio());
-        if (servicioDao.modificarServicio(servicio)) {
-            List<Servicio> servicios = servicioDao.listarServicios();
+        if (servicioServices.modificarServicio(servicio)) {
+            List<Servicio> servicios = servicioServices.listarServicios();
             model.addAttribute("servicios", servicios);
             model.addAttribute("ServicioViewModel", new ServicioViewModel());
         }

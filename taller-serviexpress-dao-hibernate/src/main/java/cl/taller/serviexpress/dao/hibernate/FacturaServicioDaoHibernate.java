@@ -24,6 +24,10 @@ public class FacturaServicioDaoHibernate implements FacturaServicioDao{
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public List<FacturaServicio> findByFactura(long idfactura) {

@@ -7,19 +7,15 @@ package cl.taller.serviexpress.services.impl;
 
 import cl.taller.serviexpress.dao.ServicioDao;
 import cl.taller.serviexpress.domain.Servicio;
-import cl.taller.serviexpress.dao.hibernate.ServicioDaoHibernate;
-import cl.taller.serviexpress.dao.hibernate.UsuarioDaoHibernate;
-import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.ServicioServices;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 public class ServicioServicesImpl implements ServicioServices{
 
-    private ServicioDao servicioDao;
-
-    @Autowired
-    private ServicioServices servicioServices;
+	@Autowired
+	private ServicioDao servicioDao;
 
     /**
      * @param servicio the servicioDao to set
@@ -28,21 +24,25 @@ public class ServicioServicesImpl implements ServicioServices{
         this.servicioDao = servicio;
     }
     
+    @Transactional
     @Override
     public boolean crearServicio(Servicio servicio) {
         return servicioDao.createServicio(servicio);
     }
 
+    @Transactional
     @Override
     public List<Servicio> listarServicios() {
         return servicioDao.findAllActive();
     }
 
+    @Transactional
     @Override
     public boolean modificarServicio(Servicio servicio) {
         return servicioDao.updateServicio(servicio);
     }
-
+    
+    @Transactional
     @Override
     public Servicio buscarPorId(long id) {
         return servicioDao.findByIdServicio(id);

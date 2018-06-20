@@ -12,7 +12,7 @@
 	<bean id="userServices" class="cl.taller.serviexpress.services.impl.UsuarioServicesImpl">
 		<property name="userDao" ref="userDao" />
 		<property name="credencialesDao" ref="credencialesDao"/>
-                <property name="datosEmpleadoDao" ref="datosEmpleadoDao"></property>
+        <property name="datosEmpleadoDao" ref="datosEmpleadoDao"/>
 	</bean>
 	<bean id="perfilServices" class="cl.taller.serviexpress.services.impl.PerfilServicesImpl">
 		<property name="perfilDao" ref="perfilDao"/>
@@ -29,17 +29,18 @@
 		<property name="ordenCompraDao" ref="ordenCompraDao"/>
                 <property name="ordenProductoDao" ref="ordenProductoDao"/>
 	</bean>
-        <bean id="recepcionServices" class="cl.taller.serviexpress.services.impl.RecepcionServicesImpl">
+    
+    <bean id="recepcionServices" class="cl.taller.serviexpress.services.impl.RecepcionServicesImpl">
 		<property name="recepcionDao" ref="recepcionDao"/>
                 <property name="recepcionProductoDao" ref="recepcionProductoDao"/>
 	</bean>
-        <bean id="reservaServices" class="cl.taller.serviexpress.services.impl.ReservaServicesImpl">
+
+<!--<bean id="reservaServices" class="cl.taller.serviexpress.services.impl.ReservaServicesImpl">
 		<property name="reservaDao" ref="reservaDao"/>
-	</bean>
-        <bean id="facturaServices" class="cl.taller.serviexpress.services.impl.FacturaServicesImpl">
+	</bean> -->
+    
+    <bean id="facturaServices" class="cl.taller.serviexpress.services.impl.FacturaServicesImpl">
 		<property name="facturaDao" ref="facturaDao"/>
-                <property name="facturaProductoDao" ref="facturaProductoDao"/>
-                <property name="facturaServicioDao" ref="facturaServicioDao"/>
 	</bean>
         
         
