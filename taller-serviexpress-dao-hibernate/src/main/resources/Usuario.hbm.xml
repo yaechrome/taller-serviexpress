@@ -12,7 +12,8 @@
 		<property name="rut" unique="true" />
 		<property name="direccion" />
 		<property name="contactoTelefonico" />
-		<many-to-one name="perfil" class="cl.taller.serviexpress.domain.Perfil"/>
-				     
+		<many-to-one name="perfil" lazy="false" class="cl.taller.serviexpress.domain.Perfil"/>
+		<property name="username"/>
+		<property name="password"/>						     
 	</class>
 </hibernate-mapping>

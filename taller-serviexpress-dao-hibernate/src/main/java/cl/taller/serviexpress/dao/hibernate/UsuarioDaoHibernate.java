@@ -156,5 +156,27 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
         }
         return usuario;
     }
+
+	@Override
+	public Usuario findByUsernameAndPassword(String username, String Password) {
+		
+        Usuario usuario = null;
+        
+    	Session session = getSessionFactory().openSession();
+    	
+        String sql = "from Usuario where username = :username and password = :password";
+        try {
+            Query query = session.createQuery(sql);
+
+            query.setParameter("username", username);
+            query.setParameter("password", Password);
+
+            usuario = (Usuario) query.uniqueResult();
+            
+        } catch (Exception e) {
+            
+        }
+        return usuario;
+	}
     
 }

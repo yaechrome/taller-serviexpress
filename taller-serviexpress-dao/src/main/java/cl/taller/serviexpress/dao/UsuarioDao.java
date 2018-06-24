@@ -14,6 +14,15 @@ public interface UsuarioDao {
 	 * @return
 	 */
 	Usuario findByIdUsuario(long idUsuario);
+	
+    /**
+	 * Busca un usuario por de su usuario y contraseña
+	 * 
+	 * @param username, password
+	 *            Las credenciales del usuario
+	 * @return
+	 */
+	Usuario findByUsernameAndPassword(String username, String Password);
 
 	/**
 	 * Obtiene todos los usuario activos.

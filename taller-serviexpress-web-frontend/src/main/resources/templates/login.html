@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content="Taisa"></meta>
+<meta name="msapplication-TileColor" content="#ffffff"></meta>
+<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png"></meta>
+<meta name="theme-color" content="#ffffff"></meta>
+
+<link rel="stylesheet" href="css/main.min.css" th:href="@{/css/main.min.css(${T(Math).random()})}"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"/>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:400,600,700}"/>
+
+<script src="js/libs/bundle.js" th:src="@{/js/libs/bundle.js(${T(Math).random()})}"></script>
+<script src="js/libs/materialize.min.js" th:src="@{/js/libs/materialize.min.js(${T(Math).random()})}"></script>
+<script src="js/main.min.js" th:src="@{/js/main.min.js(${T(Math).random()})}"></script>
+
+<title>Taller_Serviexpress</title>
+</head>
+  <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mb0 center-align relative full">
+          <div class="center">
+            <div class="col s12 m6 offset-m3 l4 offset-l4">
+              <form class="form" role="form" method="POST" action="/login/authenticate" th:action="@{/login/authenticate}" th:object="${loginViewModel}" accept-charset="UTF-8" autocomplete="off">
+              <div class="card">
+                <div class="card-content pb0 pt0">
+                  <div class="mb20"></div>
+                  <div class="row"> 
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <input class="validate" id="username" type="text" th:field="*{username}"/>
+                          <label for="username">Usuario</label>
+                        </div>
+                      </div>
+                      <div class="row mb0">
+                        <div class="input-field col s12">
+                          <input class="validate" id="password" type="password" th:field="*{password}"/>
+                          <label for="password">Contraseña</label>
+                        </div>
+                      </div>
+                        <div class="col s12 mt10" th:if="${error}">
+                    		<div  class="alert warning mt0" >
+                      			<div class="alert-icon"><i class="material-icons">error_outline</i></div>
+                      			<div class="alert-text"><strong>Favor, ingresar usuario y contraseña</strong></div>
+                    		</div>
+                  		</div>
+                  		<div class="col s12 mt10" th:if="${errorUsername}">
+                    		<div  class="alert warning mt0" >
+                      			<div class="alert-icon"><i class="material-icons">error_outline</i></div>
+                      			<div class="alert-text"><strong>Favor, ingresar un usuario</strong></div>
+                    		</div>
+                  		</div>
+                  		<div class="col s12 mt10" th:if="${errorPassword}">
+                    		<div  class="alert warning mt0" >
+                      			<div class="alert-icon"><i class="material-icons">error_outline</i></div>
+                      			<div class="alert-text"><strong>Favor, ingresar una contraseña</strong></div>
+                    		</div>
+                  		</div>
+                  		<div class="col s12 mt10" th:if="${errorPasswordField}">
+                    		<div  class="alert warning mt0" >
+                      			<div class="alert-icon"><i class="material-icons">error_outline</i></div>
+                      			<div class="alert-text"><strong>Favor, ingresar una contraseña válida</strong></div>
+                    		</div>
+                  		</div>
+                  		<div class="col s12 mt10" th:if="${errorBD}">
+                    		<div  class="alert error" >
+                      			<div class="alert-icon"><i class="material-icons">highlight_off</i></div>
+                      			<div class="alert-text"><strong>Usuario y/o contraseña incorrectos</strong></div>
+                    		</div>
+                  		</div>
+                  </div>
+                </div>
+                <div class="card-action"><button class="waves-effect waves-light btn blue darken-3" type="submit">Ingresar</button></div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/libs/bundle.js"></script>
+    <script src="js/libs/materialize.min.js"></script>
+    <script src="js/main.min.js"></script>
+  </body>
+</html>

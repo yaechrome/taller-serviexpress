@@ -1,9 +1,7 @@
 package cl.taller.serviexpress.services.impl;
 
-import cl.taller.serviexpress.domain.Credenciales;
 import cl.taller.serviexpress.domain.DatosEmpleados;
 import cl.taller.serviexpress.domain.Usuario;
-import cl.taller.serviexpress.dao.CredencialesDao;
 import cl.taller.serviexpress.dao.DatosEmpleadoDao;
 import cl.taller.serviexpress.dao.UsuarioDao;
 import cl.taller.serviexpress.services.UsuarioServices;
@@ -21,9 +19,6 @@ public class UsuarioServicesImpl implements UsuarioServices {
 
 	@Autowired
     private UsuarioDao userDao;
-
-	@Autowired
-    private CredencialesDao credencialesDao;
     
 	@Autowired
     private DatosEmpleadoDao datosEmpleadoDao;
@@ -33,13 +28,6 @@ public class UsuarioServicesImpl implements UsuarioServices {
      */
     public void setUserDao(UsuarioDao userDao) {
         this.userDao = userDao;
-    }
-
-    /**
-     * @param credencialesDao the credencialesDao to set
-     */
-    public void setCredencialesDao(CredencialesDao credencialesDao) {
-            this.credencialesDao = credencialesDao;
     }
     
     /**
@@ -90,19 +78,21 @@ public class UsuarioServicesImpl implements UsuarioServices {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean crearCredenciales(Credenciales credenciales) {
-        return credencialesDao.createCredenciales(credenciales);
-    }
-
-    @Override
-    public boolean modificarCredenciales(Credenciales credenciales) {
-        return credencialesDao.updateCredenciales(credenciales);
-    }
 
     @Override
     public List<Usuario> listarUsuariosPorPerfil(long idPerfil) {
         return userDao.findByPerfil(idPerfil);
     }
+
+	@Override
+	public Usuario authentication(String username, String password) {
+		Usuario usuario=null;
+		try { 
+			usuario = userDao.findByUsernameAndPassword(username, password);
+		}catch(Exception e){
+			
+		}
+		return usuario; 
+	}
 
 }

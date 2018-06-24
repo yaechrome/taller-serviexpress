@@ -14,7 +14,6 @@
 				<value>Producto.hbm.xml</value>
 				<value>Perfil.hbm.xml</value>
 				<value>Servicio.hbm.xml</value>
-				<value>Credenciales.hbm.xml</value>
 				<value>DatosEmpleados.hbm.xml</value>
 				<value>Factura.hbm.xml</value>
 				<value>OrdenCompra.hbm.xml</value>
@@ -44,9 +43,7 @@
    <bean id="perfilDao" class="cl.taller.serviexpress.dao.hibernate.PerfilDaoHibernate">
    		<property name="sessionFactory" ref="sessionFactory"></property>
    </bean>
-   <bean id="credencialesDao" class="cl.taller.serviexpress.dao.hibernate.CredencialesDaoHibernate">
-   		<property name="sessionFactory" ref="sessionFactory"></property>
-   </bean>
+   
    <bean id="datosEmpleadoDao" class="cl.taller.serviexpress.dao.hibernate.DatosEmpleadoDaoHibernate" >
         <property name="sessionFactory" ref="sessionFactory"></property>
    </bean> 

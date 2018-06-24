@@ -3,13 +3,17 @@
  */
 package cl.taller.serviexpress.web.frontend.viewmodel;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * @author ochandia
  *
  */
 public class LoginViewModel {
 
+	@NotBlank
 	private String username;
+	@NotBlank
 	private String password;
 	
 	

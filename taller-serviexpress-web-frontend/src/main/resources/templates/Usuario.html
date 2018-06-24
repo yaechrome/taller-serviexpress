@@ -18,8 +18,6 @@
         	<div class="card-panel pad0">
             	<div class="card-content pad24">
                 	<div class="row mb0">
-                  		<form class="col s12" th:action="@{/Usuario/BuscarUsuario}" th:object="${UserViewModel}" method="POST">
-                  		</form>
                   		<form class="col s12" th:action="@{/Usuario/LeerUsuario}" th:object="${UserViewModel}" method="GET">
                     		<div class="row mb0">
                       			<div class="input-field col s12 m3 l4">
@@ -28,8 +26,6 @@
                       			</div>
                       			<div class="input-field col s12 m3 l4 offset-l4 text_right">
 									<button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button>
-
-                                            <a class="table-btn" ><button class="waves-effect waves-light btn blue darken-3" type="submit">Buscar usuario</button></a>	
                       			</div>
                     		</div>
                   		</form>
@@ -60,9 +56,6 @@
 				                          	<td th:text="${user.getPerfil().getDetallePerfil()}">Profesional</td>
 				                          	
 				                          	<td class="text_right"> 
-				                          	<form th:action="@{/Usuario/BuscarUsuario}" th:object="${UserViewModel}" method="POST" >
-				                          	<button class="waves-effect waves-light btn blue darken-3">Editar</button>
-				                          	</form>
 				                          	</td>
 				                          	<td class="text_right">
 				                          		<a class="table-btn" href="/Usuario/EditarUsuario" th:href="@{/Usuario/EditarUsuario(id = ${user.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
@@ -81,9 +74,7 @@
                           				<li class="waves-effect"><a href="#!">2</a></li>
                           				<li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                         			</ul>
-                        			<br></br>
-                        			<a class="table-btn" href="Usuario/CrearUsuario" th:href="@{/Usuario/CrearUsuario}" ><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></a>
-                      			</div>
+									</div>
                         		</div>
                     		</div>
                   		</div>

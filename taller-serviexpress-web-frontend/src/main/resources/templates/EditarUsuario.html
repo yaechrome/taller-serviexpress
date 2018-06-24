@@ -8,49 +8,6 @@
     <main role="main">
       <section class="container">
         <div class="row mb0 center-align relative full">
-          <div class="center">
-            <div class="col s12 mb20">
-              <form class="form" role="form" method="POST" action="/Usuario/EditarUsuario" th:action="@{/Usuario/EditarUsuario}" th:object="${UserViewModel}" accept-charset="UTF-8" autocomplete="off">
-              <div class="card-panel pad0">
-                <div class="card-content pad24">
-                  <div class="mb20"><img class="align-center img_disabled img_responsive" src="img/brand.svg" alt="CREAR USUARIO" width="170"/></div>
-                  <table class="responsive-table striped">
-                    <tbody>
-                        <tr>
-                            <td>RUT</td>
-                            <td><input type="text" id="rut" th:field="*{rut}"/></td>
-                        </tr>
-                        <tr>
-                            <td>NOMBRE</td>
-                            <td><input type="text" id="nombre" th:field="*{nombre}" /></td>
-                        </tr>
-                        <tr>
-                            <td>DIRECCION</td>
-                            <td><input type="text" id="direccion" th:field="*{direccion}"/></td>
-                        </tr>
-                        <tr>
-                            <td>TELEFONO</td>
-                            <td><input type="text" id="telefono" th:field="*{telefono}"/></td>
-                        </tr>
-                        <tr>
-                            <td>NOMBRE DE USUARIO</td>
-                            <td><input type="text" id="username"  th:field="*{username}"/></td>
-                        </tr>
-                        <tr>
-                            <td>PASSWORD</td>
-                            <td><input type="password" id="password" th:field="*{password}"/></td>
-                        </tr>
-                        <tr>
-                            <td>CONFIRME PASSWORD</td>
-                            <td><input type="password" id="txtConfirmar"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-                <div class="card-action"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Usuario</button></div>
-              <br/>
-              </div>
-              </form>
         <div class="row mt50 mb0">
           <div class="col s12 mb10">
             <h3 class="title small">Gestión de usuarios</h3>
@@ -86,8 +43,6 @@
               </div>
             </div>
           </div>
-        </div>
-        </div>
         </div>
         </div>
       </section>

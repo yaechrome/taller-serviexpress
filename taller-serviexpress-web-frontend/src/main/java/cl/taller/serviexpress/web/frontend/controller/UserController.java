@@ -5,7 +5,6 @@
  */
 package cl.taller.serviexpress.web.frontend.controller;
 
-import cl.taller.serviexpress.domain.Credenciales;
 import cl.taller.serviexpress.domain.Perfil;
 import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.PerfilServicesImpl;
@@ -29,17 +28,7 @@ public class UserController {
 	UsuarioServicesImpl userServices;
 	
 	@Autowired
-	PerfilServicesImpl perfilServices;
-	
-	/**   
-    private static final String INDEX_URL="Usuario";
-    private static final String USER_URL="CrearUsuario";
-    */
-    private static final String BUSCAR_URL="BuscarUsuario";
-    private static final String EDITAR_URL = "EditarUsuario";
-    private static final String CREATE_USER_URL = "Usuario/CrearUsuario";
-    private static final String EDIT_USER = "user/editUser";
-    
+	PerfilServicesImpl perfilServices; 
 
     private static final String INDEX_URL = "Usuario";
     private static final String USER_URL = "CrearUsuario";
@@ -70,7 +59,6 @@ public class UserController {
     public String createUser(@Valid UserViewModel userViewModel, BindingResult result, Model model) {
 
         Usuario user = new Usuario();
-        Credenciales credencial = new Credenciales();
 
         Perfil perfilCliente = perfilServices.buscarPorPerfil(4L);
         user.setNombre(userViewModel.getNombre());
@@ -78,36 +66,16 @@ public class UserController {
         user.setDireccion(userViewModel.getDireccion());
         user.setContactoTelefonico(userViewModel.getTelefono());
         user.setPerfil(perfilCliente);
-        credencial.setUsuario(user);
-        credencial.setUsername(userViewModel.getUsername());
-        credencial.setPassword(userViewModel.getPassword());
+        user.setUsername(userViewModel.getUsername());
+        user.setPassword(userViewModel.getPassword());
 
-        if (userServices.crearUsuario(user) & userServices.crearCredenciales(credencial)) {
+        if (userServices.crearUsuario(user)) {
 
             List<Usuario> users = userServices.listarUsuarios();
             model.addAttribute("users", users);
             model.addAttribute("UserViewModel", new UserViewModel());
         }
         return INDEX_URL;
-    }
-
-/**   
-    @RequestMapping(value="/BuscarUsuario",method=RequestMethod.POST)
-    public String buscarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-    	
-		Usuario usuario = userDao.buscarPorRut(userViewModel.getRut());
-    	model.addAttribute("usuario", usuario);
-    	
-    	return BUSCAR_URL;
-    }
-    */
-    @RequestMapping(value="/EditarUsuario",method=RequestMethod.GET)
-    public String editarUsuario(@Valid UserViewModel userViewModel, BindingResult result,Model model) {
-    	
-		Usuario usuario = userServices.buscarPorRut(userViewModel.getRut());
-    	model.addAttribute("userViewModel", new UserViewModel());
-    	model.addAttribute("usuario", usuario);
-    	return EDITAR_URL;
     }
     
     @RequestMapping(value = "/BuscarUsuario/{rut}", method = RequestMethod.GET)
@@ -121,7 +89,6 @@ public class UserController {
         return INDEX_URL;
     }
 
-    /**
     @RequestMapping(value = {"/EditarUsuario"}, method = RequestMethod.GET)
     public String editarUsuario(@Valid UserViewModel userViewModel, @RequestParam("id") Long id, BindingResult result, Model model) {
         Usuario usuario = userServices.buscarPorID(id);
@@ -133,7 +100,7 @@ public class UserController {
         model.addAttribute("usuario", usuario);
         model.addAttribute("UserViewModel", userViewModel2);
         return EDIT_URL;
-    }*/
+    }
 
     @RequestMapping(value = {"/ActualizarUsuario"}, method = RequestMethod.POST)
     public String ActualizarUsuario(@Valid UserViewModel userViewModel, @RequestParam("rut") String rut, BindingResult result, Model model) {
@@ -141,21 +108,6 @@ public class UserController {
         Perfil perfil = perfilServices.buscarPorPerfil(userViewModel.getIdPerfil());
         usuario.setPerfil(perfil);
         if (userServices.modificarUsuario(usuario)) {
-            List<Usuario> users = userServices.listarUsuarios();
-            model.addAttribute("users", users);
-            model.addAttribute("UserViewModel", new UserViewModel());
-        }
-        return INDEX_URL;
-    }
-
-    @RequestMapping(value = "/EditarUsuario", method = RequestMethod.POST)
-    public String editar(@Valid UserViewModel userViewModel, Model model) {
-
-        Perfil perfil = perfilServices.buscarPorPerfil(userViewModel.getIdPerfil());
-        Usuario usuario = userServices.buscarPorRut(userViewModel.getRut());
-        usuario.setPerfil(perfil);
-        if (userServices.modificarUsuario(usuario)) {
-
             List<Usuario> users = userServices.listarUsuarios();
             model.addAttribute("users", users);
             model.addAttribute("UserViewModel", new UserViewModel());

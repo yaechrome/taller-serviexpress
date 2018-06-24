@@ -4,7 +4,7 @@ public class UserViewModel {
 
 	private String rut;
 	private String nombre;
-        private String apellido;
+    private String apellido;
 	private String direccion;
 	private String telefono;
 	private String username;

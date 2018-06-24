@@ -16,6 +16,8 @@ public class Usuario {
 	private String rut;
 	private String direccion;
 	private String contactoTelefonico;
+	private String username;
+	private String password;
 
 	/**
 	 * @return El nombre
@@ -119,6 +121,36 @@ public class Usuario {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return El username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username 
+	 *			El username a setear
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * @return El password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password 
+	 *			El password a setear
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	
