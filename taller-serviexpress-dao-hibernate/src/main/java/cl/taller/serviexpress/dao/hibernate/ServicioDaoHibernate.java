@@ -42,6 +42,7 @@ public class ServicioDaoHibernate extends BaseHibernate implements ServicioDao{
         return servicio;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Servicio> findAllActive() {
         List<Servicio> lista = null;

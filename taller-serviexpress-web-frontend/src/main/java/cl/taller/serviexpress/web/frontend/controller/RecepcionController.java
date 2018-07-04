@@ -1,9 +1,16 @@
 
 package cl.taller.serviexpress.web.frontend.controller;
 
+import cl.taller.serviexpress.domain.OrdenCompra;
 import cl.taller.serviexpress.domain.Recepcion;
 import cl.taller.serviexpress.services.impl.RecepcionServicesImpl;
+import cl.taller.serviexpress.web.frontend.viewmodel.OrdenCompraFormatedViewModel;
+import cl.taller.serviexpress.web.frontend.viewmodel.RecepcionFormatedViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.RecepcionViewModel;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +35,21 @@ public class RecepcionController {
 
     @RequestMapping
     public String index(Model model) {
+    	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		List<Recepcion> recepciones = recepcionServices.listarRecepciones();
-		model.addAttribute("recepciones", recepciones);
+        List<RecepcionFormatedViewModel> recepcionesFormateadas = new ArrayList<RecepcionFormatedViewModel>();
+        for (Recepcion i : recepciones) {
+        	RecepcionFormatedViewModel recepcion = new RecepcionFormatedViewModel();
+        	recepcion.setId(i.getId());
+        	recepcion.setOrdenCompra(i.getOrdenCompra());
+        	recepcion.setIdUsuario(i.getIdUsuario());
+        	recepcion.setFechaRecepcion(formatter.format(i.getFechaRecepcion()));
+        	recepcion.setValorTotal(i.getValorTotal());
+        	recepcion.setEstadoRecepcion(i.getEstadoRecepcion());
+        	recepcion.setRecepcionProducto(i.getRecepcionProducto());
+        	recepcionesFormateadas.add(recepcion);
+        }
+		model.addAttribute("recepciones", recepcionesFormateadas);
     	model.addAttribute("RecepcionViewModel", new RecepcionViewModel());
     	
         return INDEX_URL;

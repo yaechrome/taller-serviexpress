@@ -7,7 +7,12 @@ import cl.taller.serviexpress.services.impl.OrdenServicesImpl;
 import cl.taller.serviexpress.services.impl.ProductoServicesImpl;
 import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.IdViewModel;
+import cl.taller.serviexpress.web.frontend.viewmodel.OrdenCompraFormatedViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.OrdenCompraViewModel;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +42,21 @@ public class OrdenCompraController {
     @RequestMapping
     public String index(Model model) {
 
+    	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         List<OrdenCompra> ordenes = ordenServices.listarOrdenCompra();
-        model.addAttribute("ordenes", ordenes);
+        List<OrdenCompraFormatedViewModel> ordenesFormateadas = new ArrayList<OrdenCompraFormatedViewModel>();
+        for (OrdenCompra i : ordenes) {
+        	OrdenCompraFormatedViewModel orden = new OrdenCompraFormatedViewModel();
+        	orden.setId(i.getId());
+        	orden.setUsuario(i.getUsuario());
+        	orden.setIdProveedor(i.getIdProveedor());
+        	orden.setFechaEmision(formatter.format(i.getFechaEmision()));
+        	orden.setEstadoOrden(i.getEstadoOrden());
+        	orden.setObservacionOrden(i.getObservacionOrden());
+        	orden.setOrdenProducto(i.getOrdenProducto());
+        	ordenesFormateadas.add(orden);
+        }
+        model.addAttribute("ordenes", ordenesFormateadas);
         model.addAttribute("OrdenCompraViewModel", new OrdenCompraViewModel());
 
         return INDEX_URL;
@@ -61,7 +79,6 @@ public class OrdenCompraController {
     public String crearOrdenCompra(@Valid OrdenCompraViewModel ordenCompraViewModel, BindingResult result, Model model) {
 
         OrdenCompra orden = new OrdenCompra();
-
         orden.setIdProveedor(ordenCompraViewModel.getIdProveedor());
         orden.setUsuario(ordenCompraViewModel.getUsuario());
         orden.setFechaEmision(ordenCompraViewModel.getFechaEmision());

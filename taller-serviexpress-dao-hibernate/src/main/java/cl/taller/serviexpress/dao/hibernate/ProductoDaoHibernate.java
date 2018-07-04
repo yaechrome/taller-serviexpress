@@ -42,6 +42,7 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
         return producto;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Producto> findAll() {
         Session session = getSessionFactory().openSession();
@@ -58,6 +59,7 @@ public class ProductoDaoHibernate extends BaseHibernate implements ProductoDao {
         return lista;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Producto> findByTipo(long idTipo) {
         Session session = getSessionFactory().openSession();

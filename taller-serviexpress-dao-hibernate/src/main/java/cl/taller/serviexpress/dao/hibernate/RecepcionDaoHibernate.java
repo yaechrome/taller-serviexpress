@@ -47,6 +47,7 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Recepcion> findAllActive() {
         List<Recepcion> lista = null;
@@ -64,6 +65,7 @@ public class RecepcionDaoHibernate extends BaseHibernate implements RecepcionDao
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Recepcion> findByOrden(long idOrden) {
         List<Recepcion> lista = null;

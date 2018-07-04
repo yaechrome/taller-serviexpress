@@ -29,6 +29,7 @@ public class RecepcionProductoDaoHibernate extends BaseHibernate implements Rece
         this.sessionFactory = sessionFactory;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<RecepcionProducto> findByRecepcion(long idRecepcion) {
 

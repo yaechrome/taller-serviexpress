@@ -37,6 +37,7 @@ public class FacturaDaoHibernate implements FacturaDao {
         return factura;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Factura> findAll() {
         Session session = getSessionFactory().openSession();
@@ -53,6 +54,7 @@ public class FacturaDaoHibernate implements FacturaDao {
         return lista;    
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Factura> findByCliente(String rutCliente) {
         Session session = getSessionFactory().openSession();

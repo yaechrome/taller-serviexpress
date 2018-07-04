@@ -29,6 +29,7 @@ public class FacturaProductoDaoHibernate implements FacturaProductoDao{
         this.sessionFactory = sessionFactory;
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public List<FacturaProducto> findByFactura(long idFactura) {
         Session session = getSessionFactory().openSession();

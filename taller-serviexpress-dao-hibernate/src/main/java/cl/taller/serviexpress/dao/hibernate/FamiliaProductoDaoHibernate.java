@@ -22,6 +22,7 @@ public class FamiliaProductoDaoHibernate extends BaseHibernate implements Famili
             this.sessionFactory = sessionFactory;
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public List<FamiliaProducto> findAll() {
         Session session = getSessionFactory().openSession();

@@ -54,7 +54,7 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
     	List<Usuario> lista = null;
         
     	try {
-            String sql = "select b from Usuario b";
+            String sql = "select b from Usuario b inner join fetch b.perfil";
     	
             Query query = session.createQuery(sql);
     	
@@ -66,7 +66,8 @@ public class UsuarioDaoHibernate extends BaseHibernate implements UsuarioDao{
      
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Usuario> findByPerfil(long idPerfil) {
         List<Usuario> lista = null;
         

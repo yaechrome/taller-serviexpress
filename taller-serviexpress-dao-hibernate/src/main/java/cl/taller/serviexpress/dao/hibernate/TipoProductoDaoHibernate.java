@@ -27,6 +27,7 @@ public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProdu
         this.sessionFactory = sessionFactory;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<TipoProducto> findAllActive() {
         List<TipoProducto> lista = null;
@@ -42,6 +43,7 @@ public class TipoProductoDaoHibernate extends BaseHibernate implements TipoProdu
         return lista;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<TipoProducto> findByFamilia(long idFamilia) {
         List<TipoProducto> lista = null;

@@ -45,6 +45,7 @@ public class PerfilDaoHibernate extends BaseHibernate implements PerfilDao {
         return perfil;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Perfil> findAll() {
         Session session = getSessionFactory().openSession();

@@ -41,6 +41,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
         return ordenCompra;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<OrdenCompra> findAll() {
         Session session = getSessionFactory().openSession();
@@ -57,6 +58,7 @@ public class OrdenCompraDaoHibernate extends BaseHibernate implements OrdenCompr
         return lista;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<OrdenCompra> findByProveedor(long idProveedor) {
         Session session = getSessionFactory().openSession();

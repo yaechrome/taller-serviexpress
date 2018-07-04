@@ -42,6 +42,7 @@ public class ReservaDaoHibernate implements ReservaDao {
         return reserva;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Reserva> findAll() {
         Session session = getSessionFactory().openSession();
@@ -59,6 +60,7 @@ public class ReservaDaoHibernate implements ReservaDao {
         return lista;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Reserva> findByCliente(long idCliente) {
         List<Reserva> lista = null;
@@ -128,6 +130,7 @@ public class ReservaDaoHibernate implements ReservaDao {
         return actualizado;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Reserva> findByFecha(Date fecha) {
         List<Reserva> lista = null;

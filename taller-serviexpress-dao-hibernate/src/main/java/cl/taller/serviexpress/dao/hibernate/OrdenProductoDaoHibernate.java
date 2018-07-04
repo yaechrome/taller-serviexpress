@@ -28,6 +28,7 @@ public class OrdenProductoDaoHibernate extends BaseHibernate implements OrdenPro
         this.sessionFactory = sessionFactory;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<OrdenProducto> findByOrden(long idOrden) {
         Session session = getSessionFactory().openSession();
