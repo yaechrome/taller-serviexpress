@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>cl.taller.serviexpress</groupId>
+    <artifactId>taller-serviexpress</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>taller-serviexpress-ws</artifactId>
+  <dependencies>
+  		<dependency>
+			<groupId>cl.taller.serviexpress</groupId>
+			<artifactId>taller-serviexpress-dao-hibernate</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>cl.taller.serviexpress</groupId>
+			<artifactId>taller-serviexpress-domain</artifactId>
+		</dependency>
+		
+               <dependency>
+                    <groupId>com.oracle</groupId>
+                     <artifactId>ojdbc6</artifactId>
+                     <version>1</version>
+                     <scope>system</scope>
+                     <systemPath>C:\Users\Cuenta 2\Desktop\ojdbc6.jar</systemPath>
+                </dependency>
+      
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+			</dependencies>
+</project>

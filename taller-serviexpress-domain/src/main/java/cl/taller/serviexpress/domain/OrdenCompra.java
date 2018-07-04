@@ -4,6 +4,7 @@
 package cl.taller.serviexpress.domain;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +20,7 @@ public class OrdenCompra{
 	private Date fechaEmision;
 	private String estadoOrden;
 	private String observacionOrden;
-	private Set<OrdenProducto> ordenProducto;
+	private Set<OrdenProducto> ordenProducto = new HashSet<OrdenProducto>();
 	
 	/**
 	 * @return El usuario

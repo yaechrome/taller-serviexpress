@@ -3,6 +3,7 @@
  */
 package cl.taller.serviexpress.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -21,8 +22,8 @@ public class Factura{
 	private Long totalFactura;
 	private String estadoFactura;
 	private String estadoPago;
-	private Set<FacturaServicio> facturaServicio;
-	private Set<FacturaProducto> facturaProducto;
+	private Set<FacturaServicio> facturaServicio = new HashSet<FacturaServicio>();
+	private Set<FacturaProducto> facturaProducto = new HashSet<FacturaProducto>();
 	
 	
 	/**

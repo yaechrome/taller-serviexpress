@@ -3,6 +3,7 @@ package cl.taller.serviexpress.web.frontend.viewmodel;
 import cl.taller.serviexpress.domain.OrdenProducto;
 import cl.taller.serviexpress.domain.Usuario;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -13,7 +14,7 @@ public class OrdenCompraViewModel {
     private Date fechaFiltroHasta;
     private String estadoOrden;
     private String observacionOrden;
-    private Set<OrdenProducto> ordenProducto;
+    private Set<OrdenProducto> ordenProducto = new HashSet<OrdenProducto>();
     private Long precioUnitario;
     private Long cantidad;
     private Long idProducto;

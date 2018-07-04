@@ -5,6 +5,7 @@ package cl.taller.serviexpress.domain;
 
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class Recepcion{
 	private Date fechaRecepcion;
 	private Long valorTotal;
 	private String estadoRecepcion;
-	private Set<RecepcionProducto> recepcionProducto;
+	private Set<RecepcionProducto> recepcionProducto = new HashSet<RecepcionProducto>();
 	
 	/**
 	 * @return El ordenCompra

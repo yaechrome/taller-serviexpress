@@ -76,7 +76,7 @@
 			</dependency>
 			<dependency>
 				<groupId>cl.taller.serviexpress</groupId>
-				<artifactId>taller-serviexpress-ws</artifactId>
+				<artifactId>taller-serviexpress-application</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -94,6 +94,6 @@
 		<module>taller-serviexpress-services</module>
 		<module>taller-serviexpress-services-impl</module>
 		<module>taller-serviexpress-web-frontend</module>
-		<module>taller-serviexpress-ws</module>
+		<module>taller-serviexpress-application</module>
 	</modules>
 </project>
