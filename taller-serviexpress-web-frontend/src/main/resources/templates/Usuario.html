@@ -21,7 +21,7 @@
                   		<form class="col s12" th:action="@{/Usuario/LeerUsuario}" th:object="${UserViewModel}" method="GET">
                     		<div class="row mb0">
                       			<div class="input-field col s12 m3 l4">
-                        			<input class="validate" id="rut" type="text" th:field="*{rut}"/>
+                        			<input class="validate" id="rut" type="text" th:field="*{rut}" th:required="true"/>
                         			<label for="rut">Ingrese un rut</label>
                       			</div>
                       			<div class="input-field col s12 m3 l4 offset-l4 text_right">
@@ -68,12 +68,6 @@
                     		<hr/>
                     		<div class="row mb0">
                       			<div class="col s12 text_center">
-                        			<ul class="pagination">
-                          				<li class="disabled prev"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                          				<li class="active blue darken-3"><a href="#!">1</a></li>
-                          				<li class="waves-effect"><a href="#!">2</a></li>
-                          				<li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                        			</ul>
 									</div>
                         		</div>
                     		</div>

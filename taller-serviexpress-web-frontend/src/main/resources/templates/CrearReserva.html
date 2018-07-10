@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mt50 mb0">
+          <div class="col s12 mb20">
+            <div class="card-panel pad0">
+              <div class="card-head">
+                <h2 class="title">Crear Reserva</h2>
+              </div>
+              <div class="card-content pad24">
+                <div class="row mb0">
+                  <form class="col s12" th:action="@{/Reserva/CrearReserva}" th:object="${reservaViewModel}" method="POST" >
+						<select id="idUsuario" name="idUsuario" th:with="idUsuario=*{idUsuario}" th:disabled="true">
+                          <option th:value="${usuario.rut}" th:text="${usuario.rut}" th:selected="selected"></option>
+                        </select>
+					 <div class="row mb0">
+                      <div class="input-field col s12 m3 l3">
+                      	<select class="validate" th:field="*{idMecanico}">
+                          <option value="null" selected="">Selecciona</option>
+                          <option th:each="mecanico : ${mecanicos}"  th:value="${mecanico.id}" th:text="${mecanico.nombre}+' '+${mecanico.apellidoPaterno}">Juan Perez</option>                  
+                        </select>
+                        <label>mecanico</label>
+                      </div>
+                      <div class="input-field col s12 m3 l3">
+                        <input class="validate datepicker" id="fecha" type="text" th:field="*{fecha}"/>
+                        <label for="fecha">Fecha Reserva</label>
+                      </div>
+                      <div class="input-field col s12 m3 l3">
+                        <select class="validate" th:field="*{hora}">
+                          <option value="null" selected="">Selecciona</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">19:00</option>
+                        </select>
+                        <label>Hora</label>
+                      </div>
+                      <div class="input-field col s12 m3 l3">
+                        <input class="text" id="descripcion" type="text" th:field="*{descripcion}"/>
+                        <label for="descripcion">Descripcion</label>
+                      </div>
+                    </div>
+                    <div class="row mb0">
+                      <div class="input-field col s12 text_right">
+                        <button class="waves-effect waves-light btn blue darken-3" type="submit">Crear</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</th:block>
+</html>

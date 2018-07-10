@@ -4,7 +4,6 @@
 package cl.taller.serviexpress.web.frontend.viewmodel;
 
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 

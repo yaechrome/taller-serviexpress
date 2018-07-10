@@ -14,7 +14,6 @@ import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -64,14 +63,13 @@ public class UserController {
 
         Perfil perfilCliente = perfilServices.buscarPorPerfil(4L);
         user.setNombre(userViewModel.getNombre());
+        user.setApellidoPaterno(userViewModel.getApellido());
         user.setRut(userViewModel.getRut());
         user.setDireccion(userViewModel.getDireccion());
         user.setContactoTelefonico(userViewModel.getTelefono());
         user.setPerfil(perfilCliente);
         user.setUsername(userViewModel.getUsername());
-
-        final UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userViewModel.getUsername(),userViewModel.getPassword(),null);
-        user.setPassword(token.toString());
+        user.setPassword(userViewModel.getPassword());
 
         if (userServices.crearUsuario(user)) {
 
