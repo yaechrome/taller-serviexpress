@@ -19,7 +19,6 @@ public class RecepcionServicesImpl implements RecepcionServices{
 	@Autowired
 	private RecepcionDao recepcionDao;
 
-
     /**
      * @param ordenDao the userDao to set
      */

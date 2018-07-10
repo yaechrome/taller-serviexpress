@@ -10,9 +10,11 @@ import cl.taller.serviexpress.domain.Usuario;
 import cl.taller.serviexpress.services.impl.PerfilServicesImpl;
 import cl.taller.serviexpress.services.impl.UsuarioServicesImpl;
 import cl.taller.serviexpress.web.frontend.viewmodel.UserViewModel;
+
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -67,7 +69,9 @@ public class UserController {
         user.setContactoTelefonico(userViewModel.getTelefono());
         user.setPerfil(perfilCliente);
         user.setUsername(userViewModel.getUsername());
-        user.setPassword(userViewModel.getPassword());
+
+        final UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userViewModel.getUsername(),userViewModel.getPassword(),null);
+        user.setPassword(token.toString());
 
         if (userServices.crearUsuario(user)) {
 

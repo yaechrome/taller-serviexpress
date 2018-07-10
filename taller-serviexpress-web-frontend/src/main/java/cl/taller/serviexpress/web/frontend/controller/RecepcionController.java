@@ -1,10 +1,8 @@
 
 package cl.taller.serviexpress.web.frontend.controller;
 
-import cl.taller.serviexpress.domain.OrdenCompra;
 import cl.taller.serviexpress.domain.Recepcion;
 import cl.taller.serviexpress.services.impl.RecepcionServicesImpl;
-import cl.taller.serviexpress.web.frontend.viewmodel.OrdenCompraFormatedViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.RecepcionFormatedViewModel;
 import cl.taller.serviexpress.web.frontend.viewmodel.RecepcionViewModel;
 
@@ -29,9 +27,6 @@ public class RecepcionController {
     
     private static final String INDEX_URL="Recepcion";
     private static final String RECEPTION_URL="CrearRecepcion";
-    private static final String CREATE_RECEPTION_URL = "Recepcion/CrearRecepcion";
-    private static final String CREATE_RECEPTIONPRODUCT_URL = "RecepcionProducto/CrearRecepcionProducto";
-    private static final String EDIT_RECEPTION = "user/editUser";
 
     @RequestMapping
     public String index(Model model) {

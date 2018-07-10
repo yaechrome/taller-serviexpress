@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+    <body>
+    <main role="main">
+      <section class="container">
+        <div class="row mt50 mb0">
+          <div class="col s12 mb10">
+            <h3 class="title small">Gestion de Ordenes de Compra</h3>
+          </div>
+          <div class="input-field col s12 text_right">
+          <a class="table-btn" href="Reserva/CrearReserva" th:href="@{/Reserva/CrearReserva}"><button class="waves-effect waves-light btn blue darken-3" type="submit">Crear Reserva</button></a>
+          </div>
+          <div class="col s12 mb20">
+            <div class="card-panel pad0">
+              <div class="card-head">
+                <h2 class="title">Filtro de Ordenes</h2>
+              </div>
+              <div class="card-content pad24">
+                <div class="row mb0">
+                  <form class="col s12" th:action="@{/OrdenCompra/FiltroOrdenes}" th:object="${OrdenCompraViewModel}" method="GET">
+                    <div class="row mb0">
+                      <div class="input-field col s12 m3 l3">
+                        <input class="validate datepicker" id="init_date" type="text" th:field="*{fechaEmision}"/>
+                        <label for="init_date">Fecha desde</label>
+                      </div>
+                      <div class="input-field col s12 m3 l3">
+                        <input class="validate datepicker" id="end_date" type="text" th:field="*{fechaFiltroHasta}"/>
+                        <label for="end_date">Fecha hasta</label>
+                      </div>
+                      <div class="input-field col s12 m3 l3">
+                        <select class="validate" th:field="*{estadoOrden}">
+                          <option value="Recepcionada">Recepcionada</option>
+                          <option value="Pendiente">Pendiente</option>
+                          <option value="Rechazada">Rechazada</option>
+                        </select>
+                        <label>Estado</label>
+                      </div>
+                    </div>
+                    <div class="row mb0">
+                      <div class="input-field col s12 text_right">
+                        <button class="waves-effect waves-light btn blue darken-3" type="submit">Consultar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 mb20">
+            <div class="card-panel pad0">
+              <div class="card-content pad24">
+                <h3 class="title small mb10">Ordenes</h3>
+                <div class="row mb0">
+                  <div class="col s12">
+                    <table class="responsive-table striped">
+                      <thead>
+                        <tr>
+                          <th class="blue-text text-darken-3">ID</th>	
+                          <th class="blue-text text-darken-3">Fecha Orden</th>
+                          <th class="blue-text text-darken-3">ID Proveedor</th>
+                          <th class="blue-text text-darken-3">Empleado</th>
+                          <th class="blue-text text-darken-3">Estado</th>
+                          <th class="blue-text text-darken-3">Accion</th>
+                        </tr>
+                      </thead>
+                      				<tbody>
+				                        <tr th:each="orden : ${ordenes}">
+				                        	<td th:text="${orden.id}"></td>
+				                        	<td th:text="${orden.fechaEmision}"></td>
+				                          	<td class="text_center" th:text="${orden.idProveedor}"></td>
+				                          	<td th:text="${orden.getUsuario().getNombre()}"></td>
+				                    		<td th:text="${orden.estadoOrden}"></td>
+				                          	<td class="text_right">
+				                          		<a class="table-btn" href="/OrdenCompra/EditarOrden" th:href="@{/OrdenCompra/EditarOrden(id = ${orden.getId()})}"><i class="small material-icons blue-text text-darken-3" >create</i></a>
+				                          	</td>
+				                        </tr>
+                      				</tbody>
+                    </table>
+                  </div>
+                  <div class="col s12">
+                    <hr></hr>
+                    <div class="row mb0">
+                      <div class="col s12 m6 text_left">
+                        <ul class="pagination">
+                          <li class="disabled prev"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                          <li class="active blue darken-3"><a href="#!">1</a></li>
+                          <li class="waves-effect"><a href="#!">2</a></li>
+                          <li class="waves-effect next"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                        </ul>
+                      </div>
+                      <div class="col s12 m6 text_right"><a class="waves-effect waves-light btn btn-small blue-grey lighten-5 blue-text text-darken-3 mmb20 mwfull" href="#!"> exportar a Excel</a></div>                 
+                    </div>                
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</th:block>
+</html>

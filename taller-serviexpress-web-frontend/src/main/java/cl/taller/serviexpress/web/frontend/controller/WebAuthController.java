@@ -3,15 +3,11 @@
  */
 package cl.taller.serviexpress.web.frontend.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +29,7 @@ import cl.taller.serviexpress.web.frontend.viewmodel.LoginViewModel;
 @RequestMapping("login")
 public class WebAuthController {
 	
-	private static final String HOME_URL = "inicio";
+	private static final String HOME_URL = "Inicio";
 	private static final String LOGIN_URL = "login";
 
 	@Autowired
@@ -88,8 +84,11 @@ public class WebAuthController {
 		
 			
 			try {
-						
-				Usuario usuario = userServices.authentication(loginViewModel.getUsername(), loginViewModel.getPassword());
+				
+				final UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginViewModel.getUsername(), loginViewModel.getPassword(), null);
+				
+				
+				Usuario usuario = userServices.authentication(loginViewModel.getUsername(), token.getCredentials().toString());
 			
 				if(usuario == null) {
 					redirectAttributes.addFlashAttribute("errorBD", true);
@@ -97,12 +96,14 @@ public class WebAuthController {
 					return "redirect:/"+LOGIN_URL;
 				}
 				
+				/**
+				
 				final Collection<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 			
 				authorities.add(new SimpleGrantedAuthority(usuario.getPerfil().getDetallePerfil()));
 			
-				final UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginViewModel.getUsername(), loginViewModel.getPassword(), authorities);
-				
+				*/
+
 				SecurityContextHolder.getContext().setAuthentication(token);		
 			
 				return "redirect:/"+HOME_URL;

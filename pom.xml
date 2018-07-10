@@ -94,6 +94,6 @@
 		<module>taller-serviexpress-services</module>
 		<module>taller-serviexpress-services-impl</module>
 		<module>taller-serviexpress-web-frontend</module>
-		<module>taller-serviexpress-application</module>
+		
 	</modules>
 </project>

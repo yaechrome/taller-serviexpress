@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="master/layout/public">
+	<th:block layout:fragment="content">
+	<body>
+	    <main role="main">
+	     <section class="container">
+        <div class="row mt50 mb0">
+		<div class="col s12 mb10">
+        	<h3 class="title small">Usuarios del Sistema</h3>
+       	</div>
+        <div class="col s12 mb20">
+        	<div class="card-panel pad0">
+            	<div class="card-content pad24">
+                	<div class="row mb0">
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<label>Administradores registrados: </label>              			
+                        		</div>
+                        		<div class="input-field col s12 m3 l4">
+                        			<label th:text="${administradores}"></label>              			
+                        		</div>                       			     
+                    		</div>
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<label>Ejecutivos registrados: </label>              			
+                        		</div>
+                        		<div class="input-field col s12 m3 l4">
+                        			<label th:text="${ejecutivos}"></label>              			
+                        		</div>                       			     
+                    		</div>
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<label>Mecanicos registrados: </label>              			
+                        		</div>
+                        		<div class="input-field col s12 m3 l4">
+                        			<label th:text="${mecanicos}"></label>              			
+                        		</div>                       			     
+                    		</div>
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<label>Proveedores registrados: </label>              			
+                        		</div>
+                        		<div class="input-field col s12 m3 l4">
+                        			<label th:text="${proveedores}"></label>              			
+                        		</div>                       			     
+                    		</div>
+                    		<div class="row mb0">
+                      			<div class="input-field col s12 m3 l4">
+                        			<label>Clientes registrados: </label>              			
+                        		</div>
+                        		<div class="input-field col s12 m3 l4">
+                        			<label th:text="${clientes}"></label>              			
+                        		</div>                       			     
+                    		</div>
+                	</div>
+              	</div>
+            </div>
+		</div>
+    	</div>
+      </section>
+    </main>
+
+	</body>
+	</th:block>
+</html>

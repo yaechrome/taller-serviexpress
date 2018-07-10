@@ -27,7 +27,6 @@ public class ServicioController {
 
     private static final String INDEX_URL = "Servicio";
     private static final String SERVICE_URL = "CrearServicio";
-    private static final String CREATE_SERVICE_URL = "Servicio/CrearServicio";
     private static final String READ_URL = "LeerServicio";
     private static final String EDIT_URL = "EditarServicio";
 
